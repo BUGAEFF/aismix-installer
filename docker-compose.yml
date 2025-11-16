@@ -1,11 +1,10 @@
 version: "3.9"
 
 services:
-  # ----------------------------------------------------------
-  # TRAEFIK (Reverse Proxy + SSL)
-  # ----------------------------------------------------------
-     traefik:
+
+  traefik:
     image: traefik:latest
+    container_name: aismix-traefik
     restart: always
     command:
       - "--providers.docker=true"
@@ -15,24 +14,18 @@ services:
       - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
-      - "--log.level=DEBUG"
-      - "--accesslog=true"
-      - "--api.insecure=true"
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/acme.json:/acme.json
     networks:
       - web
 
-  # ----------------------------------------------------------
-  # NGINX (Landing page)
-  # ----------------------------------------------------------
   nginx:
     image: nginx:latest
+    container_name: aismix-nginx
     restart: always
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -45,25 +38,9 @@ services:
     networks:
       - web
 
-  # ----------------------------------------------------------
-  # N8N INSTANCES
-  # ----------------------------------------------------------
-
-  # APP 1 -----------------------------------------------------
-  appix1-db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS1}
-      POSTGRES_DB: n8n1
-    volumes:
-      - appix1-db-data:/var/lib/postgresql/data
-    networks:
-      - web
-
+  ### --- APP 1 ---
   appix1:
-    image: n8nio/n8n:latest
+    image: n8nio/n8n
     restart: always
     environment:
       DB_TYPE: postgresdb
@@ -72,10 +49,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n1
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS1}
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: bugaeff.com
       N8N_HOST: appix1.${DOMAIN}
-      N8N_PORT: 5678
-    depends_on:
-      - appix1-db
+      WEBHOOK_URL: https://appix1.${DOMAIN}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix1.rule=Host(`appix1.${DOMAIN}`)"
@@ -84,24 +62,22 @@ services:
     networks:
       - web
 
-  # APP 2 -----------------------------------------------------
-  appix2-db:
+  appix1-db:
     image: postgres:14
     restart: always
     environment:
+      POSTGRES_DB: n8n1
       POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS2}
-      POSTGRES_DB: n8n2
+      POSTGRES_PASSWORD: ${POSTGRES_PASS1}
     volumes:
-      - appix2-db-data:/var/lib/postgresql/data
+      - appix1-db-data:/var/lib/postgresql/data
     networks:
       - web
 
+  ### --- APP 2 ---
   appix2:
-    image: n8nio/n8n:latest
+    image: n8nio/n8n
     restart: always
-    depends_on:
-      - appix2-db
     environment:
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix2-db
@@ -109,8 +85,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n2
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS2}
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: bugaeff.com
       N8N_HOST: appix2.${DOMAIN}
-      N8N_PORT: 5678
+      WEBHOOK_URL: https://appix2.${DOMAIN}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix2.rule=Host(`appix2.${DOMAIN}`)"
@@ -119,24 +98,22 @@ services:
     networks:
       - web
 
-  # APP 3 -----------------------------------------------------
-  appix3-db:
+  appix2-db:
     image: postgres:14
     restart: always
     environment:
+      POSTGRES_DB: n8n2
       POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS3}
-      POSTGRES_DB: n8n3
+      POSTGRES_PASSWORD: ${POSTGRES_PASS2}
     volumes:
-      - appix3-db-data:/var/lib/postgresql/data
+      - appix2-db-data:/var/lib/postgresql/data
     networks:
       - web
 
+  ### --- APP 3 ---
   appix3:
-    image: n8nio/n8n:latest
+    image: n8nio/n8n
     restart: always
-    depends_on:
-      - appix3-db
     environment:
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix3-db
@@ -144,8 +121,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n3
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS3}
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: bugaeff.com
       N8N_HOST: appix3.${DOMAIN}
-      N8N_PORT: 5678
+      WEBHOOK_URL: https://appix3.${DOMAIN}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix3.rule=Host(`appix3.${DOMAIN}`)"
@@ -154,24 +134,22 @@ services:
     networks:
       - web
 
-  # APP 4 -----------------------------------------------------
-  appix4-db:
+  appix3-db:
     image: postgres:14
     restart: always
     environment:
+      POSTGRES_DB: n8n3
       POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS4}
-      POSTGRES_DB: n8n4
+      POSTGRES_PASSWORD: ${POSTGRES_PASS3}
     volumes:
-      - appix4-db-data:/var/lib/postgresql/data
+      - appix3-db-data:/var/lib/postgresql/data
     networks:
       - web
 
+  ### --- APP 4 ---
   appix4:
-    image: n8nio/n8n:latest
+    image: n8nio/n8n
     restart: always
-    depends_on:
-      - appix4-db
     environment:
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix4-db
@@ -179,8 +157,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n4
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS4}
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: bugaeff.com
       N8N_HOST: appix4.${DOMAIN}
-      N8N_PORT: 5678
+      WEBHOOK_URL: https://appix4.${DOMAIN}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix4.rule=Host(`appix4.${DOMAIN}`)"
@@ -189,24 +170,22 @@ services:
     networks:
       - web
 
-  # APP 5 -----------------------------------------------------
-  appix5-db:
+  appix4-db:
     image: postgres:14
     restart: always
     environment:
+      POSTGRES_DB: n8n4
       POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS5}
-      POSTGRES_DB: n8n5
+      POSTGRES_PASSWORD: ${POSTGRES_PASS4}
     volumes:
-      - appix5-db-data:/var/lib/postgresql/data
+      - appix4-db-data:/var/lib/postgresql/data
     networks:
       - web
 
+  ### --- APP 5 ---
   appix5:
-    image: n8nio/n8n:latest
+    image: n8nio/n8n
     restart: always
-    depends_on:
-      - appix5-db
     environment:
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix5-db
@@ -214,8 +193,11 @@ services:
       DB_POSTGRESDB_DATABASE: n8n5
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS5}
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: bugaeff.com
       N8N_HOST: appix5.${DOMAIN}
-      N8N_PORT: 5678
+      WEBHOOK_URL: https://appix5.${DOMAIN}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix5.rule=Host(`appix5.${DOMAIN}`)"
@@ -224,9 +206,18 @@ services:
     networks:
       - web
 
-# ----------------------------------------------------------
-# NETWORKS & VOLUMES
-# ----------------------------------------------------------
+  appix5-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: n8n5
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASS5}
+    volumes:
+      - appix5-db-data:/var/lib/postgresql/data
+    networks:
+      - web
+
 networks:
   web:
 
