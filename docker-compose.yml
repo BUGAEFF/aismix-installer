@@ -1,7 +1,9 @@
-version: '3.9'
+version: "3.9"
 
 services:
-
+  # ----------------------------------------------------------
+  # TRAEFIK (Reverse Proxy + SSL)
+  # ----------------------------------------------------------
   traefik:
     image: traefik:latest
     restart: always
@@ -9,35 +11,31 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
 
-      # EntryPoints
+      # ENTRYPOINTS
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
 
-      # ACME + Let's Encrypt
-      - "--certificatesresolvers.letsencryptresolver.acme=true"
+      # ACME (Let's Encrypt)
+      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.letsencryptresolver.acme.logging=true"
 
-      # HTTP Challenge
-      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge=true"
-      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
-
-      # Logs
-      - "--log.level=INFO"
-      - "--accesslog=true"
+      # ENABLE DEBUG LOGS
+      - "--log.level=DEBUG"
 
     ports:
       - "80:80"
       - "443:443"
-
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/acme.json:/acme.json
-
     networks:
       - web
 
-
+  # ----------------------------------------------------------
+  # NGINX (Landing page)
+  # ----------------------------------------------------------
   nginx:
     image: nginx:latest
     restart: always
@@ -52,11 +50,11 @@ services:
     networks:
       - web
 
-  # ------------------------------
-  # 5 N8N INSTANCES (appix1..5)
-  # ------------------------------
+  # ----------------------------------------------------------
+  # N8N INSTANCES
+  # ----------------------------------------------------------
 
-  # APP 1
+  # APP 1 -----------------------------------------------------
   appix1-db:
     image: postgres:14
     restart: always
@@ -70,12 +68,9 @@ services:
       - web
 
   appix1:
-    image: n8nio/n8n
+    image: n8nio/n8n:latest
     restart: always
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix1-db
       DB_POSTGRESDB_PORT: 5432
@@ -83,7 +78,9 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS1}
       N8N_HOST: appix1.${DOMAIN}
-      WEBHOOK_URL: https://appix1.${DOMAIN}
+      N8N_PORT: 5678
+    depends_on:
+      - appix1-db
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix1.rule=Host(`appix1.${DOMAIN}`)"
@@ -92,7 +89,7 @@ services:
     networks:
       - web
 
-  # APP 2
+  # APP 2 -----------------------------------------------------
   appix2-db:
     image: postgres:14
     restart: always
@@ -106,12 +103,11 @@ services:
       - web
 
   appix2:
-    image: n8nio/n8n
+    image: n8nio/n8n:latest
     restart: always
+    depends_on:
+      - appix2-db
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix2-db
       DB_POSTGRESDB_PORT: 5432
@@ -119,7 +115,7 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS2}
       N8N_HOST: appix2.${DOMAIN}
-      WEBHOOK_URL: https://appix2.${DOMAIN}
+      N8N_PORT: 5678
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix2.rule=Host(`appix2.${DOMAIN}`)"
@@ -128,7 +124,7 @@ services:
     networks:
       - web
 
-  # APP 3
+  # APP 3 -----------------------------------------------------
   appix3-db:
     image: postgres:14
     restart: always
@@ -142,12 +138,11 @@ services:
       - web
 
   appix3:
-    image: n8nio/n8n
+    image: n8nio/n8n:latest
     restart: always
+    depends_on:
+      - appix3-db
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix3-db
       DB_POSTGRESDB_PORT: 5432
@@ -155,7 +150,7 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS3}
       N8N_HOST: appix3.${DOMAIN}
-      WEBHOOK_URL: https://appix3.${DOMAIN}
+      N8N_PORT: 5678
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix3.rule=Host(`appix3.${DOMAIN}`)"
@@ -164,7 +159,7 @@ services:
     networks:
       - web
 
-  # APP 4
+  # APP 4 -----------------------------------------------------
   appix4-db:
     image: postgres:14
     restart: always
@@ -178,12 +173,11 @@ services:
       - web
 
   appix4:
-    image: n8nio/n8n
+    image: n8nio/n8n:latest
     restart: always
+    depends_on:
+      - appix4-db
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix4-db
       DB_POSTGRESDB_PORT: 5432
@@ -191,7 +185,7 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS4}
       N8N_HOST: appix4.${DOMAIN}
-      WEBHOOK_URL: https://appix4.${DOMAIN}
+      N8N_PORT: 5678
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix4.rule=Host(`appix4.${DOMAIN}`)"
@@ -200,7 +194,7 @@ services:
     networks:
       - web
 
-  # APP 5
+  # APP 5 -----------------------------------------------------
   appix5-db:
     image: postgres:14
     restart: always
@@ -214,12 +208,11 @@ services:
       - web
 
   appix5:
-    image: n8nio/n8n
+    image: n8nio/n8n:latest
     restart: always
+    depends_on:
+      - appix5-db
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix5-db
       DB_POSTGRESDB_PORT: 5432
@@ -227,7 +220,7 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS5}
       N8N_HOST: appix5.${DOMAIN}
-      WEBHOOK_URL: https://appix5.${DOMAIN}
+      N8N_PORT: 5678
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix5.rule=Host(`appix5.${DOMAIN}`)"
@@ -236,6 +229,9 @@ services:
     networks:
       - web
 
+# ----------------------------------------------------------
+# NETWORKS & VOLUMES
+# ----------------------------------------------------------
 networks:
   web:
 
