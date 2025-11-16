@@ -1,0 +1,17 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    exposedByDefault: false
+
+certificatesResolvers:
+  letsencryptresolver:
+    acme:
+      email: admin@aismix.com
+      storage: /acme.json
+      httpChallenge:
+        entryPoint: web
