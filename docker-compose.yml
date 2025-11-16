@@ -8,19 +8,35 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
+
+      # EntryPoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
+
+      # ACME + Let's Encrypt
+      - "--certificatesresolvers.letsencryptresolver.acme=true"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
+
+      # HTTP Challenge
+      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge=true"
+      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
+
+      # Logs
+      - "--log.level=INFO"
+      - "--accesslog=true"
+
     ports:
       - "80:80"
       - "443:443"
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/acme.json:/acme.json
+
     networks:
       - web
+
 
   nginx:
     image: nginx:latest
