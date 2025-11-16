@@ -4,31 +4,26 @@ services:
   # ----------------------------------------------------------
   # TRAEFIK (Reverse Proxy + SSL)
   # ----------------------------------------------------------
-  traefik:
+    traefik:
     image: traefik:latest
     restart: always
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
-
-      # ENTRYPOINTS
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-
-      # ACME (Let's Encrypt)
       - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
-      - "--certificatesresolvers.letsencryptresolver.acme.logging=true"
-
-      # ENABLE DEBUG LOGS
       - "--log.level=DEBUG"
-
+      - "--accesslog=true"
+      - "--api.insecure=true"
     ports:
       - "80:80"
       - "443:443"
+      - "8080:8080"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/acme.json:/acme.json
     networks:
       - web
