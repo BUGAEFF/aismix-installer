@@ -1,0 +1,6 @@
+http:
+  middlewares:
+    default-headers:
+      headers:
+        frameDeny: true
+        referrerPolicy: "no-referrer-when-downgrade"
