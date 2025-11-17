@@ -1,0 +1,6 @@
+http:
+  middlewares:
+    n8n-noindex:
+      headers:
+        customResponseHeaders:
+          X-Robots-Tag: "noindex, nofollow"
