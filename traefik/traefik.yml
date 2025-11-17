@@ -1,6 +1,14 @@
+api:
+  dashboard: true
+  insecure: true
+
+log:
+  level: INFO
+
 entryPoints:
   web:
     address: ":80"
+
   websecure:
     address: ":443"
 
@@ -8,10 +16,14 @@ providers:
   docker:
     exposedByDefault: false
 
+  file:
+    directory: /dynamic
+    watch: true
+
 certificatesResolvers:
   letsencryptresolver:
     acme:
-      email: admin@aismix.com
+      email: ${EMAIL}
       storage: /acme.json
       httpChallenge:
         entryPoint: web
