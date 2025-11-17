@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
 
@@ -49,7 +49,7 @@ services:
       - web
 
   # ---------------------------------------------------
-  # 5 N8N INSTANCES
+  # 5 N8N INSTANCES (Each isolated)
   # ---------------------------------------------------
 
   # APP 1
@@ -166,7 +166,6 @@ services:
     networks:
       - web
 
-
   # APP 4
   appix4-db:
     image: postgres:14
@@ -204,7 +203,6 @@ services:
       - "traefik.http.routers.appix4.middlewares=noindex4@docker"
     networks:
       - web
-
 
   # APP 5
   appix5-db:
