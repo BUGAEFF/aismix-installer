@@ -32,7 +32,8 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.middlewares.aismix-auth.basicauth.users=aismix:$apr1$zyR3mwyK$FwXEESa3U18.ct0eMkGup1"
+      - "traefik.http.middlewares.aismix-auth.basicauth.users=aismix:$$apr1$$zyR3mwyK$$FwXEESa3U18.ct0eMkGup1"
+
 
     networks:
       - web
