@@ -19,10 +19,9 @@ services:
       - "--api.dashboard=true"
       - "--api.insecure=true"
       - "--log.level=DEBUG"
-      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge=true"
-      - "--certificatesresolvers.letsencryptresolver.acme.httpChallenge.entryPoint=web"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
+      - "--certificatesresolvers.letsencryptresolver.acme.tlsChallenge=true"
     ports:
       - "80:80"
       - "443:443"
