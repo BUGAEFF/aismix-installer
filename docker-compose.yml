@@ -92,6 +92,10 @@ services:
       - "traefik.http.routers.appix1.tls.certresolver=letsencryptresolver"
       - "traefik.http.middlewares.noindex1.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
       - "traefik.http.routers.appix1.middlewares=noindex1@docker"
+      - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
+      - "traefik.http.routers.appix1-http.entrypoints=web"
+      - "traefik.http.routers.appix1-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
@@ -130,6 +134,10 @@ services:
       - "traefik.http.routers.appix2.tls.certresolver=letsencryptresolver"
       - "traefik.http.middlewares.noindex2.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
       - "traefik.http.routers.appix2.middlewares=noindex2@docker"
+      - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
+      - "traefik.http.routers.appix2-http.entrypoints=web"
+      - "traefik.http.routers.appix2-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
@@ -168,6 +176,10 @@ services:
       - "traefik.http.routers.appix3.tls.certresolver=letsencryptresolver"
       - "traefik.http.middlewares.noindex3.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
       - "traefik.http.routers.appix3.middlewares=noindex3@docker"
+      - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
+      - "traefik.http.routers.appix3-http.entrypoints=web"
+      - "traefik.http.routers.appix3-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
@@ -206,6 +218,10 @@ services:
       - "traefik.http.routers.appix4.tls.certresolver=letsencryptresolver"
       - "traefik.http.middlewares.noindex4.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
       - "traefik.http.routers.appix4.middlewares=noindex4@docker"
+      - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
+      - "traefik.http.routers.appix4-http.entrypoints=web"
+      - "traefik.http.routers.appix4-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
@@ -244,6 +260,10 @@ services:
       - "traefik.http.routers.appix5.tls.certresolver=letsencryptresolver"
       - "traefik.http.middlewares.noindex5.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
       - "traefik.http.routers.appix5.middlewares=noindex5@docker"
+      - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
+      - "traefik.http.routers.appix5-http.entrypoints=web"
+      - "traefik.http.routers.appix5-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
