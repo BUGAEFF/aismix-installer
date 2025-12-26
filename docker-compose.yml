@@ -60,7 +60,6 @@ services:
       - "traefik.http.routers.aismix.entrypoints=websecure"
       - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.aismix.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
-      - "traefik.http.routers.aismix.service=aismix"
 
       # HTTP → HTTPS redirect
       - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
