@@ -2,6 +2,5 @@ http:
   middlewares:
     aismix-ratelimit:
       rateLimit:
-        average: 100
-        burst: 50
-
+        average: 10
+        burst: 5
