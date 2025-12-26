@@ -45,6 +45,11 @@ services:
       - "traefik.http.routers.web.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.web.entrypoints=websecure"
       - "traefik.http.routers.web.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.web-http.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.web-http.entrypoints=web"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.web-http.middlewares=redirect-to-https"
+
     networks:
       - web
 
