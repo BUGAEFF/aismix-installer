@@ -15,7 +15,6 @@ declare -A DBS=(
 mkdir -p "$BACKUP_DIR"
 
 for NAME in "${!DBS[@]}"; do
-  CONTAINER="${DBS[$NAME]}"
   FILE="$BACKUP_DIR/${NAME}_${DATE}.sql"
   IFS=":" read CONTAINER DB <<< "${DBS[$NAME]}"
   docker exec "$CONTAINER" pg_dump -U n8n "$DB" > "$FILE"
