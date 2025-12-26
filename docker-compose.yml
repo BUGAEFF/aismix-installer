@@ -60,6 +60,7 @@ services:
       - "traefik.http.routers.aismix.tls=true"
       - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.aismix.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
+      - "traefik.http.routers.aismix.service=aismix"
       - "traefik.http.services.aismix.loadbalancer.server.port=80"
 
       - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
