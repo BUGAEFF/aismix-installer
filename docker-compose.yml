@@ -5,7 +5,7 @@ services:
   # ---------------------------------------------------
   # TRAEFIK — reverse proxy + SSL + routing
   # ---------------------------------------------------
-  traefik:
+    traefik:
     image: traefik:latest
     container_name: traefik
     restart: always
@@ -27,8 +27,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/acme.json:/acme.json
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.aismix-auth.basicauth.users=aismix:$apr1$zyR3mwyK$FwXEESa3U18.ct0eMkGup1"
+
     networks:
       - web
+
 
   # ---------------------------------------------------
   # PUBLIC WEBSITE (NGINX)
