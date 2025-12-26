@@ -53,19 +53,19 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/html:/var/www/aismix
     labels:
-      - "traefik.enable=true"
+  - "traefik.enable=true"
 
-      - "traefik.http.routers.aismix.rule=Host(`aismix.com`)"
-      - "traefik.http.routers.aismix.entrypoints=websecure"
-      - "traefik.http.routers.aismix.tls=true"
-      - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.aismix.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
-      - "traefik.http.routers.aismix.service=aismix"
-      - "traefik.http.services.aismix.loadbalancer.server.port=80"
+  - "traefik.http.routers.aismix.rule=Host(`aismix.com`)"
+  - "traefik.http.routers.aismix.entrypoints=websecure"
+  - "traefik.http.routers.aismix.tls=true"
+  - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
 
-      - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
-      - "traefik.http.routers.aismix-http.entrypoints=web"
-      - "traefik.http.routers.aismix-http.middlewares=redirect-to-https"
+  - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
+  - "traefik.http.routers.aismix-http.entrypoints=web"
+  - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
+
+  - "traefik.http.services.aismix.loadbalancer.server.port=80"
+
     networks:
       - web
 
