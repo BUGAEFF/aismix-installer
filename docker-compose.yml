@@ -102,6 +102,8 @@ services:
       - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.appix1.middlewares=aismix-auth"
+
 
     networks:
       - web
