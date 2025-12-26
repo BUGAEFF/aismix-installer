@@ -4,3 +4,13 @@ http:
       rateLimit:
         average: 100
         burst: 50
+
+  http:
+  middlewares:
+    aismix-secure-headers:
+      headers:
+        frameDeny: true
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: "strict-origin-when-cross-origin"
+        permissionsPolicy: "camera=(), microphone=(), geolocation=()"
