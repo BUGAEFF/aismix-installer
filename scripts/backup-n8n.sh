@@ -20,6 +20,8 @@ for NAME in "${!DBS[@]}"; do
   docker exec "$CONTAINER" pg_dump -U n8n "$DB" > "$FILE"
 done
 
-# удалить бэкапы старше 14 дней
+# Delete backups older 14 days
 find "$BACKUP_DIR" -type f -mtime +14 -delete
+rclone copy "$BACKUP_DIR" gdrive:AISMIX-BACKUPS --max-age 1h
+
 
