@@ -17,7 +17,7 @@ mkdir -p "$BACKUP_DIR"
 for NAME in "${!DBS[@]}"; do
   CONTAINER="${DBS[$NAME]}"
   FILE="$BACKUP_DIR/${NAME}_${DATE}.sql"
-  docker exec "$CONTAINER" pg_dump -U n8n n8n > "$FILE"
+  docker exec "$CONTAINER" pg_dump -U n8n n8n1 > "$FILE"
 done
 
 # удалить бэкапы старше 14 дней
