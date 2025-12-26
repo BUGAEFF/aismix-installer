@@ -63,6 +63,7 @@ services:
       - "traefik.http.routers.web-http.middlewares=redirect-to-https"
       - "traefik.http.routers.web.middlewares=aismix-ratelimit@file"
       - "traefik.http.routers.web.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
+      - "traefik.http.services.web.loadbalancer.server.port=80"
 
 
 
