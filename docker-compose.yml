@@ -149,6 +149,8 @@ services:
       - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
       - "traefik.http.routers.appix2-http.entrypoints=web"
       - "traefik.http.routers.appix2-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.appix2.middlewares=aismix-auth"
+
 
     networks:
       - web
@@ -191,6 +193,8 @@ services:
       - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
       - "traefik.http.routers.appix3-http.entrypoints=web"
       - "traefik.http.routers.appix3-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.appix3.middlewares=aismix-auth"
+
 
     networks:
       - web
@@ -233,6 +237,8 @@ services:
       - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
       - "traefik.http.routers.appix4-http.entrypoints=web"
       - "traefik.http.routers.appix4-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.appix4.middlewares=aismix-auth"
+
 
     networks:
       - web
@@ -275,6 +281,8 @@ services:
       - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
       - "traefik.http.routers.appix5-http.entrypoints=web"
       - "traefik.http.routers.appix5-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.appix5.middlewares=aismix-auth"
+
 
     networks:
       - web
