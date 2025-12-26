@@ -106,11 +106,11 @@ services:
       - "traefik.http.routers.appix1.middlewares=aismix-auth"
       - "traefik.http.routers.appix1.rule=Host(`appix1.aismix.com`)"
 
-healthcheck:
-  test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-  interval: 30s
-  timeout: 5s
-  retries: 5
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
 
 
     networks:
@@ -156,11 +156,11 @@ healthcheck:
       - "traefik.http.routers.appix2-http.middlewares=redirect-to-https"
       - "traefik.http.routers.appix2.middlewares=aismix-auth"
 
-healthcheck:
-  test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-  interval: 30s
-  timeout: 5s
-  retries: 5
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
 
     networks:
       - web
@@ -204,11 +204,12 @@ healthcheck:
       - "traefik.http.routers.appix3-http.entrypoints=web"
       - "traefik.http.routers.appix3-http.middlewares=redirect-to-https"
       - "traefik.http.routers.appix3.middlewares=aismix-auth"
-healthcheck:
-  test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-  interval: 30s
-  timeout: 5s
-  retries: 5
+      
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
 
 
     networks:
@@ -254,11 +255,11 @@ healthcheck:
       - "traefik.http.routers.appix4-http.middlewares=redirect-to-https"
       - "traefik.http.routers.appix4.middlewares=aismix-auth"
 
-healthcheck:
-  test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-  interval: 30s
-  timeout: 5s
-  retries: 5
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
 
     networks:
       - web
@@ -303,11 +304,11 @@ healthcheck:
       - "traefik.http.routers.appix5-http.middlewares=redirect-to-https"
       - "traefik.http.routers.appix5.middlewares=aismix-auth"
 
-healthcheck:
-  test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-  interval: 30s
-  timeout: 5s
-  retries: 5
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
 
     networks:
       - web
