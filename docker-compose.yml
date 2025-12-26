@@ -62,6 +62,8 @@ services:
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       - "traefik.http.routers.web-http.middlewares=redirect-to-https"
       - "traefik.http.routers.web.middlewares=aismix-ratelimit@file"
+      - "traefik.http.routers.web.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
+
 
 
     networks:
