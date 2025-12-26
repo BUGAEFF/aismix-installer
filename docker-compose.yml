@@ -103,6 +103,8 @@ services:
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https"
       - "traefik.http.routers.appix1.middlewares=aismix-auth"
+      - "traefik.http.routers.appix1.rule=Host(`appix1.aismix.com`)"
+
 
 
     networks:
