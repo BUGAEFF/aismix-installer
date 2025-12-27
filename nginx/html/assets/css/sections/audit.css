@@ -1,4 +1,39 @@
-.audit {
-  background: var(--bg-audit);
-  padding: 4rem 0;
+/* =========================
+   AUDIT SECTION LAYOUT
+   ========================= */
+
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 32px;
+  align-items: start;
+}
+
+/* LEFT: GIF PLACEHOLDER */
+.audit-visual {
+  width: 100%;
+  min-height: 280px;
+  border-radius: 16px;
+  background: #f6f6f6;
+  border: 1px dashed #ddd;
+}
+
+/* RIGHT: TEXT STEPS */
+.audit-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* FULL WIDTH CTA */
+.audit-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.audit-cta .btn-primary {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 16px;
 }
