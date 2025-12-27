@@ -1,10 +1,9 @@
 /* ================================================= */
 /* AUDIT SECTION                                     */
-/* Audit as a clear 3-step product                  */
 /* ================================================= */
 
 .audit {
-  background: var(--bg-surface);
+  background: var(--bg-soft);
   padding: 4rem 0;
   border-top: 1px solid var(--border-light);
 }
@@ -16,10 +15,6 @@
   align-items: center;
 }
 
-/* ================================================= */
-/* AUDIT CONTENT                                     */
-/* ================================================= */
-
 .audit h2 {
   font-size: 1.6rem;
   margin-bottom: 1rem;
@@ -27,14 +22,8 @@
 
 .audit p {
   color: var(--text-secondary);
-  max-width: 520px;
   margin-bottom: 2rem;
-  line-height: 1.6;
 }
-
-/* ================================================= */
-/* AUDIT STEPS                                       */
-/* ================================================= */
 
 .audit-steps {
   display: grid;
@@ -42,9 +31,31 @@
 }
 
 .audit-step {
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-
+  background: var(--bg-surface);
+  border-left: 4px solid var(--accent-main);
   padding: 0.75rem 1rem;
-  border-left: 3px so
+}
+
+.audit-step span {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.audit-visual {
+  min-height: 220px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 212, 0, 0.18),
+    rgba(255, 212, 0, 0.05)
+  );
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 1024px) {
+  .audit-grid {
+    grid-template-columns: 1fr;
+  }
+}
