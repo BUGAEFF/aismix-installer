@@ -1,5 +1,5 @@
 /* ==================================================
-   BUTTONS — Confident, calm, product-grade
+   BUTTONS — Stable, predictable, no surprises
    ================================================== */
 
 .btn-primary,
@@ -13,69 +13,76 @@
 
   font-size: 14px;
   font-weight: 500;
-  line-height: 1;
 
-  text-decoration: none !important;
   cursor: pointer;
   user-select: none;
 
+  text-decoration: none !important;
+  outline: none;
+
   transition:
-    background 0.2s ease,
+    background-color 0.2s ease,
     box-shadow 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
     transform 0.15s ease;
 }
 
-/* ==================================================
+/* =========================
    PRIMARY
-   ================================================== */
+   ========================= */
 
-.btn-primary {
-  background: var(--accent);
-  color: #000;
+a.btn-primary {
+  background-color: var(--accent);
+  color: #000 !important;
   border: 1px solid var(--accent);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.btn-primary:hover {
-  background: var(--accent-hover);
-  color: #000;
-  border-color: var(--accent-dark);
+a.btn-primary:hover,
+a.btn-primary:focus {
+  background-color: #e6c200; /* темнее желтого */
+  color: #000 !important;
+
+  border-color: #b89a00;
+
   box-shadow:
-    0 0 0 2px rgba(200, 160, 0, 0.35),
-    0 6px 18px rgba(0,0,0,0.12);
+    0 0 0 2px rgba(184, 154, 0, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.12);
+
   transform: translateY(-1px);
   text-decoration: none !important;
 }
 
-/* ==================================================
+/* =========================
    SECONDARY
-   ================================================== */
+   ========================= */
 
-.btn-secondary {
-  background: #fff;
-  color: var(--text-primary);
+a.btn-secondary {
+  background-color: #fff;
+  color: var(--text-primary) !important;
   border: 1px solid var(--border-light);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-.btn-secondary:hover {
-  background: #fff;
-  color: var(--text-primary);
-  border-color: var(--accent-dark);
+a.btn-secondary:hover,
+a.btn-secondary:focus {
+  background-color: #fff;
+  color: var(--text-primary) !important;
+
+  border-color: #b89a00;
+
   box-shadow:
-    0 0 0 2px rgba(200, 160, 0, 0.25),
-    0 6px 18px rgba(0,0,0,0.1);
+    0 0 0 2px rgba(184, 154, 0, 0.35),
+    0 6px 18px rgba(0, 0, 0, 0.1);
+
   transform: translateY(-1px);
   text-decoration: none !important;
 }
 
-/* ==================================================
-   SAFETY: kill underline from global <a>:hover
-   ================================================== */
+/* =========================
+   HARD KILL GLOBAL a:hover
+   ========================= */
 
-.btn-primary:hover,
-.btn-secondary:hover {
+a.btn-primary:hover,
+a.btn-secondary:hover {
+  color: inherit !important;
   text-decoration: none !important;
 }
