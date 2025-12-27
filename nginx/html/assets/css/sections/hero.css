@@ -1,92 +1,27 @@
 /* ================================================= */
-/* HERO SECTION                                      */
+/* HERO                                              */
 /* ================================================= */
 
 .hero {
-  background: var(--bg-main);
-  padding: 4.5rem 0 4rem;
+  background: var(--bg-hero);
+  padding: 4.5rem 0;
+  border-bottom: 2px solid var(--border-strong);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 2.5rem;
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
 }
 
-/* ================================================= */
-/* HERO CONTENT                                      */
-/* ================================================= */
-
-.hero-content h1 {
-  font-size: clamp(2.1rem, 4vw, 2.8rem);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.05rem;
-  line-height: 1.6;
+.hero p {
   color: var(--text-secondary);
   max-width: 520px;
   margin-bottom: 1.75rem;
 }
 
-/* CTA group */
-.cta-group {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* ================================================= */
-/* HERO VISUAL (PLACEHOLDER)                         */
-/* ================================================= */
-
 .hero-visual {
-  width: 100%;
   min-height: 220px;
-  border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 212, 0, 0.18),
-    rgba(255, 212, 0, 0.05)
-  );
-  border: 1px solid var(--border-accent);
-}
-
-/* ================================================= */
-/* TABLET                                            */
-/* ================================================= */
-
-@media (max-width: 1024px) {
-  .hero {
-    padding: 4rem 0 3.5rem;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-visual {
-    min-height: 200px;
-  }
-}
-
-/* ================================================= */
-/* MOBILE                                            */
-/* ================================================= */
-
-@media (max-width: 640px) {
-  .hero {
-    padding: 3.25rem 0 3rem;
-  }
-
-  .hero-content h1 {
-    font-size: 1.85rem;
-  }
-
-  .hero-visual {
-    min-height: 180px;
-  }
+  background: rgba(255, 212, 0, 0.25);
+  border: 2px dashed var(--border-strong);
+  border-radius: 6px;
 }
