@@ -1,25 +1,61 @@
+/* ==================================================
+   AISMIX — DESIGN VARIABLES (FOUNDATION)
+   Inspired by: Linear / Vercel / OpenAI
+   ================================================== */
+
 :root {
 
-  /* ===== SECTION BACKGROUNDS ===== */
-  --bg-hero: #F2E49B;        /* vanilla paper */
-  --bg-philosophy: #F2DB66;  /* warm yellow */
-  --bg-solutions: #F2E3B6;   /* soft paper */
-  --bg-trust: #FFD544;       /* happy yellow */
-  --bg-audit: #F2C641;       /* amber */
-  --bg-contact: #FBE464;     /* light joy */
+  /* ----------------------------------
+     BACKGROUNDS (CALM, WARM, PRODUCT)
+  ---------------------------------- */
 
-  --bg-card: #FFF9EC;
+  --bg-page: #f7f7f5;          /* основной фон страницы */
+  --bg-section: #f1f1ee;       /* секции */
+  --bg-card: #ffffff;          /* карточки */
+  --bg-soft: #fafafa;          /* мягкие блоки */
 
-  /* ===== TEXT ===== */
-  --text-main: #594011;
-  --text-secondary: #6B5320;
-  --text-muted: #8A6E2E;
+  /* ----------------------------------
+     TEXT COLORS
+  ---------------------------------- */
 
-  /* ===== ACCENTS ===== */
-  --accent-primary: #F28705;
-  --accent-yellow: #F2BF27;
+  --text-primary: #111111;     /* заголовки */
+  --text-secondary: #555555;   /* основной текст */
+  --text-muted: #777777;       /* подписи, вторично */
 
-  /* ===== GRAPHIC ===== */
-  --border-strong: #594011;
-  --shadow-strong: 6px 6px 0 #594011;
+  /* ----------------------------------
+     ACCENT (ONE SINGLE ACCENT)
+     NOT YELLOW, NOT ORANGE
+  ---------------------------------- */
+
+  --accent: #f5c400;           /* аккуратный warm accent */
+  --accent-hover: #e6b800;
+
+  /* ----------------------------------
+     BORDERS
+  ---------------------------------- */
+
+  --border-light: rgba(0,0,0,0.06);
+  --border-medium: rgba(0,0,0,0.12);
+
+  /* ----------------------------------
+     SHADOWS (VERY SUBTLE)
+  ---------------------------------- */
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.06);
+
+  /* ----------------------------------
+     RADIUS
+  ---------------------------------- */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* ----------------------------------
+     TRANSITIONS
+  ---------------------------------- */
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+
 }
