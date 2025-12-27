@@ -45,10 +45,11 @@
   resize: vertical;
 }
 
-/* Button */
+/* Button
 .contact .btn-primary {
   margin-top: 6px;
 }
+ */
 .contact form {
   display: flex;
   flex-direction: column;
