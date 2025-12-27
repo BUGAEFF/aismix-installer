@@ -1,7 +1,70 @@
-input, textarea {
+/* ==================================================
+   FORMS — Clean product inputs
+   Inspired by Linear / Vercel / OpenAI
+   ================================================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ----------------------------------
+   INPUTS & TEXTAREA
+---------------------------------- */
+
+input,
+textarea {
   width: 100%;
-  padding: 0.6rem;
-  margin-bottom: 0.8rem;
-  border: 3px solid var(--border-strong);
+  padding: 10px 12px;
+
+  font-size: 14px;
   font-family: inherit;
+
+  color: var(--text-primary);
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* ----------------------------------
+   PLACEHOLDER
+---------------------------------- */
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ----------------------------------
+   FOCUS STATE
+---------------------------------- */
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(245, 196, 0, 0.2);
+}
+
+/* ----------------------------------
+   TEXTAREA
+---------------------------------- */
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ----------------------------------
+   FORM BUTTON ALIGNMENT
+---------------------------------- */
+
+form button {
+  align-self: flex-start;
 }
