@@ -1,7 +1,15 @@
 /* ==================================================
-   BUTTONS — single source of truth
+   BUTTONS — AISMIX Design System
+   Yellow primary, no underline, soft glow on hover
    ================================================== */
 
+/* RESET LINK BEHAVIOR INSIDE BUTTONS */
+.btn-primary,
+.btn-secondary {
+  text-decoration: none !important;
+}
+
+/* COMMON */
 .btn-primary,
 .btn-secondary,
 button.btn-primary,
@@ -10,89 +18,72 @@ button.btn-secondary {
   align-items: center;
   justify-content: center;
 
-  padding: 12px 22px;
+  padding: 14px 28px;
   border-radius: 10px;
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
 
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 
-  background: none;
-  outline: none;
-
-  text-decoration: none !important;
-
+  border: 2px solid transparent;
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
+    background 0.2s ease,
     border-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 0.15s ease;
 }
 
-/* =========================
-   PRIMARY
-   ========================= */
+/* ==================================================
+   PRIMARY — YELLOW
+   ================================================== */
 
 .btn-primary,
 button.btn-primary {
-  background-color: var(--accent);
-  color: #000 !important;
-  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
 }
 
+/* HOVER — darker yellow + glow */
 .btn-primary:hover,
-.btn-primary:focus,
-button.btn-primary:hover,
-button.btn-primary:focus {
-  background-color: #e6c200;
-  color: #000 !important;
-
-  border-color: #b89a00;
-
-  box-shadow:
-    0 0 0 2px rgba(184, 154, 0, 0.45),
-    0 6px 18px rgba(0, 0, 0, 0.12);
-
+button.btn-primary:hover {
+  background: #f2c200; /* darker yellow */
+  border-color: #b38f00;
+  box-shadow: 0 0 0 4px rgba(255, 212, 0, 0.25);
   transform: translateY(-1px);
+  color: #000;
   text-decoration: none !important;
 }
 
-/* =========================
+/* ==================================================
    SECONDARY
-   ========================= */
+   ================================================== */
 
 .btn-secondary,
 button.btn-secondary {
-  background-color: #fff;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-light);
+  background: #fff;
+  color: var(--text-primary);
+  border-color: var(--border-light);
 }
 
 .btn-secondary:hover,
-.btn-secondary:focus,
-button.btn-secondary:hover,
-button.btn-secondary:focus {
-  background-color: #fff;
-  color: var(--text-primary) !important;
-
-  border-color: #b89a00;
-
-  box-shadow:
-    0 0 0 2px rgba(184, 154, 0, 0.35),
-    0 6px 18px rgba(0, 0, 0, 0.1);
-
+button.btn-secondary:hover {
+  background: #fafafa;
+  border-color: #b38f00;
+  box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.18);
   transform: translateY(-1px);
+  color: var(--text-primary);
   text-decoration: none !important;
 }
 
-/* =========================
-   HARD STOP for global a:hover
-   ========================= */
+/* ==================================================
+   FORM BUTTON ALIGNMENT
+   ================================================== */
 
-a.btn-primary:hover,
-a.btn-secondary:hover {
-  color: inherit !important;
-  text-decoration: none !important;
+form button {
+  margin-top: 20px;
 }
