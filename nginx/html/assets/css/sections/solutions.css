@@ -19,18 +19,32 @@
   background: #fff;
   border: 1px solid var(--border-light);
   border-radius: 14px;
-  padding: 28px;
+  padding: 24px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
-  min-height: 180px;
-
   transition: 
     transform 0.2s ease,
     box-shadow 0.2s ease,
     border-color 0.2s ease;
+}
+
+/* ========================= */
+/* VISUAL (GIF / IMAGE)      */
+/* ========================= */
+
+.solution-visual {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.solution-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
 }
 
 /* Title */
