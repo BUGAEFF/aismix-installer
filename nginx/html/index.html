@@ -1,9 +1,92 @@
-<html>
-  <head>
-    <title>Welcome to aismix.com</title>
-  </head>
-  <body>
-    <h1>Server installation successful!</h1>
-    <p>Your aismix.com environment is ready.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AISMIX — Automation & AI Integration</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AISMIX — Automation & AI Integration. Platform under active development." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/aismix-logo.png" />
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --yellow: #ffd200;
+      --text: #ffffff;
+      --muted: #bdbdbd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      max-width: 40vw;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 12px;
+      color: var(--yellow);
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .preview {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      margin: 0 auto;
+      display: block;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="/aismix-logo.png" alt="AISMIX Logo" class="logo" />
+
+    <h1>Automation & AI Integration</h1>
+    <p>Platform under active development</p>
+
+    <img src="/preview.png" alt="AISMIX Preview" class="preview" />
+
+    <footer>
+      © 2025 AISMIX · aismix.com
+    </footer>
+  </div>
+</body>
 </html>
