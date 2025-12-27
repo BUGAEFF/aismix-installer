@@ -3,45 +3,47 @@
 /* ========================= */
 
 .trust {
-  padding: 64px 0;
+  padding: 80px 0;
+  border-top: 1px solid var(--border-light);
 }
 
 .trust-title {
   font-size: 14px;
-  color: #6b6b6b;
-  margin-bottom: 20px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
 }
 
 /* Logos grid */
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
 }
 
-/* Logo item */
+/* Individual logo items */
 .logos-grid div {
-  padding: 10px 0;
-  text-align: center;
-  font-size: 13px;
-  color: #777;
-  border: 1px solid #ececec;
+  height: 44px;
+  border: 1px solid var(--border-light);
   border-radius: 10px;
-  background: #fafafa;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+
+  background: #fff;
+  transition: all 0.2s ease;
 }
 
-/* Hover */
+/* Hover = subtle confidence */
 .logos-grid div:hover {
-  color: #000;
-  border-color: #ddd;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 
 /* Tablet */
