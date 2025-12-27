@@ -1,11 +1,22 @@
 :root {
-  --yellow: #FFD400;
-  --black: #0B0B0B;
-  --dark: #151515;
+  /* Brand */
+  --yellow-primary: #FFD400;
+  --yellow-soft: #FFE68A;
 
-  --text: #F5F5F5;
-  --text-muted: #BDBDBD;
+  /* Backgrounds */
+  --bg-main: #FFF8E1;
+  --bg-surface: #FFFFFF;
 
-  --border: 1px solid var(--yellow);
+  /* Dark UI */
+  --dark-main: #1E1E1E;
+  --dark-muted: #2A2A2A;
+
+  /* Text */
+  --text-primary: #1E1E1E;
+  --text-secondary: #5F5F5F;
+  --text-inverse: #FFFFFF;
+
+  /* Borders */
+  --border-light: 1px solid #E6D58A;
+  --border-dark: 1px solid #1E1E1E;
 }
-
