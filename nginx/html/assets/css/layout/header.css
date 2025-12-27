@@ -2,13 +2,28 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--black);
-  border-bottom: var(--border);
+  background: var(--bg-surface);
+  border-bottom: var(--border-light);
 }
 
 .header .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.nav a {
+  color: var(--text-secondary);
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--dark-main);
+}
