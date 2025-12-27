@@ -1,12 +1,12 @@
 :root {
 
   /* ===== SECTION BACKGROUNDS ===== */
-  --bg-hero: #F2E49B;
-  --bg-philosophy: #F2DB66;
-  --bg-solutions: #F2E3B6;
-  --bg-trust: #FFD544;
-  --bg-audit: #F2C641;
-  --bg-contact: #FBE464;
+  --bg-hero: #F2E49B;        /* vanilla paper */
+  --bg-philosophy: #F2DB66;  /* warm yellow */
+  --bg-solutions: #F2E3B6;   /* soft paper */
+  --bg-trust: #FFD544;       /* happy yellow */
+  --bg-audit: #F2C641;       /* amber */
+  --bg-contact: #FBE464;     /* light joy */
 
   --bg-card: #FFF9EC;
 
