@@ -1,9 +1,5 @@
-/* ================================================= */
-/* READY SOLUTIONS — GRAPHIC CARDS                   */
-/* ================================================= */
-
 .solutions {
-  background: var(--bg-main);
+  background: var(--bg-solutions);
   padding: 4rem 0;
 }
 
@@ -11,45 +7,4 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-}
-
-/* === CARD STYLE (2026) === */
-
-.solution-card {
-  background: var(--bg-surface);
-  border: 2px solid var(--border-strong);
-  border-radius: 6px;
-  padding: 1.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.solution-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 6px 6px 0 var(--border-strong);
-}
-
-.solution-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-}
-
-.solution-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
-/* ================= TABLET ================= */
-
-@media (max-width: 1024px) {
-  .solutions-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 640px) {
-  .solutions-grid {
-    grid-template-columns: 1fr;
-  }
 }
