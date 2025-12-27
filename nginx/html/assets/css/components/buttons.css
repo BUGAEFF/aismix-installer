@@ -3,6 +3,7 @@
    Inspired by Linear / Vercel / OpenAI
    ================================================== */
 
+/* Base reset for links-as-buttons */
 .btn-primary,
 .btn-secondary {
   display: inline-flex;
@@ -16,14 +17,16 @@
   font-weight: 500;
   line-height: 1;
 
-  text-decoration: none;
+  text-decoration: none;        /* NO underline */
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 
   transition:
-    background var(--transition-base),
+    background-color var(--transition-base),
     box-shadow var(--transition-base),
     transform var(--transition-fast),
+    border-color var(--transition-fast),
     color var(--transition-fast);
 }
 
@@ -34,14 +37,30 @@
 .btn-primary {
   background: var(--accent);
   color: #000;
-  border: none;
+  border: 1px solid var(--accent);
+
   box-shadow: var(--shadow-sm);
 }
 
+/* Hover — darker + glow (NO black) */
 .btn-primary:hover {
-  background: var(--accent-hover);
-  box-shadow: var(--shadow-md);
+  background: #f0c800; /* slightly darker than accent */
+  color: #000;
+
+  border-color: #e6ff3f;
+
+  box-shadow:
+    0 0 0 3px rgba(230, 255, 63, 0.35),
+    0 8px 22px rgba(0, 0, 0, 0.08);
+
   transform: translateY(-1px);
+}
+
+/* Active */
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 2px rgba(230, 255, 63, 0.25);
 }
 
 /* ==================================================
@@ -51,14 +70,30 @@
 .btn-secondary {
   background: var(--bg-soft);
   color: var(--text-primary);
+
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
 }
 
+/* Hover — subtle glow, no underline, no black */
 .btn-secondary:hover {
-  background: var(--bg-card);
-  box-shadow: var(--shadow-md);
+  background: var(--bg-soft);
+  color: var(--text-primary);
+
+  border-color: #e6ff3f;
+
+  box-shadow:
+    0 0 0 3px rgba(230, 255, 63, 0.25),
+    0 6px 16px rgba(0, 0, 0, 0.06);
+
   transform: translateY(-1px);
+}
+
+/* Active */
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 2px rgba(230, 255, 63, 0.2);
 }
 
 /* ==================================================
