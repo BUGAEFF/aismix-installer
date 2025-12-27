@@ -1,16 +1,74 @@
-.audit-visual-wrapper {
+/* ========================= */
+/* AUDIT SECTION             */
+/* ========================= */
+
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+/* LEFT COLUMN */
+.audit-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  gap: 24px;
 }
 
+/* IMAGE */
 .audit-visual img {
   width: 100%;
-  max-height: 260px; /* КЛЮЧ */
+  max-height: 260px;
   object-fit: contain;
+  display: block;
 }
 
-.audit-cta {
-  margin-top: 24px;
+/* BUTTON — FULL WIDTH */
+.audit-btn {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* RIGHT COLUMN */
+.audit-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* STEPS */
+.audit-step {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px 22px;
+  position: relative;
+}
+
+.audit-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.audit-step h4 {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .audit-grid {
+    grid-template-columns: 1fr;
+  }
 }
