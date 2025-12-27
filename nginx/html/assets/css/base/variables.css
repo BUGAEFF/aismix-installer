@@ -1,5 +1,6 @@
 /* ================================================= */
-/* AISMIX COLOR SYSTEM — WARM SAND (FINAL)           */
+/* AISMIX COLOR SYSTEM — 2026 EDITION                */
+/* Warm Paper + Vanilla + Graphic Contrast           */
 /* ================================================= */
 
 :root {
@@ -8,20 +9,38 @@
   /* BACKGROUNDS                                      */
   /* ================================================= */
 
-  --bg-main: #F3F1EB;        /* основной фон сайта */
-  --bg-surface: #FAF8F3;     /* карточки, формы */
-  --bg-soft: #EFECE4;        /* альтернативные секции */
+  /* Hero / Top section (Vanilla Paper) */
+  --bg-hero: #FFF4D8;
+
+  /* Main sections (Warm Paper) */
+  --bg-main: #F8F3E6;
+
+  /* Cards / Surfaces */
+  --bg-surface: #FFFCF4;
+
+  /* Soft separation blocks */
+  --bg-soft: #EFE7D6;
 
   /* ================================================= */
   /* TEXT                                             */
   /* ================================================= */
 
-  --text-main: #1E1E1E;
-  --text-secondary: #5A5A5A;
+  --text-main: #121212;
+  --text-secondary: #4E4E4E;
   --text-muted: #7A7A7A;
 
   /* ================================================= */
   /* ACCENT                                           */
   /* ================================================= */
 
-  --accent-main: #FFD400;    /* основной жёлтый */
+  --accent-main: #FFD400;    /* yellow energy */
+  --accent-soft: #FFE88A;
+
+  /* ================================================= */
+  /* BORDERS / GRAPHIC                                */
+  /* ================================================= */
+
+  --border-strong: #121212;  /* black graphic lines */
+  --border-light: #D8CFAE;
+
+}
