@@ -1,1 +1,12 @@
+.audit {
+  padding: 4rem 0;
+  background: var(--bg-surface);
+  border-top: var(--border-light);
+  border-bottom: var(--border-light);
+}
+
+.audit p {
+  max-width: 640px;
+  color: var(--text-secondary);
+}
 
