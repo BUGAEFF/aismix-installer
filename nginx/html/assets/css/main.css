@@ -20,6 +20,8 @@
 @import url("./sections/solutions.css");
 @import url("./sections/audit.css");
 @import url("./sections/error-404.css");
+@import url("./sections/philosophy.css");
+@import url("./sections/trust.css");
 
 /* Utilities */
 @import url("./utilities/responsive.css");
