@@ -1,4 +1,6 @@
-/* AISMIX CSS ENTRY POINT */
+/* ============================= */
+/* AISMIX — CSS ENTRY POINT     */
+/* ============================= */
 
 /* Base */
 @import url("./base/reset.css");
@@ -12,17 +14,16 @@
 
 /* Components */
 @import url("./components/buttons.css");
-@import url("./components/forms.css");
 @import url("./components/cards.css");
+@import url("./components/forms.css");
 
 /* Sections */
 @import url("./sections/hero.css");
-@import url("./sections/solutions.css");
-@import url("./sections/audit.css");
-@import url("./sections/error-404.css");
 @import url("./sections/philosophy.css");
+@import url("./sections/solutions.css");
 @import url("./sections/trust.css");
+@import url("./sections/audit.css");
+@import url("./sections/contact.css");
 
 /* Utilities */
 @import url("./utilities/responsive.css");
-
