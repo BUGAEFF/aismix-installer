@@ -1,1 +1,13 @@
+.solution-card {
+  background: var(--bg-card);
+  border: 3px solid var(--border-strong);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform .15s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-strong);
+}
 
