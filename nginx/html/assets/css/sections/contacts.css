@@ -49,3 +49,13 @@
 .contact .btn-primary {
   margin-top: 6px;
 }
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact form button {
+  align-self: center;
+  margin-top: 24px;
+}
