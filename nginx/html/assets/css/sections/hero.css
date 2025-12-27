@@ -71,13 +71,21 @@
   background: rgba(0,0,0,0.03);
 }
 
-/* Visual placeholder */
+/* ========================= */
+/* HERO VISUAL (REAL IMAGE)  */
+/* ========================= */
+
 .hero-visual {
   width: 100%;
-  height: 220px;
-  border-radius: 14px;
-  border: 1px dashed var(--border-light);
-  background: rgba(0,0,0,0.02);
+  max-width: 560px;
+  margin-left: auto;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
 }
 
 /* Tablet */
@@ -89,6 +97,11 @@
 
   .hero {
     padding: 96px 0 64px;
+  }
+
+  .hero-visual {
+    max-width: 100%;
+    margin-left: 0;
   }
 }
 
