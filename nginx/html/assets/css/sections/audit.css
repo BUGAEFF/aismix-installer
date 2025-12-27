@@ -1,128 +1,16 @@
-/* ============================= */
-/* AUDIT SECTION                 */
-/* ============================= */
-
-.audit {
-  padding: 80px 0;
-  background: #ffffff;
-}
-
-.audit h2 {
-  margin-bottom: 12px;
-}
-
-.audit p {
-  max-width: 560px;
-  color: #555;
-}
-
-/* ============================= */
-/* GRID                          */
-/* ============================= */
-
-.audit-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-  margin-top: 40px;
-}
-
-/* ============================= */
-/* VISUAL + CTA WRAPPER          */
-/* ============================= */
-
 .audit-visual-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: space-between;
+  height: 100%;
 }
 
-/* ============================= */
-/* VISUAL PLACEHOLDER            */
-/* ============================= */
-
-.audit-visual {
+.audit-visual img {
   width: 100%;
-  min-height: 260px;
-  border-radius: 12px;
-  background: #fafafa;
-  border: 1px dashed #ddd;
+  max-height: 260px; /* КЛЮЧ */
+  object-fit: contain;
 }
-
-/* ============================= */
-/* CTA BUTTON                    */
-/* ============================= */
 
 .audit-cta {
-  width: 100%;
-}
-
-.audit-cta .btn-primary {
-  width: 100%;
-  padding: 16px 0;
-  font-size: 15px;
-  text-align: center;
-}
-
-/* ============================= */
-/* TEXT BLOCK                    */
-/* ============================= */
-
-.audit-text {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* ============================= */
-/* STEPS                         */
-/* ============================= */
-
-.audit-step {
-  position: relative;
-  padding: 20px 20px 20px 28px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #eee;
-}
-
-.audit-step::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 16px;
-  bottom: 16px;
-  width: 4px;
-  background: #f5c400;
-  border-radius: 4px;
-}
-
-.audit-step h4 {
-  margin: 0 0 6px;
-  font-size: 16px;
-}
-
-.audit-step p {
-  margin: 0;
-  font-size: 14px;
-  color: #666;
-}
-
-/* ============================= */
-/* RESPONSIVE                    */
-/* ============================= */
-
-@media (max-width: 900px) {
-  .audit-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .audit-visual-wrapper {
-    order: 1;
-  }
-
-  .audit-text {
-    order: 2;
-  }
+  margin-top: 24px;
 }
