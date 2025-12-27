@@ -1,10 +1,10 @@
 /* ================================================= */
-/* TRUST / PLATFORMS SECTION                         */
+/* TRUST / LOGOS SECTION                             */
 /* ================================================= */
 
 .trust {
   background: var(--bg-surface);
-  padding: 3.5rem 0;
+  padding: 3.5rem 0 3rem;
   border-top: 1px solid var(--border-light);
 }
 
@@ -12,11 +12,11 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 1.75rem;
-  max-width: 520px;
+  max-width: 560px;
 }
 
 /* ================================================= */
-/* Logos Grid                                        */
+/* LOGOS GRID                                        */
 /* ================================================= */
 
 .logos-grid {
@@ -26,10 +26,19 @@
   align-items: center;
 }
 
-/* Placeholder style for logos */
+/* Text or image placeholders */
 .logos-grid > div,
 .logos-grid img {
-  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+
+  opacity: 0.65;
   transition: opacity 0.15s ease;
 }
 
@@ -38,18 +47,6 @@
   opacity: 1;
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .logos-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 640px) {
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-}
-
+/* ================================================= */
+/* TABLET                                           */
+/* =================================*
