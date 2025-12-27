@@ -1,23 +1,10 @@
 /* ================================================= */
-/* READY SOLUTIONS                                   */
+/* READY SOLUTIONS — GRAPHIC CARDS                   */
 /* ================================================= */
 
 .solutions {
   background: var(--bg-main);
   padding: 4rem 0;
-}
-
-.section-header {
-  margin-bottom: 2.5rem;
-}
-
-.section-header h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header p {
-  color: var(--text-secondary);
 }
 
 .solutions-grid {
@@ -26,16 +13,24 @@
   gap: 1.5rem;
 }
 
+/* === CARD STYLE (2026) === */
+
 .solution-card {
   background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border: 2px solid var(--border-strong);
+  border-radius: 6px;
   padding: 1.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0 var(--border-strong);
 }
 
 .solution-card h3 {
-  margin-bottom: 0.5rem;
   font-size: 1.05rem;
+  margin-bottom: 0.5rem;
 }
 
 .solution-card p {
