@@ -1,34 +1,41 @@
+/* ================================================= */
+/* READY SOLUTIONS SECTION                           */
+/* Grid: 3x2 desktop | 2x3 tablet | 1x6 mobile       */
+/* ================================================= */
+
 .solutions {
-  padding: 4rem 0;
+  background: var(--bg-main);
+}
+
+.solutions .section-header {
+  margin-bottom: 2.5rem;
+  max-width: 640px;
 }
 
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3x2 DESKTOP */
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-bottom: 2.5rem;
 }
 
+/* ================================================= */
+/* Solution Card                                     */
+/* ================================================= */
+
 .solution-card {
-  background: var(--bg-surface);
-  border: var(--border-light);
+  background: #ffffff;
+  border: 1px solid var(--border-accent);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1.75rem;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .solution-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .solution-card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.05rem;
-}
-
-.solution-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
+  margin-bottom: 0.75rem;
+  font-siz
