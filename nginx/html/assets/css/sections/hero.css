@@ -1,27 +1,17 @@
-/* ================================================= */
-/* HERO                                              */
-/* ================================================= */
-
 .hero {
   background: var(--bg-hero);
   padding: 4.5rem 0;
-  border-bottom: 2px solid var(--border-strong);
+  border-bottom: 3px solid var(--border-strong);
 }
 
-.hero h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.75rem;
-}
-
-.hero p {
-  color: var(--text-secondary);
-  max-width: 520px;
-  margin-bottom: 1.75rem;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
 .hero-visual {
   min-height: 220px;
-  background: rgba(255, 212, 0, 0.25);
-  border: 2px dashed var(--border-strong);
-  border-radius: 6px;
+  border: 3px dashed var(--border-strong);
+  background: rgba(255,255,255,0.4);
 }
