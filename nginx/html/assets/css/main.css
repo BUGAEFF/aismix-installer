@@ -16,6 +16,8 @@
 @import url("./components/buttons.css");
 @import url("./components/cards.css");
 @import url("./components/forms.css");
+@import "./components/terms.css";
+
 
 /* Sections */
 @import url("./sections/hero.css");
