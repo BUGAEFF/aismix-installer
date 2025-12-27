@@ -1,5 +1,77 @@
+/* ==================================================
+   LAYOUT & SPACING — Vertical rhythm
+   Inspired by Linear / Vercel / OpenAI
+   ================================================== */
+
+/* ----------------------------------
+   CONTAINER
+---------------------------------- */
+
 .container {
-  max-width: 1100px;
-  padding: 0 1.5rem;
+  max-width: 1120px;
   margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ----------------------------------
+   SECTIONS
+---------------------------------- */
+
+.section {
+  padding: 72px 0;
+}
+
+.hero {
+  padding: 96px 0 72px;
+}
+
+.audit {
+  padding: 72px 0;
+}
+
+.contact {
+  padding: 72px 0;
+}
+
+/* ----------------------------------
+   HERO GRID
+---------------------------------- */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ----------------------------------
+   SOLUTIONS GRID
+---------------------------------- */
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* ----------------------------------
+   TRUST LOGOS GRID
+---------------------------------- */
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* ----------------------------------
+   AUDIT GRID
+---------------------------------- */
+
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
 }
