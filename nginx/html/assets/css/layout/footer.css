@@ -1,1 +1,7 @@
+.footer {
+  background: var(--bg-contact);
+  border-top: 3px solid var(--border-strong);
+  padding: 2rem 0;
+}
+
 
