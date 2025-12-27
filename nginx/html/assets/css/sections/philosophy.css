@@ -1,1 +1,28 @@
+/* ================================================= */
+/* PHILOSOPHY / SLOGAN SECTION                       */
+/* ================================================= */
+
+.philosophy {
+  background: var(--bg-main);
+  padding: 4rem 0 3.5rem;
+}
+
+.philosophy .container {
+  max-width: 720px;
+}
+
+.philosophy h2 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.philosophy p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Mobile *
 
