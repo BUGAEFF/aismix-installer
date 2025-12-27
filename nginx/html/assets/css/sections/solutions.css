@@ -6,6 +6,15 @@
   padding: 96px 0;
 }
 
+/* 🔒 КРИТИЧНО: контейнер */
+.solutions .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
 /* Grid */
 .solutions-grid {
   display: grid;
@@ -23,7 +32,6 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 
   transition: 
     transform 0.2s ease,
@@ -31,10 +39,7 @@
     border-color 0.2s ease;
 }
 
-/* ========================= */
-/* VISUAL (GIF / IMAGE)      */
-/* ========================= */
-
+/* Visual (GIF / image) */
 .solution-visual {
   width: 100%;
   margin-bottom: 16px;
@@ -60,21 +65,21 @@
   line-height: 1.5;
 }
 
-/* Hover = subtle elevation */
+/* Hover */
 .solution-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-strong);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* Tablet: 2 x 3 */
+/* Tablet */
 @media (max-width: 900px) {
   .solutions-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile: 1 x 6 */
+/* Mobile */
 @media (max-width: 520px) {
   .solutions-grid {
     grid-template-columns: 1fr;
