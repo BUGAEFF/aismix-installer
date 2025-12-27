@@ -1,5 +1,112 @@
-<label class="terms-checkbox">
-  <input type="checkbox" required>
-  I agree to the <a href="/terms.html" target="_blank">Terms of Service</a>
-</label>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pay with Stripe — AISMIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Basic SEO -->
+  <meta name="description" content="Order an AI Automation Audit via Stripe. Secure payment with prior acceptance of Terms of Service.">
+
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Optional: payment-specific styles later -->
+  <!-- <link rel="stylesheet" href="/assets/css/payments.css"> -->
+</head>
+
+<body>
+
+<!-- ================================================== -->
+<!-- HEADER (reuse global header styles)                -->
+<!-- ================================================== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">AISMIX</div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/solutions.html">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================================================== -->
+<!-- PAYMENT PAGE CONTENT                               -->
+<!-- ================================================== -->
+<main class="section">
+  <div class="container" style="max-width: 640px;">
+
+    <!-- Title -->
+    <h1>Order AI Automation Audit</h1>
+    <p>
+      You are about to order an AI Automation Audit.
+      Please review the terms before proceeding to payment.
+    </p>
+
+    <!-- ================================================== -->
+    <!-- TERMS ACCEPTANCE (REQUIRED)                        -->
+    <!-- ================================================== -->
+    <!--
+      IMPORTANT:
+      - Checkbox is REQUIRED
+      - Payment button stays DISABLED until checked
+      - Legal acceptance happens HERE, before Stripe
+    -->
+    <div class="terms-check">
+      <label class="terms-checkbox">
+        <input type="checkbox" id="termsAccepted" required>
+        I agree to the
+        <a href="/terms.html" target="_blank">Terms of Service</a>
+        and
+        <a href="/privacy.html" target="_blank">Privacy Policy</a>
+      </label>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- STRIPE PAYMENT BUTTON (PLACEHOLDER)               -->
+    <!-- ================================================== -->
+    <!--
+      TODO (later):
+      - Replace button with Stripe Checkout / Payment Element
+      - Keep ID="payButton" — JS relies on it
+    -->
+    <button
+      id="payButton"
+      class="btn-primary"
+      disabled
+      style="width:100%; margin-top:24px;"
+    >
+      Proceed to Secure Stripe Payment
+    </button>
+
+    <!-- Helper text -->
+    <p style="font-size:13px; color:#666; margin-top:12px;">
+      You will be redirected to Stripe to complete the payment securely.
+    </p>
+
+  </div>
+</main>
+
+<!-- ================================================== -->
+<!-- FOOTER                                             -->
+<!-- ================================================== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <small>© AISMIX — AI Automation & Integration</small>
+  </div>
+</footer>
+
+<!-- ================================================== -->
+<!-- TERMS CHECK LOGIC                                  -->
+<!-- ================================================== -->
+<!--
+  This script:
+  - Enables payment button ONLY after checkbox is checked
+  - Required for legal compliance
+-->
+<script src="/assets/js/terms-check.js"></script>
+
+</body>
+</html>
