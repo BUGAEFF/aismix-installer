@@ -1,40 +1,35 @@
-/* ========================= */
-/* TRUST / LOGOS SECTION     */
-/* ========================= */
+/* =========================
+   TRUST / LOGOS SECTION
+   ========================= */
 
 .trust {
-  padding: 80px 0;
+  padding: 96px 0;
   border-top: 1px solid var(--border-light);
-  text-align: center;
 }
 
 .trust-title {
+  text-align: center;
   font-size: 14px;
   color: var(--text-secondary);
   margin-bottom: 40px;
 }
 
-/* ========================= */
-/* LOGOS GRID                */
-/* ========================= */
-
+/* Logos grid: 2 rows × 4 columns */
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px 48px;
-
-  max-width: 760px;
-  margin: 0 auto;
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 40px;
   align-items: center;
   justify-items: center;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-/* Individual logo items */
+/* Logo item */
 .logos-grid div {
+  height: 56px;
   width: 100%;
   max-width: 180px;
-  height: 48px;
 
   border: 1px solid var(--border-light);
   border-radius: 12px;
@@ -43,43 +38,47 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-
   background: #fff;
 
   transition:
-    transform 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    color 0.2s ease;
+    transform 0.2s ease;
 }
 
-/* Hover = confidence, not aggression */
+/* Logo image */
+.logos-grid img {
+  max-height: 28px;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
 .logos-grid div:hover {
-  color: var(--text-primary);
-  border-color: #e6ff3f;
-  box-shadow: 0 0 0 3px rgba(230, 255, 63, 0.25);
+  border-color: var(--accent-dark);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
-/* ========================= */
-/* RESPONSIVE                */
-/* ========================= */
+.logos-grid div:hover img {
+  filter: none;
+  opacity: 1;
+}
 
-/* Tablet: 2 x N */
+/* Tablet */
 @media (max-width: 900px) {
   .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Mobile: 1 x N */
+/* Mobile */
 @media (max-width: 520px) {
   .logos-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
