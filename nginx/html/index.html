@@ -102,68 +102,64 @@
 </header>
 
 <!-- ========================= -->
-<!-- HERO                     -->
+<!-- HERO (GRID)              -->
 <!-- ========================= -->
 <section class="hero">
+  <div class="container hero-grid">
 
-  <!-- HERO GIF PLACEHOLDER -->
-  <div class="hero-visual">
-    <!--
-    <img src="/assets/img/hero-automation.gif"
-         alt="AI automation workflow visualization"
-         loading="lazy"
-         decoding="async">
-    -->
-  </div>
+    <!-- TEXT -->
+    <div>
+      <h1>AI Automation & Integration</h1>
+      <p>Practical AI systems for real business operations.</p>
 
-  <div class="container">
-    <h1>AI Automation & Integration</h1>
-    <p>Practical AI systems for real business operations.</p>
-
-    <div class="cta-group">
-      <a href="#audit" class="btn-primary">Request an Audit</a>
-      <a href="#solutions" class="btn-secondary">Ready Solutions</a>
+      <div class="cta-group">
+        <a href="#audit" class="btn-primary">Request an Audit</a>
+        <a href="#solutions" class="btn-secondary">Ready Solutions</a>
+      </div>
     </div>
+
+    <!-- VISUAL PLACEHOLDER -->
+    <div class="hero-visual">
+      <!--
+      <img src="/assets/img/hero/hero-automation.gif"
+           alt="AI automation workflow visualization"
+           loading="lazy"
+           decoding="async">
+      -->
+    </div>
+
   </div>
 </section>
 
 <!-- ========================= -->
-<!-- READY SOLUTIONS (4)      -->
+<!-- READY SOLUTIONS          -->
 <!-- ========================= -->
-<section id="solutions" class="section dark">
+<section id="solutions" class="section">
   <div class="container">
     <h2>Ready Solutions</h2>
 
     <div class="solutions-grid">
 
       <article class="solution-card">
-        <div class="solution-visual">
-          <!-- <img src="/assets/img/office-automation.gif" loading="lazy"> -->
-        </div>
+        <div class="solution-visual"></div>
         <h3>Office Automation</h3>
         <p>Automate internal workflows, approvals and routine operations.</p>
       </article>
 
       <article class="solution-card">
-        <div class="solution-visual">
-          <!-- <img src="/assets/img/marketing-automation.gif" loading="lazy"> -->
-        </div>
+        <div class="solution-visual"></div>
         <h3>Marketing Automation</h3>
         <p>Lead handling, CRM sync and AI-driven outreach.</p>
       </article>
 
       <article class="solution-card">
-        <div class="solution-visual">
-          <!-- <img src="/assets/img/multimedia-automation.gif" loading="lazy"> -->
-        </div>
+        <div class="solution-visual"></div>
         <h3>Multimedia Pipelines</h3>
         <p>AI content, video, image and publishing automation.</p>
       </article>
 
       <article class="solution-card">
-        <div class="solution-visual">
-          <!-- <img src="/assets/img/custom-integration.gif" loading="lazy"> -->
-        </div>
+        <div class="solution-visual"></div>
         <h3>Custom Integrations</h3>
         <p>APIs, AI models and internal system integrations.</p>
       </article>
@@ -177,9 +173,9 @@
 </section>
 
 <!-- ========================= -->
-<!-- AUDIT BLOCK              -->
+<!-- AUDIT                   -->
 <!-- ========================= -->
-<section id="audit" class="section signal">
+<section id="audit" class="audit">
   <div class="container audit-grid">
 
     <div class="audit-text">
@@ -190,25 +186,22 @@
       </p>
     </div>
 
-    <div class="audit-visual">
-      <!-- <img src="/assets/img/automation-audit.gif" loading="lazy"> -->
-    </div>
+    <div class="audit-visual"></div>
 
   </div>
 </section>
 
 <!-- ========================= -->
-<!-- CONTACT FORM             -->
+<!-- CONTACT                 -->
 <!-- ========================= -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
 
-    <!-- Simple static form -->
-    <form id="contactForm"
-          action="mailto:hello@aismix.com"
-          method="POST"
-          enctype="text/plain">
+    <form
+      action="mailto:hello@aismix.com"
+      method="POST"
+      enctype="text/plain">
 
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
@@ -227,7 +220,7 @@
 </section>
 
 <!-- ========================= -->
-<!-- FOOTER                   -->
+<!-- FOOTER                  -->
 <!-- ========================= -->
 <footer class="footer">
   <div class="container footer-grid">
@@ -245,16 +238,6 @@
 
   </div>
 </footer>
-
-<!-- ========================= -->
-<!-- TELEGRAM NOTIFICATION    -->
-<!-- DISABLED (SECURITY)      -->
-<!-- ========================= -->
-<!--
-<script>
-  // Recommended: use n8n webhook instead of exposing token
-</script>
--->
 
 </body>
 </html>
