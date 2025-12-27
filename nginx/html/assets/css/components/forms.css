@@ -1,19 +1,7 @@
-form {
-  margin-top: 2rem;
-  max-width: 640px;
-}
-
-input,
-textarea {
+input, textarea {
   width: 100%;
-  padding: 0.7rem;
-  margin-top: 0.75rem;
-  border-radius: 4px;
-  border: var(--border-light);
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+  border: 3px solid var(--border-strong);
   font-family: inherit;
 }
-
-textarea {
-  min-height: 110px;
-}
-
