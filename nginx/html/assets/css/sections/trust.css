@@ -1,45 +1,18 @@
-/* ================================================= */
-/* TRUST / LOGOS                                     */
-/* ================================================= */
-
 .trust {
-  background: var(--bg-main);
+  background: var(--bg-trust);
   padding: 3rem 0;
-}
-
-.trust-title {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
 }
 
 .logos-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .logos-grid div {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  padding: 0.75rem;
+  background: var(--bg-card);
+  border: 3px solid var(--border-strong);
+  padding: 0.8rem;
   text-align: center;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-/* ================= TABLET ================= */
-
-@media (max-width: 1024px) {
-  .logos-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 640px) {
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  box-shadow: var(--shadow-strong);
 }
