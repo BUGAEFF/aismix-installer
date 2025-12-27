@@ -87,13 +87,15 @@
 
 <body>
 
-<!-- ========================= -->
-<!-- HEADER                   -->
-<!-- ========================= -->
+<!-- ================================================== -->
+<!-- HEADER / NAVIGATION                                -->
+<!-- ================================================== -->
 <header class="header">
-  <div class="container">
+  <div class="container header-inner">
     <div class="logo">AISMIX</div>
     <nav class="nav">
+      <a href="#hero">Home</a>
+      <a href="#philosophy">Philosophy</a>
       <a href="#solutions">Solutions</a>
       <a href="#audit">Audit</a>
       <a href="#contact">Contact</a>
@@ -101,16 +103,18 @@
   </div>
 </header>
 
-<!-- ========================= -->
-<!-- HERO (GRID)              -->
-<!-- ========================= -->
-<section class="hero">
+<!-- ================================================== -->
+<!-- HERO                                               -->
+<!-- ================================================== -->
+<section id="hero" class="hero">
   <div class="container hero-grid">
 
-    <!-- TEXT -->
-    <div>
+    <div class="hero-content">
       <h1>AI Automation & Integration</h1>
-      <p>Practical AI systems for real business operations.</p>
+      <p>
+        Practical AI systems that automate real business operations —
+        not demos, not hype.
+      </p>
 
       <div class="cta-group">
         <a href="#audit" class="btn-primary">Request an Audit</a>
@@ -118,84 +122,122 @@
       </div>
     </div>
 
-    <!-- VISUAL PLACEHOLDER -->
     <div class="hero-visual">
-      <!--
-      <img src="/assets/img/hero/hero-automation.gif"
-           alt="AI automation workflow visualization"
-           loading="lazy"
-           decoding="async">
-      -->
+      <!-- HERO GIF PLACEHOLDER -->
     </div>
 
   </div>
 </section>
 
-<!-- ========================= -->
-<!-- READY SOLUTIONS          -->
-<!-- ========================= -->
-<section id="solutions" class="section">
+<!-- ================================================== -->
+<!-- PHILOSOPHY / SLOGAN                                -->
+<!-- ================================================== -->
+<section id="philosophy" class="section philosophy">
+  <div class="container philosophy-inner">
+    <h2>Let the robots handle the routine.</h2>
+    <p>
+      Delegate repetitive work to automation.
+      Keep creativity, strategy and decision-making for yourself.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================== -->
+<!-- READY SOLUTIONS                                    -->
+<!-- ================================================== -->
+<section id="solutions" class="section solutions">
   <div class="container">
-    <h2>Ready Solutions</h2>
+
+    <div class="section-header">
+      <h2>Ready Solutions</h2>
+      <p>
+        Proven automation building blocks, ready to deploy
+        or customize for your business.
+      </p>
+    </div>
 
     <div class="solutions-grid">
 
-      <article class="solution-card">
+      <div class="solution-card">
         <div class="solution-visual"></div>
         <h3>Office Automation</h3>
-        <p>Automate internal workflows, approvals and routine operations.</p>
-      </article>
+        <p>Internal workflows, approvals and routine operations.</p>
+      </div>
 
-      <article class="solution-card">
+      <div class="solution-card">
         <div class="solution-visual"></div>
         <h3>Marketing Automation</h3>
         <p>Lead handling, CRM sync and AI-driven outreach.</p>
-      </article>
+      </div>
 
-      <article class="solution-card">
+      <div class="solution-card">
         <div class="solution-visual"></div>
         <h3>Multimedia Pipelines</h3>
         <p>AI content, video, image and publishing automation.</p>
-      </article>
+      </div>
 
-      <article class="solution-card">
+      <div class="solution-card">
         <div class="solution-visual"></div>
         <h3>Custom Integrations</h3>
         <p>APIs, AI models and internal system integrations.</p>
-      </article>
+      </div>
 
     </div>
 
     <div class="center-cta">
-      <a href="/solutions.html" class="btn-secondary">View All Solutions</a>
+      <a href="/solutions.html" class="btn-secondary">
+        View All Solutions
+      </a>
     </div>
+
   </div>
 </section>
 
-<!-- ========================= -->
-<!-- AUDIT                   -->
-<!-- ========================= -->
-<section id="audit" class="audit">
+<!-- ================================================== -->
+<!-- TRUST / PLATFORMS                                  -->
+<!-- ================================================== -->
+<section id="trust" class="section trust">
+  <div class="container trust-inner">
+
+    <p class="trust-title">
+      We build automations using industry-leading platforms and AI models:
+    </p>
+
+    <div class="logos-grid">
+      <!-- LOGO PLACEHOLDERS -->
+      <!-- ChatGPT | Claude | YouTube | TikTok | HubSpot | Slack | etc -->
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================== -->
+<!-- AUDIT OFFER                                        -->
+<!-- ================================================== -->
+<section id="audit" class="section audit">
   <div class="container audit-grid">
 
-    <div class="audit-text">
-      <h2>Request an AI Automation Audit</h2>
+    <div class="audit-content">
+      <h2>AI Automation Audit</h2>
       <p>
-        We review your current processes, identify automation opportunities,
-        and provide clear, actionable recommendations.
+        We analyze your current processes, identify automation
+        opportunities and deliver clear, actionable recommendations.
       </p>
     </div>
 
-    <div class="audit-visual"></div>
+    <div class="audit-visual">
+      <!-- AUDIT GIF PLACEHOLDER -->
+    </div>
 
   </div>
 </section>
 
-<!-- ========================= -->
-<!-- CONTACT                 -->
-<!-- ========================= -->
-<section id="contact" class="section">
-  <div class="container">
+<!-- ================================================== -->
+<!-- CONTACT                                            -->
+<!-- ================================================== -->
+<section id="contact" class="section contact">
+  <div class="container contact-inner">
+
     <h2>Contact</h2>
 
     <form
@@ -205,7 +247,10 @@
 
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Briefly describe your task" required></textarea>
+      <textarea
+        name="message"
+        placeholder="Briefly describe your task"
+        required></textarea>
 
       <button type="submit" class="btn-primary">
         Send Message
@@ -216,26 +261,16 @@
       Or email directly:
       <a href="mailto:hello@aismix.com">hello@aismix.com</a>
     </p>
+
   </div>
 </section>
 
-<!-- ========================= -->
-<!-- FOOTER                  -->
-<!-- ========================= -->
+<!-- ================================================== -->
+<!-- FOOTER                                             -->
+<!-- ================================================== -->
 <footer class="footer">
   <div class="container footer-grid">
-
     <small>© AISMIX</small>
-
-    <div class="socials">
-      <a href="https://www.linkedin.com/in/automation-and-integration/" target="_blank">LinkedIn</a>
-      <a href="https://www.facebook.com/Automation.Integration" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/automation.integration/" target="_blank">Instagram</a>
-      <a href="https://x.com/AISmix" target="_blank">X</a>
-      <a href="https://www.youtube.com/@automation-and-integration" target="_blank">YouTube</a>
-      <a href="#" target="_blank">TikTok</a>
-    </div>
-
   </div>
 </footer>
 
