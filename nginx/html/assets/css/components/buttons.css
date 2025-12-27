@@ -1,9 +1,11 @@
 /* ==================================================
-   BUTTONS — Stable, predictable, no surprises
+   BUTTONS — single source of truth
    ================================================== */
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+button.btn-primary,
+button.btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,8 +19,10 @@
   cursor: pointer;
   user-select: none;
 
-  text-decoration: none !important;
+  background: none;
   outline: none;
+
+  text-decoration: none !important;
 
   transition:
     background-color 0.2s ease,
@@ -31,15 +35,18 @@
    PRIMARY
    ========================= */
 
-a.btn-primary {
+.btn-primary,
+button.btn-primary {
   background-color: var(--accent);
   color: #000 !important;
   border: 1px solid var(--accent);
 }
 
-a.btn-primary:hover,
-a.btn-primary:focus {
-  background-color: #e6c200; /* темнее желтого */
+.btn-primary:hover,
+.btn-primary:focus,
+button.btn-primary:hover,
+button.btn-primary:focus {
+  background-color: #e6c200;
   color: #000 !important;
 
   border-color: #b89a00;
@@ -56,14 +63,17 @@ a.btn-primary:focus {
    SECONDARY
    ========================= */
 
-a.btn-secondary {
+.btn-secondary,
+button.btn-secondary {
   background-color: #fff;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-light);
 }
 
-a.btn-secondary:hover,
-a.btn-secondary:focus {
+.btn-secondary:hover,
+.btn-secondary:focus,
+button.btn-secondary:hover,
+button.btn-secondary:focus {
   background-color: #fff;
   color: var(--text-primary) !important;
 
@@ -78,7 +88,7 @@ a.btn-secondary:focus {
 }
 
 /* =========================
-   HARD KILL GLOBAL a:hover
+   HARD STOP for global a:hover
    ========================= */
 
 a.btn-primary:hover,
