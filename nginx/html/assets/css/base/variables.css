@@ -1,46 +1,25 @@
-/* ================================================= */
-/* AISMIX COLOR SYSTEM — 2026 EDITION                */
-/* Warm Paper + Vanilla + Graphic Contrast           */
-/* ================================================= */
-
 :root {
 
-  /* ================================================= */
-  /* BACKGROUNDS                                      */
-  /* ================================================= */
+  /* ===== SECTION BACKGROUNDS ===== */
+  --bg-hero: #F2E49B;
+  --bg-philosophy: #F2DB66;
+  --bg-solutions: #F2E3B6;
+  --bg-trust: #FFD544;
+  --bg-audit: #F2C641;
+  --bg-contact: #FBE464;
 
-  /* Hero / Top section (Vanilla Paper) */
-  --bg-hero: #FFF4D8;
+  --bg-card: #FFF9EC;
 
-  /* Main sections (Warm Paper) */
-  --bg-main: #F8F3E6;
+  /* ===== TEXT ===== */
+  --text-main: #594011;
+  --text-secondary: #6B5320;
+  --text-muted: #8A6E2E;
 
-  /* Cards / Surfaces */
-  --bg-surface: #FFFCF4;
+  /* ===== ACCENTS ===== */
+  --accent-primary: #F28705;
+  --accent-yellow: #F2BF27;
 
-  /* Soft separation blocks */
-  --bg-soft: #EFE7D6;
-
-  /* ================================================= */
-  /* TEXT                                             */
-  /* ================================================= */
-
-  --text-main: #121212;
-  --text-secondary: #4E4E4E;
-  --text-muted: #7A7A7A;
-
-  /* ================================================= */
-  /* ACCENT                                           */
-  /* ================================================= */
-
-  --accent-main: #FFD400;    /* yellow energy */
-  --accent-soft: #FFE88A;
-
-  /* ================================================= */
-  /* BORDERS / GRAPHIC                                */
-  /* ================================================= */
-
-  --border-strong: #121212;  /* black graphic lines */
-  --border-light: #D8CFAE;
-
+  /* ===== GRAPHIC ===== */
+  --border-strong: #594011;
+  --shadow-strong: 6px 6px 0 #594011;
 }
