@@ -1,22 +1,25 @@
+/* ================================================= */
+/* COLOR SYSTEM — AISMIX (Warm Sand)                 */
+/* ================================================= */
+
 :root {
-  /* Brand */
-  --yellow-primary: #FFD400;
-  --yellow-soft: #FFE68A;
 
   /* Backgrounds */
-  --bg-main: #FFF8E1;
-  --bg-surface: #FFFFFF;
-
-  /* Dark UI */
-  --dark-main: #1E1E1E;
-  --dark-muted: #2A2A2A;
+  --bg-main: #F3F1EB;        /* основной фон сайта */
+  --bg-surface: #FAF8F3;     /* карточки / секции */
+  --bg-soft: #EFECE4;        /* альтернативные блоки */
 
   /* Text */
-  --text-primary: #1E1E1E;
-  --text-secondary: #5F5F5F;
-  --text-inverse: #FFFFFF;
+  --text-main: #1E1E1E;
+  --text-secondary: #5A5A5A;
+  --text-muted: #7A7A7A;
+
+  /* Accent */
+  --accent-main: #FFD400;    /* жёлтый акцент */
+  --accent-soft: #FFECB3;
 
   /* Borders */
-  --border-light: 1px solid #E6D58A;
-  --border-dark: 1px solid #1E1E1E;
+  --border-light: #DDD8CC;
+  --border-accent: #E5C84F;
+
 }
