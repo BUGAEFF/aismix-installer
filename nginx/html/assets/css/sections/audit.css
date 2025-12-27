@@ -1,39 +1,78 @@
-/* =========================
-   AUDIT SECTION LAYOUT
-   ========================= */
+/* ============================= */
+/* AUDIT SECTION                 */
+/* ============================= */
+
+.audit {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.audit h2 {
+  margin-bottom: 12px;
+}
+
+.audit p {
+  max-width: 560px;
+  color: #555;
+}
+
+/* ============================= */
+/* GRID                          */
+/* ============================= */
 
 .audit-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  margin-top: 32px;
   align-items: start;
+  margin-top: 40px;
 }
 
-/* LEFT: GIF PLACEHOLDER */
+/* ============================= */
+/* VISUAL PLACEHOLDER            */
+/* ============================= */
+
 .audit-visual {
   width: 100%;
-  min-height: 280px;
-  border-radius: 16px;
-  background: #f6f6f6;
+  min-height: 260px;
+  border-radius: 12px;
+  background: #fafafa;
   border: 1px dashed #ddd;
 }
 
-/* RIGHT: TEXT STEPS */
+/* ============================= */
+/* TEXT BLOCK                    */
+/* ============================= */
+
 .audit-text {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-/* FULL WIDTH CTA */
-.audit-cta {
-  margin-top: 40px;
-  text-align: center;
+/* ============================= */
+/* STEPS                         */
+/* ============================= */
+
+.audit-step {
+  position: relative;
+  padding: 20px 20px 20px 28px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
 }
 
-.audit-cta .btn-primary {
-  display: inline-block;
-  padding: 16px 32px;
-  font-size: 16px;
+.audit-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 4px;
+  background: #f5c400;
+  border-radius: 4px;
 }
+
+.audit-step h4 {
+  margin: 0 0 6px;
+  fon
