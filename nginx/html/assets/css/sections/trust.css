@@ -5,27 +5,39 @@
 .trust {
   padding: 80px 0;
   border-top: 1px solid var(--border-light);
+  text-align: center;
 }
 
 .trust-title {
   font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
-/* Logos grid */
+/* ========================= */
+/* LOGOS GRID                */
+/* ========================= */
+
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 48px;
+
+  max-width: 760px;
+  margin: 0 auto;
+
   align-items: center;
+  justify-items: center;
 }
 
 /* Individual logo items */
 .logos-grid div {
-  height: 44px;
+  width: 100%;
+  max-width: 180px;
+  height: 48px;
+
   border: 1px solid var(--border-light);
-  border-radius: 10px;
+  border-radius: 12px;
 
   display: flex;
   align-items: center;
@@ -36,26 +48,38 @@
   color: var(--text-secondary);
 
   background: #fff;
-  transition: all 0.2s ease;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
-/* Hover = subtle confidence */
+/* Hover = confidence, not aggression */
 .logos-grid div:hover {
   color: var(--text-primary);
-  border-color: var(--border-strong);
-  transform: translateY(-1px);
+  border-color: #e6ff3f;
+  box-shadow: 0 0 0 3px rgba(230, 255, 63, 0.25);
+  transform: translateY(-2px);
 }
 
-/* Tablet */
+/* ========================= */
+/* RESPONSIVE                */
+/* ========================= */
+
+/* Tablet: 2 x N */
 @media (max-width: 900px) {
   .logos-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
-/* Mobile */
+/* Mobile: 1 x N */
 @media (max-width: 520px) {
   .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
