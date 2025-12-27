@@ -1,18 +1,75 @@
+/* ==================================================
+   HEADER — Clean product navigation
+   Inspired by Linear / Vercel / OpenAI
+   ================================================== */
+
 .header {
-  background: var(--bg-hero);
-  border-bottom: 3px solid var(--border-strong);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(8px);
+
+  border-bottom: 1px solid var(--border-light);
 }
+
+/* ----------------------------------
+   HEADER INNER
+---------------------------------- */
 
 .header-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  justify-content: space-between;
+
+  height: 64px;
+}
+
+/* ----------------------------------
+   LOGO
+---------------------------------- */
+
+.logo {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* ----------------------------------
+   NAV
+---------------------------------- */
+
+.nav {
+  display: flex;
+  gap: 24px;
 }
 
 .nav a {
-  margin-left: 1.2rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
   text-decoration: none;
-  color: var(--text-main);
-  font-weight: 600;
+}
+
+.nav a:hover {
+  color: var(--text-primary);
+}
+
+/* ----------------------------------
+   MOBILE (FUTURE SAFE)
+---------------------------------- */
+
+@media (max-width: 600px) {
+
+  .header-inner {
+    height: 56px;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
 }
