@@ -1,29 +1,18 @@
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--bg-surface);
-  border-bottom: var(--border-light);
+  background: var(--bg-hero);
+  border-bottom: 3px solid var(--border-strong);
 }
 
-.header .container {
+.header-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.logo {
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .nav a {
-  color: var(--text-secondary);
-  margin-left: 1rem;
+  margin-left: 1.2rem;
   text-decoration: none;
-  font-weight: 500;
-}
-
-.nav a:hover {
-  color: var(--dark-main);
+  color: var(--text-main);
+  font-weight: 600;
 }
