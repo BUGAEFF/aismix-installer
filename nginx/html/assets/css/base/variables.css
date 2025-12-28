@@ -1,35 +1,34 @@
 /* ===================================================================
-   VARIABLES — Claude-inspired color palette
-   Warm beige tones matching Claude's interface
+   VARIABLES — Yellow accent matching your logo
 =================================================================== */
 
 :root {
-  /* BACKGROUNDS — Claude style warm beige */
+  /* BACKGROUNDS — Warm beige like Claude */
   --bg-page: #F5F5F0;              /* Main page background (warm beige) */
   --bg-section: #EEEEE9;           /* Alternative sections */
   --bg-card: #FFFFFF;              /* Cards (white) */
   --bg-soft: #F9F9F6;              /* Soft background */
   --bg-hover: #F0F0EB;             /* Hover states */
 
-  /* TEXT COLORS — Claude style */
+  /* TEXT COLORS */
   --text-primary: #2C2C2C;         /* Primary text (soft black) */
   --text-secondary: #5C5C5C;       /* Secondary text */
   --text-muted: #8C8C8C;           /* Muted text */
   --text-light: #ABABAB;           /* Light text */
 
-  /* ACCENT — Claude copper/orange */
-  --accent: #CC785C;               /* Copper-orange like Claude */
-  --accent-hover: #B86B4F;         /* Darker on hover */
-  --accent-dark: #A45838;          /* Dark accent */
-  --accent-light: #E8B4A0;         /* Light accent */
-  --accent-glow: rgba(204, 120, 92, 0.2);  /* Glow effect */
+  /* ACCENT — YELLOW like your logo */
+  --accent: #FFD400;               /* Bright yellow (matches logo) */
+  --accent-hover: #E6BF00;         /* Darker yellow on hover */
+  --accent-dark: #CCB000;          /* Dark yellow */
+  --accent-light: #FFEB99;         /* Light yellow */
 
-  /* BORDERS — Subtle and warm */
+  /* BORDERS */
   --border-light: #E5E5DD;         /* Light border */
   --border-medium: #D0D0C5;        /* Medium border */
   --border-strong: #B8B8AD;        /* Strong border */
+  --border-black: #000000;         /* Black border for buttons */
 
-  /* SHADOWS — Very subtle */
+  /* SHADOWS */
   --shadow-xs: 0 1px 2px rgba(44, 44, 44, 0.04);
   --shadow-sm: 0 2px 8px rgba(44, 44, 44, 0.06);
   --shadow-md: 0 4px 16px rgba(44, 44, 44, 0.08);
@@ -64,7 +63,6 @@
    ADDITIONAL UTILITY COLORS
 =================================================================== */
 
-/* Optional color accents for badges, alerts, statuses */
 :root {
   /* Success / Green */
   --color-success: #6B9B7F;
