@@ -78,9 +78,15 @@ a {
   text-decoration: none;
 }
 
+
+
+/* ----------------------------------
 a:hover {
   text-decoration: underline;
 }
+---------------------------------- */
+
+
 
 /* EXCEPT BUTTONS */
 a.btn-primary:hover,
