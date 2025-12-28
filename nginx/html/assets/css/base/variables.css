@@ -1,0 +1,55 @@
+/* ===================================================================
+   VARIABLES — All Variables of the Project
+=================================================================== */
+
+:root {
+  /* BACKGROUNDS */
+  --bg-page: #f7f7f5;
+  --bg-section: #f1f1ee;
+  --bg-card: #ffffff;
+  --bg-soft: #fafafa;
+
+  /* TEXT COLORS */
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+
+  /* ACCENT (YELLOW) */
+  --accent: #f5c400;
+  --accent-hover: #e6b800;
+  --accent-dark: #b38f00;
+  --accent-glow: rgba(245, 196, 0, 0.25);
+
+  /* BORDERS */
+  --border-light: #e6e6e6;
+  --border-medium: #cccccc;
+  --border-strong: #999999;
+
+  /* SHADOWS */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  /* BORDER RADIUS */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+
+  /* SPACING */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+
+  /* TRANSITIONS */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}

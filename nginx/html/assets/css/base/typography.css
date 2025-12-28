@@ -1,0 +1,100 @@
+/* ===================================================================
+   TYPOGRAPHY — Fonts, Headers, Text
+=================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 1.15;
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+}
+
+h4 {
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+}
+
+p {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Navigation links NOT underline */
+.nav a:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+  text-decoration: none;
+}
+
+small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* CONTAINER — Ones Definition */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* COMMON STYLE OF SECTIONS */
+.section {
+  padding: var(--spacing-2xl) 0;
+}
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto var(--spacing-2xl);
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+}
