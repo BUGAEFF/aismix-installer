@@ -1,5 +1,5 @@
 /* ===================================================================
-   HEADER — Fixed responsive layout
+   HEADER — With logo and AISMIX.COM text
 =================================================================== */
 
 .header {
@@ -19,14 +19,39 @@
   gap: var(--spacing-lg);
 }
 
+/* ===================================================================
+   LOGO WITH IMAGE
+=================================================================== */
+
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-primary);
-  flex-shrink: 0; /* Prevent logo from shrinking */
+  flex-shrink: 0;
+  text-decoration: none;
 }
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+/* ===================================================================
+   NAVIGATION
+=================================================================== */
 
 .nav {
   display: flex;
@@ -39,7 +64,7 @@
   font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .nav a:hover {
@@ -55,7 +80,12 @@
     height: 56px;
   }
 
-  .logo {
+  .logo-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
     font-size: 20px;
   }
 
@@ -85,6 +115,15 @@
     text-align: center;
   }
 
+  .logo-image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
   .nav {
     width: 100%;
     justify-content: center;
@@ -97,10 +136,19 @@
 }
 
 /* ===================================================================
-   SMALL MOBILE (400px and below) — EVEN MORE COMPACT
+   SMALL MOBILE (400px and below)
 =================================================================== */
 
 @media (max-width: 400px) {
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+
   .nav {
     gap: var(--spacing-sm);
   }
