@@ -1,12 +1,16 @@
 http:
   middlewares:
+
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
     aismix-ratelimit:
       rateLimit:
         average: 100
         burst: 50
 
-  http:
-  middlewares:
     aismix-secure-headers:
       headers:
         frameDeny: true
