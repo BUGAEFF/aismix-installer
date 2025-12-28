@@ -1,0 +1,25 @@
+/* ===================================================================
+   AISMIX — CSS ENTRY POINT
+=================================================================== */
+
+/* Base — Фундамент */
+@import url("./base/reset.css");
+@import url("./base/variables.css");
+@import url("./base/typography.css");
+
+/* Layout — Структура страницы */
+@import url("./layout/header.css");
+@import url("./layout/footer.css");
+
+/* Components — Переиспользуемые элементы */
+@import url("./components/buttons.css");
+@import url("./components/cards.css");
+@import url("./components/forms.css");
+
+/* Sections — Секции страницы */
+@import url("./sections/hero.css");
+@import url("./sections/motto.css");
+@import url("./sections/solutions.css");
+@import url("./sections/trust.css");
+@import url("./sections/audit.css");
+@import url("./sections/contact.css");
