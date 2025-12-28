@@ -1,25 +1,25 @@
 /* ===================================================================
-   VARIABLES — Yellow accent matching your logo
+   VARIABLES — Bright yellow like your logo (NO brown!)
 =================================================================== */
 
 :root {
-  /* BACKGROUNDS — Warm beige like Claude */
-  --bg-page: #F5F5F0;              /* Main page background (warm beige) */
+  /* BACKGROUNDS — Warm beige */
+  --bg-page: #F5F5F0;              /* Main page background */
   --bg-section: #EEEEE9;           /* Alternative sections */
   --bg-card: #FFFFFF;              /* Cards (white) */
   --bg-soft: #F9F9F6;              /* Soft background */
   --bg-hover: #F0F0EB;             /* Hover states */
 
   /* TEXT COLORS */
-  --text-primary: #2C2C2C;         /* Primary text (soft black) */
+  --text-primary: #2C2C2C;         /* Primary text */
   --text-secondary: #5C5C5C;       /* Secondary text */
   --text-muted: #8C8C8C;           /* Muted text */
   --text-light: #ABABAB;           /* Light text */
 
-  /* ACCENT — YELLOW like your logo */
-  --accent: #FFD400;               /* Bright yellow (matches logo) */
-  --accent-hover: #E6BF00;         /* Darker yellow on hover */
-  --accent-dark: #CCB000;          /* Dark yellow */
+  /* ACCENT — BRIGHT YELLOW (like your logo - NO BROWN!) */
+  --accent: #FFD400;               /* Bright pure yellow */
+  --accent-hover: #FFBF00;         /* Slightly darker yellow on hover */
+  --accent-dark: #CCAA00;          /* Dark yellow */
   --accent-light: #FFEB99;         /* Light yellow */
 
   /* BORDERS */
