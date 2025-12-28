@@ -49,11 +49,17 @@
   transition: all 0.2s ease;
 }
 
+
+
 .btn-primary:hover {
   background: #F2A922;
   color: #fff;
   border-color: #000;
+  font-size: bigger;
 }
+
+
+
 
 /* Secondary button */
 .btn-secondary {
