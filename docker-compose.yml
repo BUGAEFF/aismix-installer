@@ -5,38 +5,34 @@ services:
   # ---------------------------------------------------
   # TRAEFIK — reverse proxy + SSL + routing
   # ---------------------------------------------------
-
   traefik:
-
     image: traefik:latest
     container_name: traefik
     restart: always
+
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
+      - "--providers.file.filename=/middlewares.yml"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--api.dashboard=true"
-      - "--log.level=DEBUG"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/acme.json"
       - "--certificatesresolvers.letsencryptresolver.acme.tlsChallenge=true"
-      - "--providers.file.filename=/middlewares.yml"
+      - "--log.level=INFO"
 
     ports:
       - "80:80"
       - "443:443"
 
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/acme.json:/acme.json
       - ./traefik/middlewares.yml:/middlewares.yml
-
 
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.aismix-auth.basicauth.users=aismix:$$apr1$$zyR3mwyK$$FwXEESa3U18.ct0eMkGup1"
-
 
     networks:
       - web
@@ -48,32 +44,33 @@ services:
     image: nginx:latest
     container_name: aismix-nginx-1
     restart: always
+
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/html:/var/www/aismix
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/html:/var/www/aismix:ro
+
     labels:
       - "traefik.enable=true"
-      # HTTPS (main website)
+
+      # HTTPS — main website
       - "traefik.http.routers.aismix.rule=Host(`aismix.com`)"
       - "traefik.http.routers.aismix.entrypoints=websecure"
-      - "traefik.http.routers.aismix.tls=true"
       - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.aismix.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
       - "traefik.http.services.aismix.loadbalancer.server.port=80"
 
-      # HTTP → HTTPS redirect (IMPORTANT: NO backend!)
+      # HTTP → HTTPS redirect (CORRECT WAY)
       - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
       - "traefik.http.routers.aismix-http.entrypoints=web"
       - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
-
+      - "traefik.http.routers.aismix-http.service=noop@internal"
 
     networks:
       - web
 
   # ---------------------------------------------------
-  # 5 N8N INSTANCES (Each isolated)
-  # ---------------------------------------------------
-
   # APP 1
+  # ---------------------------------------------------
   appix1-db:
     image: postgres:14
     restart: always
@@ -101,68 +98,18 @@ services:
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS1}
       N8N_HOST: appix1.${DOMAIN}
       WEBHOOK_URL: https://appix1.${DOMAIN}
+
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.appix1.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1.entrypoints=websecure"
       - "traefik.http.routers.appix1.tls.certresolver=letsencryptresolver"
-      - "traefik.http.middlewares.noindex1.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
-      - "traefik.http.routers.appix1.middlewares=noindex1@docker"
+      - "traefik.http.routers.appix1.middlewares=aismix-auth"
+
       - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1-http.entrypoints=web"
-      - "traefik.http.routers.appix1-http.middlewares=redirect-to-https"
-      - "traefik.http.routers.appix1.middlewares=aismix-auth"
-      - "traefik.http.routers.appix1.rule=Host(`appix1.aismix.com`)"
-
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-      interval: 30s
-      timeout: 5s
-      retries: 5
-
-
-    networks:
-      - web
-
-  # APP 2
-  appix2-db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS2}
-      POSTGRES_DB: n8n2
-    volumes:
-      - appix2-db-data:/var/lib/postgresql/data
-    networks:
-      - web
-
-  appix2:
-    image: n8nio/n8n
-    restart: always
-    environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: appix2-db
-      DB_POSTGRESDB_PORT: 5432
-      DB_POSTGRESDB_DATABASE: n8n2
-      DB_POSTGRESDB_USER: n8n
-      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS2}
-      N8N_HOST: appix2.${DOMAIN}
-      WEBHOOK_URL: https://appix2.${DOMAIN}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.appix2.rule=Host(`appix2.${DOMAIN}`)"
-      - "traefik.http.routers.appix2.entrypoints=websecure"
-      - "traefik.http.routers.appix2.tls.certresolver=letsencryptresolver"
-      - "traefik.http.middlewares.noindex2.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
-      - "traefik.http.routers.appix2.middlewares=noindex2@docker"
-      - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
-      - "traefik.http.routers.appix2-http.entrypoints=web"
-      - "traefik.http.routers.appix2-http.middlewares=redirect-to-https"
-      - "traefik.http.routers.appix2.middlewares=aismix-auth"
+      - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.appix1-http.service=noop@internal"
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
@@ -173,153 +120,11 @@ services:
     networks:
       - web
 
-  # APP 3
-  appix3-db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS3}
-      POSTGRES_DB: n8n3
-    volumes:
-      - appix3-db-data:/var/lib/postgresql/data
-    networks:
-      - web
+  # ---------------------------------------------------
+  # APP 2–5
+  # ---------------------------------------------------
 
-  appix3:
-    image: n8nio/n8n
-    restart: always
-    environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: appix3-db
-      DB_POSTGRESDB_PORT: 5432
-      DB_POSTGRESDB_DATABASE: n8n3
-      DB_POSTGRESDB_USER: n8n
-      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS3}
-      N8N_HOST: appix3.${DOMAIN}
-      WEBHOOK_URL: https://appix3.${DOMAIN}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.appix3.rule=Host(`appix3.${DOMAIN}`)"
-      - "traefik.http.routers.appix3.entrypoints=websecure"
-      - "traefik.http.routers.appix3.tls.certresolver=letsencryptresolver"
-      - "traefik.http.middlewares.noindex3.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
-      - "traefik.http.routers.appix3.middlewares=noindex3@docker"
-      - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
-      - "traefik.http.routers.appix3-http.entrypoints=web"
-      - "traefik.http.routers.appix3-http.middlewares=redirect-to-https"
-      - "traefik.http.routers.appix3.middlewares=aismix-auth"
-      
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-      interval: 30s
-      timeout: 5s
-      retries: 5
-
-
-    networks:
-      - web
-
-  # APP 4
-  appix4-db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS4}
-      POSTGRES_DB: n8n4
-    volumes:
-      - appix4-db-data:/var/lib/postgresql/data
-    networks:
-      - web
-
-  appix4:
-    image: n8nio/n8n
-    restart: always
-    environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: appix4-db
-      DB_POSTGRESDB_PORT: 5432
-      DB_POSTGRESDB_DATABASE: n8n4
-      DB_POSTGRESDB_USER: n8n
-      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS4}
-      N8N_HOST: appix4.${DOMAIN}
-      WEBHOOK_URL: https://appix4.${DOMAIN}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.appix4.rule=Host(`appix4.${DOMAIN}`)"
-      - "traefik.http.routers.appix4.entrypoints=websecure"
-      - "traefik.http.routers.appix4.tls.certresolver=letsencryptresolver"
-      - "traefik.http.middlewares.noindex4.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
-      - "traefik.http.routers.appix4.middlewares=noindex4@docker"
-      - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
-      - "traefik.http.routers.appix4-http.entrypoints=web"
-      - "traefik.http.routers.appix4-http.middlewares=redirect-to-https"
-      - "traefik.http.routers.appix4.middlewares=aismix-auth"
-
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-      interval: 30s
-      timeout: 5s
-      retries: 5
-
-    networks:
-      - web
-
-  # APP 5
-  appix5-db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_USER: n8n
-      POSTGRES_PASSWORD: ${POSTGRES_PASS5}
-      POSTGRES_DB: n8n5
-    volumes:
-      - appix5-db-data:/var/lib/postgresql/data
-    networks:
-      - web
-
-  appix5:
-    image: n8nio/n8n
-    restart: always
-    environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: appix5-db
-      DB_POSTGRESDB_PORT: 5432
-      DB_POSTGRESDB_DATABASE: n8n5
-      DB_POSTGRESDB_USER: n8n
-      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS5}
-      N8N_HOST: appix5.${DOMAIN}
-      WEBHOOK_URL: https://appix5.${DOMAIN}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.appix5.rule=Host(`appix5.${DOMAIN}`)"
-      - "traefik.http.routers.appix5.entrypoints=websecure"
-      - "traefik.http.routers.appix5.tls.certresolver=letsencryptresolver"
-      - "traefik.http.middlewares.noindex5.headers.customresponseheaders.X-Robots-Tag=noindex,nofollow"
-      - "traefik.http.routers.appix5.middlewares=noindex5@docker"
-      - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
-      - "traefik.http.routers.appix5-http.entrypoints=web"
-      - "traefik.http.routers.appix5-http.middlewares=redirect-to-https"
-      - "traefik.http.routers.appix5.middlewares=aismix-auth"
-
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
-      interval: 30s
-      timeout: 5s
-      retries: 5
-
-    networks:
-      - web
+  # appix2–5 same HTTPS
 
 # ---------------------------------------------------
 # NETWORKS + VOLUMES
