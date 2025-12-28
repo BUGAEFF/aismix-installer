@@ -65,7 +65,7 @@ services:
       - "traefik.http.routers.aismix-http.entrypoints=web"
       - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.aismix-http.service=noop@internal"
-      - "traefik.http.routers.aismix-http.service=aismix"
+
 
 
     networks:
