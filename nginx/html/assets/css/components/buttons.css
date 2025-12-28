@@ -1,5 +1,5 @@
 /* ===================================================================
-   BUTTONS — Yellow buttons with black border on hover
+   BUTTONS — Pure bright yellow (NO brown!)
 =================================================================== */
 
 /* BASE STYLES FOR ALL BUTTONS */
@@ -38,21 +38,21 @@
 }
 
 /* ===================================================================
-   PRIMARY BUTTON — Yellow (all regular buttons)
+   PRIMARY BUTTON — BRIGHT YELLOW
 =================================================================== */
 
 .btn-primary {
-  background: var(--accent);
-  color: #000;
-  border-color: var(--accent);
+  background: #FFD400;             /* Bright yellow - FIXED */
+  color: #000000;
+  border-color: #FFD400;
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--border-black);
+  background: #FFBF00;             /* Darker yellow - NOT BROWN */
+  border-color: #000000;           /* Black border on hover */
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: #000;
+  color: #000000;
 }
 
 .btn-primary:active {
@@ -60,19 +60,19 @@
 }
 
 /* ===================================================================
-   SECONDARY BUTTON — Inverse style (white with yellow hover)
+   SECONDARY BUTTON — White with yellow hover
 =================================================================== */
 
 .btn-secondary {
-  background: var(--bg-card);
+  background: #FFFFFF;
   color: var(--text-primary);
   border-color: var(--border-light);
 }
 
 .btn-secondary:hover {
-  background: var(--accent);
-  color: #000;
-  border-color: var(--border-black);
+  background: #FFD400;             /* Yellow on hover - FIXED */
+  color: #000000;
+  border-color: #000000;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -82,7 +82,7 @@
 }
 
 /* ===================================================================
-   LARGE BUTTON — Bigger version for CTAs
+   LARGE BUTTON
 =================================================================== */
 
 .btn-large {
@@ -90,6 +90,18 @@
   font-size: 16px;
   font-weight: 600;
   min-width: 280px;
+}
+
+/* Inherit primary button styles for large */
+.btn-large.btn-primary {
+  background: #FFD400;
+  color: #000000;
+  border-color: #FFD400;
+}
+
+.btn-large.btn-primary:hover {
+  background: #FFBF00;
+  border-color: #000000;
 }
 
 /* ===================================================================
@@ -103,13 +115,12 @@
   justify-content: center;
 }
 
-/* Left aligned button group */
 .cta-group--left {
   justify-content: flex-start;
 }
 
 /* ===================================================================
-   MOBILE RESPONSIVE
+   MOBILE
 =================================================================== */
 
 @media (max-width: 520px) {
