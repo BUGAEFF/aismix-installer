@@ -1,86 +1,159 @@
 /* ===================================================================
-   FOOTER — Bottom of the Website
+   HEADER — With logo and AISMIX.COM text
 =================================================================== */
 
-.footer {
-  margin-top: var(--spacing-2xl);
-  padding: var(--spacing-3xl) 0 var(--spacing-xl);
-  border-top: 1px solid var(--border-light);
-  background: var(--bg-card);
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border-light);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: var(--spacing-2xl);
-  align-items: start;
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: var(--spacing-lg);
 }
 
-.footer-logo {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: var(--spacing-sm);
-}
+/* ===================================================================
+   LOGO WITH IMAGE
+=================================================================== */
 
-.footer-tagline {
-  font-size: 14px;
-  color: var(--text-secondary);
-  max-width: 280px;
-  line-height: 1.6;
-}
-
-.footer-nav h4,
-.footer-social h4 {
-  font-size: 13px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
 }
 
-.footer-nav a,
-.footer-social a {
-  display: block;
-  font-size: 14px;
+/* ===================================================================
+   NAVIGATION
+=================================================================== */
+
+.nav {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.nav a {
+  font-size: 15px;
+  font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
   transition: color var(--transition-fast);
+  white-space: nowrap;
 }
 
-.footer-nav a:hover,
-.footer-social a:hover {
+.nav a:hover {
   color: var(--text-primary);
 }
 
-.footer-bottom {
-  margin-top: var(--spacing-2xl);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--border-light);
-  font-size: 13px;
-  color: var(--text-muted);
-  text-align: center;
-}
+/* ===================================================================
+   TABLET (768px and below)
+=================================================================== */
 
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--spacing-xl);
+@media (max-width: 768px) {
+  .header-inner {
+    height: 56px;
+  }
+
+  .logo-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .nav {
+    gap: var(--spacing-md);
+  }
+
+  .nav a {
+    font-size: 14px;
   }
 }
 
-@media (max-width: 640px) {
-  .footer {
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+/* ===================================================================
+   MOBILE (600px and below) — VERTICAL STACKED LAYOUT
+=================================================================== */
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: var(--spacing-md) var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
+  .logo {
+    font-size: 22px;
+    text-align: center;
   }
 
-  .footer-bottom {
-    text-align: left;
+  .logo-image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+}
+
+/* ===================================================================
+   SMALL MOBILE (400px and below)
+=================================================================== */
+
+@media (max-width: 400px) {
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav {
+    gap: var(--spacing-sm);
+  }
+
+  .nav a {
+    font-size: 13px;
   }
 }
