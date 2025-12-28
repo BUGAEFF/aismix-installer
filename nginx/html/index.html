@@ -1,335 +1,105 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <!-- ================================================== -->
-  <!-- META / SEO -->
-  <!-- ================================================== -->
-  <meta charset="utf-8" />
-  <title>AISMIX — AI Automation & Integration</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+/* ===================================================================
+   FORMS — With wide centered submit button
+=================================================================== */
 
-  <meta name="description"
-        content="AISMIX designs and implements practical AI automation and integration solutions for real business operations." />
-  <meta name="keywords"
-        content="ai automation, ai integration, automation audit, workflow automation, n8n, ai systems" />
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 520px;
+}
 
-  <!-- ================================================== -->
-  <!-- PWA -->
-  <!-- ================================================== -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#FFD400">
+/* Center form itself */
+form.form-center {
+  margin: 0 auto;
+}
 
-  <!-- ================================================== -->
-  <!-- CSS (AGGREGATOR ONLY) -->
-  <!-- ================================================== -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-</head>
+/* ===================================================================
+   INPUTS & TEXTAREA
+=================================================================== */
 
-<body>
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
 
-<!-- ================================================== -->
-<!-- HEADER / TOP NAVIGATION -->
-<!-- ================================================== -->
-<header class="header">
-  <div class="container header-inner">
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
 
-    <!-- Logo -->
-    <div class="logo">AISMIX</div>
+input:focus,
+textarea:focus {
+  background: #fffef8;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.2);
+}
 
-    <!-- Navigation -->
-    <nav class="nav">
-      <a href="#hero">Home</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#audit">Audit</a>
-      <a href="#contact">Contact</a>
-    </nav>
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
-  </div>
-</header>
+/* ===================================================================
+   SUBMIT BUTTON — WIDE AND CENTERED
+=================================================================== */
 
-<!-- ================================================== -->
-<!-- HERO SECTION -->
-<!-- ================================================== -->
-<section id="hero" class="hero">
-  <div class="container hero-grid">
+form button {
+  margin-top: var(--spacing-md);
+  align-self: center;
+  min-width: 240px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+}
 
-    <!-- Hero text -->
-    <div class="hero-content">
-      <h1>AI Automation<br>& Integration</h1>
-      <p>Practical AI systems that automate real business operations.</p>
+/* On mobile - full width */
+@media (max-width: 520px) {
+  form button {
+    width: 100%;
+    min-width: auto;
+  }
+}
 
-      <!-- Кнопки слева в Hero -->
-      <div class="cta-group cta-group--left">
-        <a href="#audit" class="btn-primary">Request an Audit</a>
-        <a href="#solutions" class="btn-secondary">Ready Solutions</a>
-      </div>
-    </div>
+/* ===================================================================
+   TERMS CHECKBOX
+=================================================================== */
 
-    <!-- Hero visual (GIF) -->
-    <div class="hero-visual">
-      <img
-        src="/assets/img/hero/hero-automation.gif"
-        alt="AI automation visualization"
-      >
-    </div>
+.terms-check {
+  margin: var(--spacing-lg) 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
 
-  </div>
-</section>
+.terms-check label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  cursor: pointer;
+}
 
-<!-- ================================================== -->
-<!-- PHILOSOPHY / SLOGAN -->
-<!-- ================================================== -->
-<section class="motivation">
-  <div class="container">
-    <h2>Let the robots handle the routine 24/7.</h2>
-    <p>
-      Delegate repetitive work to automation.<br>
-      Keep creativity, strategy and decision-making for yourself.
-    </p>
-  </div>
-</section>
+.terms-check input {
+  margin-top: 3px;
+  width: auto;
+}
 
+.terms-check a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
 
-<!-- ================================================== -->
-<!-- READY SOLUTIONS (OVERVIEW) -->
-<!-- ================================================== -->
-<section id="solutions" class="section solutions">
-  <div class="container">
-
-    <!-- Section header -->
-    <div class="section-header">
-      <h2>Ready Solutions</h2>
-      <p>Six proven automation blocks, ready to deploy or customize.</p>
-    </div>
-
-    <!-- Solutions grid -->
-    <div class="solutions-grid">
-
-      <!-- Office Automation -->
-      <a href="/solutions/office.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/office.gif" alt="Office automation">
-        </div>
-        <h3>Office Automation</h3>
-        <p>Internal workflows, approvals and routine operations.</p>
-      </a>
-
-      <!-- Marketing Automation -->
-      <a href="/solutions/marketing.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/marketing.gif" alt="Marketing automation">
-        </div>
-        <h3>Marketing Automation</h3>
-        <p>Lead handling, CRM sync and AI-driven outreach.</p>
-      </a>
-
-      <!-- Sales Automation -->
-      <a href="/solutions/sales.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/sales.gif" alt="Sales automation">
-        </div>
-        <h3>Sales Automation</h3>
-        <p>Pipeline management, follow-ups and reporting.</p>
-      </a>
-
-      <!-- Multimedia Pipelines -->
-      <a href="/solutions/multimedia.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/multimedia.gif" alt="Multimedia pipelines">
-        </div>
-        <h3>Multimedia Pipelines</h3>
-        <p>AI content, video, image and publishing automation.</p>
-      </a>
-
-      <!-- Data & Reporting -->
-      <a href="/solutions/data.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/data.gif" alt="Data and reporting">
-        </div>
-        <h3>Data & Reporting</h3>
-        <p>Dashboards, analytics and automated insights.</p>
-      </a>
-
-      <!-- Custom Integrations -->
-      <a href="/solutions/custom.html" class="solution-card">
-        <div class="solution-visual">
-          <img src="/assets/img/solutions/custom.gif" alt="Custom integrations">
-        </div>
-        <h3>Custom Integrations</h3>
-        <p>APIs, AI models and internal system integrations.</p>
-      </a>
-
-    </div>
-
-    <!-- View all solutions - centered -->
-    <div class="center-cta">
-      <a href="/solutions/" class="btn-primary btn-large">
-        View All Solutions
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================== -->
-<!-- TRUST / PLATFORMS -->
-<!-- ================================================== -->
-<section class="section trust">
-  <div class="container">
-
-    <div class="section-header">
-      <h2>Trusted platforms we build with</h2>
-      <p>We build automations using industry-leading platforms</p>
-    </div>
-
-    <div class="logos-grid">
-      <div class="logo-item"><img src="/assets/img/logos/chatgpt.png" alt="ChatGPT"></div>
-      <div class="logo-item"><img src="/assets/img/logos/claude.png" alt="Claude"></div>
-      <div class="logo-item"><img src="/assets/img/logos/n8n.png" alt="n8n"></div>
-      <div class="logo-item"><img src="/assets/img/logos/slack.png" alt="Slack"></div>
-      <div class="logo-item"><img src="/assets/img/logos/chatgpt.png" alt="ChatGPT"></div>
-      <div class="logo-item"><img src="/assets/img/logos/claude.png" alt="Claude"></div>
-      <div class="logo-item"><img src="/assets/img/logos/youtube.png" alt="YouTube"></div>
-      <div class="logo-item"><img src="/assets/img/logos/tiktok.png" alt="TikTok"></div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================================================== -->
-<!-- AI AUTOMATION AUDIT (FUNNEL ENTRY) -->
-<!-- ================================================== -->
-<section id="audit" class="section audit">
-  <div class="container">
-
-    <!-- Section header -->
-    <div class="section-header">
-      <h2>AI Automation Audit</h2>
-      <p>We analyze your processes and deliver clear, actionable automation recommendations.</p>
-    </div>
-
-    <!-- Grid -->
-    <div class="audit-grid">
-
-      <!-- ================= LEFT COLUMN ================= -->
-      <!-- Visual + CTA (fixed vertical logic) -->
-      <div class="audit-left">
-
-        <!-- Audit visualization -->
-        <div class="audit-visual">
-          <img
-            src="/assets/img/audit/audit-process.gif"
-            alt="Automation audit process visualization"
-          >
-        </div>
-
-        <!-- CTA: full width, aligned to left column -->
-        <a href="/audit.html" class="btn-primary audit-btn">
-          Order Automation Audit
-        </a>
-
-      </div>
-
-      <!-- ================= RIGHT COLUMN ================= -->
-      <!-- Steps / explanation -->
-      <div class="audit-text">
-
-        <div class="audit-step">
-          <h4>Review</h4>
-          <p>We map your current workflows, tools and bottlenecks.</p>
-        </div>
-
-        <div class="audit-step">
-          <h4>Identify</h4>
-          <p>We detect automation opportunities with the highest ROI.</p>
-        </div>
-
-        <div class="audit-step">
-          <h4>Recommend</h4>
-          <p>You receive a clear automation plan and next steps.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ================================================== -->
-<!-- CONTACT -->
-<!-- ================================================== -->
-<section id="contact" class="section contact">
-  <div class="container">
-    <div class="section-header">
-      <h2>Contact</h2>
-    </div>
-
-    <!-- Центрированная форма -->
-    <form class="form-center" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Briefly describe your task" required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-    </form>
-    
-    <!-- Подсказка: замените YOUR_FORM_ID на реальный ID от Formspree -->
-  </div>
-</section>
-
-<!-- ================================================== -->
-<!-- FOOTER -->
-<!-- ================================================== -->
-<footer class="footer">
-  <div class="container footer-grid">
-
-    <!-- Brand -->
-    <div class="footer-brand">
-      <div class="footer-logo">AISMIX</div>
-      <p class="footer-tagline">Practical AI automation for real business operations.</p>
-    </div>
-
-    <!-- Navigation -->
-    <div class="footer-nav">
-      <h4>Navigation</h4>
-      <a href="#hero">Home</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#audit">Audit</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <!-- Legal -->
-    <div class="footer-nav">
-      <h4>Legal</h4>
-      <a href="/terms.html">Terms of Service</a>
-      <a href="/privacy.html">Privacy Policy</a>
-    </div>
-
-    <!-- Payments -->
-    <div class="footer-nav">
-      <h4>Payments</h4>
-      <a href="/pay/stripe.html">Pay with Stripe</a>
-      <a href="/pay/paypal.html">Pay with PayPal</a>
-    </div>
-
-    <!-- Social -->
-    <div class="footer-social">
-      <h4>Social</h4>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://twitter.com/AISmix" target="_blank" rel="noopener">X / Twitter</a>
-      <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <div class="container">
-      © AISMIX — AI Automation & Integration
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+.terms-check a:hover {
+  opacity: 0.7;
+}
