@@ -9,25 +9,25 @@
      BACKGROUNDS (CALM, WARM, PRODUCT)
   ---------------------------------- */
 
-  --bg-page: #f7f7f5;          /* основной фон страницы */
-  --bg-section: #f1f1ee;       /* секции */
-  --bg-card: #ffffff;          /* карточки */
-  --bg-soft: #fafafa;          /* мягкие блоки */
+  --bg-page: #f7f7f5;          /* Main background */
+  --bg-section: #f1f1ee;       /* Sections */
+  --bg-card: #ffffff;          /* Cards */
+  --bg-soft: #fafafa;          /* Soft Blocks */
 
   /* ----------------------------------
      TEXT COLORS
   ---------------------------------- */
 
-  --text-primary: #111111;     /* заголовки */
-  --text-secondary: #555555;   /* основной текст */
-  --text-muted: #777777;       /* подписи, вторично */
+  --text-primary: #111111;     /* Header */
+  --text-secondary: #555555;   /* Main Text */
+  --text-muted: #777777;       /* Underwright, Secondary */
 
   /* ----------------------------------
      ACCENT (ONE SINGLE ACCENT)
      NOT YELLOW, NOT ORANGE
   ---------------------------------- */
 
-  --accent: #f5c400;           /* аккуратный warm accent */
+  --accent: #f5c400;           /* Warm accent */
   --accent-hover: #e6b800;
 
   /* ----------------------------------
