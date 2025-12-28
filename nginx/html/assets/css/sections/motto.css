@@ -1,1 +1,36 @@
+/* =========================
+   Motivation / Motto block
+   ========================= */
+
+.motivation {
+  padding: 120px 20px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.motivation h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111;
+}
+
+.motivation p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .motivation h2 {
+    font-size: 32px;
+  }
+
+  .motivation p {
+    font-size: 18px;
+  }
+}
 
