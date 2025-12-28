@@ -1,0 +1,83 @@
+/* ===================================================================
+   FORMS — FORMS, INPUTS, textarea
+=================================================================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 520px;
+}
+
+/* CENTRING OF FORM */
+form.form-center {
+  margin: 0 auto;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+textarea:focus {
+  background: #fffdf5;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* BUTTON SEND FORM */
+form button {
+  margin-top: var(--spacing-md);
+  align-self: center;
+}
+
+/* Terms checkbox */
+.terms-check {
+  margin: var(--spacing-lg) 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.terms-check label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.terms-check input {
+  margin-top: 3px;
+  width: auto;
+}
+
+.terms-check a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.terms-check a:hover {
+  opacity: 0.7;
+}

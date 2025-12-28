@@ -1,0 +1,110 @@
+/* ===================================================================
+   BUTTONS — Same buttons with similar hover
+=================================================================== */
+
+/* COMMON STYLE OF ALL AF BUTTONS */
+.btn-primary,
+.btn-secondary,
+.btn-large {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Typography */
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Spacing */
+  padding: 12px 24px;
+  
+  /* Visual */
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition: 
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast),
+    color var(--transition-base);
+}
+
+/* PRIMARY BUTTON — YELLOW BUTTON */
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  transform: translateY(-1px);
+  color: #000;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+/* SECONDARY BUTTON — WHITE BUTTON */
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-soft);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* LARGE BUTTON — LARGED BUTTON FOR CTA */
+.btn-large {
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 200px;
+}
+
+/* Group of Buttons*/
+.cta-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+/* If Need Left Allign */
+.cta-group--left {
+  justify-content: flex-start;
+}
+
+@media (max-width: 520px) {
+  .cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
