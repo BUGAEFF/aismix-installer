@@ -1,5 +1,5 @@
 /* ===================================================================
-   HEADER — With logo and AISMIX.COM text
+   HEADER — Fixed logo size and layout
 =================================================================== */
 
 .header {
@@ -20,16 +20,16 @@
 }
 
 /* ===================================================================
-   LOGO WITH IMAGE
+   LOGO WITH IMAGE — FIXED SIZE
 =================================================================== */
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 24px;
+  gap: 10px;
+  font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-primary);
   flex-shrink: 0;
@@ -37,15 +37,16 @@
 }
 
 .logo-image {
-  width: 40px;
-  height: 40px;
+  width: 32px;           /* FIXED: Small logo size */
+  height: 32px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .logo-text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-primary);
 }
 
@@ -81,12 +82,12 @@
   }
 
   .logo-image {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
   }
 
   .logo-text {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .nav {
@@ -99,7 +100,7 @@
 }
 
 /* ===================================================================
-   MOBILE (600px and below) — VERTICAL STACKED LAYOUT
+   MOBILE (600px and below) — VERTICAL STACKED
 =================================================================== */
 
 @media (max-width: 600px) {
@@ -111,17 +112,16 @@
   }
 
   .logo {
-    font-size: 22px;
-    text-align: center;
+    gap: 8px;
   }
 
   .logo-image {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
   }
 
   .logo-text {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .nav {
@@ -141,12 +141,12 @@
 
 @media (max-width: 400px) {
   .logo-text {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .logo-image {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 
   .nav {
