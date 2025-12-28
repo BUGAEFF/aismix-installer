@@ -1,0 +1,45 @@
+/* ===================================================================
+   SOLUTIONS — SOLUTIONS SECTION
+=================================================================== */
+
+.solutions {
+  padding: var(--spacing-2xl) 0;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.solution-visual {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.solution-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* CENTERED BUTTON UNDER GRID */
+.center-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 900px) {
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+}

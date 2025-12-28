@@ -1,0 +1,73 @@
+/* ===================================================================
+   AUDIT — AUDIT SECTION
+=================================================================== */
+
+.audit {
+  padding: var(--spacing-2xl) 0;
+}
+
+.audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
+  align-items: start;
+}
+
+.audit-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.audit-visual img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+}
+
+.audit-btn {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+}
+
+.audit-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.audit-step {
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+.audit-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--spacing-md);
+  bottom: var(--spacing-md);
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.audit-step h4 {
+  margin-bottom: var(--spacing-xs);
+  font-size: 15px;
+}
+
+.audit-step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .audit-grid {
+    grid-template-columns: 1fr;
+  }
+}

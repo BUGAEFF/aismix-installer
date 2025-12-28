@@ -1,0 +1,16 @@
+/* ===================================================================
+   CONTACT — CONTACTS SECTION
+=================================================================== */
+
+.contact {
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact form {
+  margin: 0 auto;
+}

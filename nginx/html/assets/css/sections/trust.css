@@ -1,0 +1,59 @@
+/* ===================================================================
+   TRUST — SECTION WITH LOGO
+=================================================================== */
+
+.trust {
+  padding: var(--spacing-2xl) 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  align-items: center;
+  justify-items: center;
+  margin-top: var(--spacing-xl);
+}
+
+.logo-item {
+  width: 100%;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+}
+
+.logo-item img {
+  max-height: 64px;
+  max-width: 220px;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .logos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .logo-item img {
+    max-height: 56px;
+  }
+}
+
+@media (max-width: 520px) {
+  .logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logo-item {
+    min-height: 90px;
+  }
+
+  .logo-item img {
+    max-height: 44px;
+  }
+}
