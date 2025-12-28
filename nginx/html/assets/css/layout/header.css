@@ -1,5 +1,5 @@
 /* ===================================================================
-   HEADER — Top of the Website
+   HEADER — Fixed responsive layout
 =================================================================== */
 
 .header {
@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  gap: var(--spacing-lg);
 }
 
 .logo {
@@ -24,11 +25,13 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-primary);
+  flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .nav {
   display: flex;
   gap: var(--spacing-lg);
+  align-items: center;
 }
 
 .nav a {
@@ -36,15 +39,24 @@
   font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .nav a:hover {
   color: var(--text-primary);
 }
 
-@media (max-width: 600px) {
+/* ===================================================================
+   TABLET (768px and below)
+=================================================================== */
+
+@media (max-width: 768px) {
   .header-inner {
     height: 56px;
+  }
+
+  .logo {
+    font-size: 20px;
   }
 
   .nav {
@@ -53,5 +65,47 @@
 
   .nav a {
     font-size: 14px;
+  }
+}
+
+/* ===================================================================
+   MOBILE (600px and below) — VERTICAL STACKED LAYOUT
+=================================================================== */
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: var(--spacing-md) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .logo {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+}
+
+/* ===================================================================
+   SMALL MOBILE (400px and below) — EVEN MORE COMPACT
+=================================================================== */
+
+@media (max-width: 400px) {
+  .nav {
+    gap: var(--spacing-sm);
+  }
+
+  .nav a {
+    font-size: 13px;
   }
 }
