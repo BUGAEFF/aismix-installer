@@ -27,6 +27,7 @@
 @import url("./sections/trust.css");
 @import url("./sections/audit.css");
 @import url("./sections/contact.css");
+@import url("./sections/motto.css");
 
 /* Utilities */
 @import url("./utilities/responsive.css");
