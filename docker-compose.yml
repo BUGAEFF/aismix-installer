@@ -53,17 +53,19 @@ services:
       - ./nginx/html:/var/www/aismix
     labels:
       - "traefik.enable=true"
-
+      # HTTPS (main website)
       - "traefik.http.routers.aismix.rule=Host(`aismix.com`)"
       - "traefik.http.routers.aismix.entrypoints=websecure"
       - "traefik.http.routers.aismix.tls=true"
       - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
+      - "traefik.http.services.aismix.loadbalancer.server.port=80"
 
+      # HTTP → HTTPS redirect (IMPORTANT: NO backend!)
       - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
       - "traefik.http.routers.aismix-http.entrypoints=web"
       - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
-
-      - "traefik.http.services.aismix.loadbalancer.server.port=80"
+      - "traefik.http.routers.aismix-http.service=noop@internal"
+      
     networks:
       - web
 
