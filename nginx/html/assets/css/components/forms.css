@@ -1,5 +1,5 @@
 /* ===================================================================
-   FORMS — FORMS, INPUTS, textarea
+   FORMS — With wide centered submit button
 =================================================================== */
 
 form {
@@ -9,10 +9,14 @@ form {
   max-width: 520px;
 }
 
-/* CENTRING OF FORM */
+/* Center form itself */
 form.form-center {
   margin: 0 auto;
 }
+
+/* ===================================================================
+   INPUTS & TEXTAREA
+=================================================================== */
 
 input,
 textarea {
@@ -38,9 +42,9 @@ textarea::placeholder {
 
 input:focus,
 textarea:focus {
-  background: #fffdf5;
+  background: #fffef8;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.2);
 }
 
 textarea {
@@ -48,13 +52,31 @@ textarea {
   min-height: 120px;
 }
 
-/* BUTTON SEND FORM */
+/* ===================================================================
+   SUBMIT BUTTON — WIDE AND CENTERED
+=================================================================== */
+
 form button {
   margin-top: var(--spacing-md);
   align-self: center;
+  min-width: 240px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-/* Terms checkbox */
+/* On mobile - full width */
+@media (max-width: 520px) {
+  form button {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* ===================================================================
+   TERMS CHECKBOX
+=================================================================== */
+
 .terms-check {
   margin: var(--spacing-lg) 0;
   font-size: 14px;
