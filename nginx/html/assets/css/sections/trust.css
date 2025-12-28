@@ -35,7 +35,7 @@
 .logos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px 28px;              /* ⬅ МЕНЬШЕ РАССТОЯНИЕ */
+  gap: 20px 28px;              
   align-items: center;
   justify-items: center;
 }
@@ -46,7 +46,7 @@
 
 .logo-item {
   width: 100%;
-  min-height: 110px;           /* ⬅ КАРТОЧКИ ВЫШЕ */
+  min-height: 110px;           
 
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
 -------------------------------------------------- */
 
 .logo-item img {
-  max-height: 64px;            /* ⬅ ВАЖНО: БОЛЬШЕ */
+  max-height: 64px;            
   max-width: 220px;
   width: auto;
   height: auto;
