@@ -1,34 +1,40 @@
 /* ===================================================================
-   VARIABLES — All Variables of the Project
+   VARIABLES — Claude-inspired color palette
+   Warm beige tones matching Claude's interface
 =================================================================== */
 
 :root {
-  /* BACKGROUNDS */
-  --bg-page: #f7f7f5;
-  --bg-section: #f1f1ee;
-  --bg-card: #ffffff;
-  --bg-soft: #fafafa;
+  /* BACKGROUNDS — Claude style warm beige */
+  --bg-page: #F5F5F0;              /* Main page background (warm beige) */
+  --bg-section: #EEEEE9;           /* Alternative sections */
+  --bg-card: #FFFFFF;              /* Cards (white) */
+  --bg-soft: #F9F9F6;              /* Soft background */
+  --bg-hover: #F0F0EB;             /* Hover states */
 
-  /* TEXT COLORS */
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-muted: #888888;
+  /* TEXT COLORS — Claude style */
+  --text-primary: #2C2C2C;         /* Primary text (soft black) */
+  --text-secondary: #5C5C5C;       /* Secondary text */
+  --text-muted: #8C8C8C;           /* Muted text */
+  --text-light: #ABABAB;           /* Light text */
 
-  /* ACCENT (YELLOW) */
-  --accent: #f5c400;
-  --accent-hover: #e6b800;
-  --accent-dark: #b38f00;
-  --accent-glow: rgba(245, 196, 0, 0.25);
+  /* ACCENT — Claude copper/orange */
+  --accent: #CC785C;               /* Copper-orange like Claude */
+  --accent-hover: #B86B4F;         /* Darker on hover */
+  --accent-dark: #A45838;          /* Dark accent */
+  --accent-light: #E8B4A0;         /* Light accent */
+  --accent-glow: rgba(204, 120, 92, 0.2);  /* Glow effect */
 
-  /* BORDERS */
-  --border-light: #e6e6e6;
-  --border-medium: #cccccc;
-  --border-strong: #999999;
+  /* BORDERS — Subtle and warm */
+  --border-light: #E5E5DD;         /* Light border */
+  --border-medium: #D0D0C5;        /* Medium border */
+  --border-strong: #B8B8AD;        /* Strong border */
 
-  /* SHADOWS */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+  /* SHADOWS — Very subtle */
+  --shadow-xs: 0 1px 2px rgba(44, 44, 44, 0.04);
+  --shadow-sm: 0 2px 8px rgba(44, 44, 44, 0.06);
+  --shadow-md: 0 4px 16px rgba(44, 44, 44, 0.08);
+  --shadow-lg: 0 8px 24px rgba(44, 44, 44, 0.1);
+  --shadow-hover: 0 12px 32px rgba(44, 44, 44, 0.12);
 
   /* BORDER RADIUS */
   --radius-xs: 6px;
@@ -52,4 +58,27 @@
   --transition-fast: 0.15s ease;
   --transition-base: 0.2s ease;
   --transition-slow: 0.3s ease;
+}
+
+/* ===================================================================
+   ADDITIONAL UTILITY COLORS
+=================================================================== */
+
+/* Optional color accents for badges, alerts, statuses */
+:root {
+  /* Success / Green */
+  --color-success: #6B9B7F;
+  --color-success-light: #A8C9B8;
+  
+  /* Warning / Amber */
+  --color-warning: #D4A574;
+  --color-warning-light: #E8C9A8;
+  
+  /* Error / Red */
+  --color-error: #C96B6B;
+  --color-error-light: #E5A8A8;
+  
+  /* Info / Blue */
+  --color-info: #7A9DBF;
+  --color-info-light: #B0C7E0;
 }
