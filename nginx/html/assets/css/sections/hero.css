@@ -1,5 +1,5 @@
 /* ===================================================================
-   HERO — MAIN SECTION
+   HERO — Fixed responsive layout with centered mobile version
 =================================================================== */
 
 .hero {
@@ -27,7 +27,7 @@
   margin-bottom: var(--spacing-xl);
 }
 
-/* Hero визуал */
+/* Hero visual */
 .hero-visual {
   width: 100%;
   max-width: 520px;
@@ -48,7 +48,15 @@
   display: block;
 }
 
+/* ===================================================================
+   TABLET (900px and below) — SINGLE COLUMN
+=================================================================== */
+
 @media (max-width: 900px) {
+  .hero {
+    padding: var(--spacing-xl) 0 var(--spacing-2xl);
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
@@ -57,15 +65,90 @@
   .hero-visual {
     max-width: 100%;
     height: 280px;
+    margin: 0 auto;
+  }
+
+  /* Center text on tablet */
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center buttons on tablet */
+  .cta-group {
+    justify-content: center !important;
   }
 }
 
-@media (max-width: 520px) {
+/* ===================================================================
+   MOBILE (600px and below) — CENTERED LAYOUT
+=================================================================== */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .hero-grid {
+    gap: var(--spacing-lg);
+  }
+
+  /* Centered content */
+  .hero-content {
+    text-align: center;
+  }
+
   .hero h1 {
     font-size: 32px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero p {
+    font-size: 15px;
+    margin-bottom: var(--spacing-lg);
   }
 
   .hero-visual {
-    height: 220px;
+    height: 240px;
+  }
+
+  /* Stack buttons vertically and center */
+  .cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+    justify-content: center !important;
+  }
+
+  .cta-group .btn-primary,
+  .cta-group .btn-secondary {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ===================================================================
+   SMALL MOBILE (400px and below) — COMPACT
+=================================================================== */
+
+@media (max-width: 400px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    height: 200px;
   }
 }
