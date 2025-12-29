@@ -203,7 +203,7 @@
   }
 }
 /* ===================================================================
-   DIAGONAL PATTERN for Audit
+   DOTS PATTERN for Trust
 =================================================================== */
 
 .trust {
@@ -217,10 +217,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.5;
-  background-image: 
-    repeating-linear-gradient(45deg, transparent, transparent 30px, var(--border-light) 30px, var(--border-light) 31px),
-    repeating-linear-gradient(-45deg, transparent, transparent 30px, var(--border-light) 30px, var(--border-light) 31px);
+  opacity: 0.4;
+  background-image: radial-gradient(circle, var(--border-medium) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
   pointer-events: none;
   z-index: 0;
 }
