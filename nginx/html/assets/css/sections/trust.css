@@ -206,11 +206,11 @@
    DIAGONAL PATTERN for Audit
 =================================================================== */
 
-.audit {
+.trust {
   position: relative;
 }
 
-.audit::before {
+.trust::before {
   content: '';
   position: absolute;
   top: 0;
@@ -225,8 +225,9 @@
   z-index: 0;
 }
 
-.audit .container {
+.trust .container {
   position: relative;
   z-index: 1;
 }
+
 
