@@ -42,4 +42,33 @@
   .solutions-grid {
     grid-template-columns: 1fr;
   }
+   /* ===================================================================
+   GRID PATTERN for Solutions
+=================================================================== */
+
+.solutions {
+  position: relative;
+}
+
+.solutions::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.solutions .container {
+  position: relative;
+  z-index: 1;
+}
+
 }
