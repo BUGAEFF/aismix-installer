@@ -17,7 +17,7 @@
 
 .solution-card:hover,
 .logo-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) !important;
   border-color: var(--border-medium);
   box-shadow: var(--shadow-md);
 }
@@ -34,4 +34,5 @@
   line-height: 1.5;
   color: var(--text-secondary);
   margin: 0;
+
 }
