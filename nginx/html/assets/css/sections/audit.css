@@ -76,11 +76,11 @@
    GRID PATTERN for Solutions
 =================================================================== */
 
-.solutions {
+.audit {
   position: relative;
 }
 
-.solutions::before {
+.audit::before {
   content: '';
   position: absolute;
   top: 0;
@@ -96,11 +96,12 @@
   z-index: 0;
 }
 
-.solutions .container {
+.audit .container {
   position: relative;
   z-index: 1;
 }
 
 }
+
 
 
