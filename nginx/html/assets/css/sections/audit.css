@@ -30,6 +30,7 @@
 .audit-btn {
   width: auto;
   max-width: 320px;
+  margin: 0 auto;
   text-align: center;
   padding: 14px 32px;
 }
@@ -103,6 +104,7 @@
 }
 
 }
+
 
 
 
