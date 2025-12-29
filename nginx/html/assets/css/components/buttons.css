@@ -1,136 +1,154 @@
 /* ===================================================================
-   BUTTONS — Pure bright yellow (NO brown!)
+   FOOTER — Fixed for all screen sizes
 =================================================================== */
 
-/* BASE STYLES FOR ALL BUTTONS */
-.btn-primary,
-.btn-secondary,
-.btn-large {
-  /* Layout */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.footer {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-card);
+}
 
-  /* Typography */
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  white-space: nowrap;
-
-  /* Spacing */
-  padding: 12px 24px;
-  
-  /* Visual */
-  border-radius: var(--radius-md);
-  border: 2px solid transparent;
-  
-  /* Interaction */
-  cursor: pointer;
-  user-select: none;
-  transition: 
-    background var(--transition-base),
-    border-color var(--transition-base),
-    box-shadow var(--transition-base),
-    transform var(--transition-fast),
-    color var(--transition-base);
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
 }
 
 /* ===================================================================
-   PRIMARY BUTTON — BRIGHT YELLOW
+   FOOTER BRAND
 =================================================================== */
 
-.btn-primary {
-  background: #FFD400;             /* Bright yellow - FIXED */
-  color: #000000;
-  border-color: #FFD400;
+.footer-brand {
+  /* No special styling needed */
 }
 
-.btn-primary:hover {
-  background: #FFBF00;             /* Darker yellow - NOT BROWN */
-  border-color: #000000;           /* Black border on hover */
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: #000000;
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-/* ===================================================================
-   SECONDARY BUTTON — White with yellow hover
-=================================================================== */
-
-.btn-secondary {
-  background: #FFFFFF;
+.footer-logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--spacing-sm);
   color: var(--text-primary);
-  border-color: var(--border-light);
 }
 
-.btn-secondary:hover {
-  background: #FFD400;             /* Yellow on hover - FIXED */
-  color: #000000;
-  border-color: #000000;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-secondary:active {
-  transform: translateY(0);
+.footer-tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 280px;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ===================================================================
-   LARGE BUTTON
+   FOOTER NAVIGATION & SOCIAL
 =================================================================== */
 
-.btn-large {
-  padding: 16px 40px;
-  font-size: 16px;
+.footer-nav,
+.footer-social {
+  /* No special container styling */
+}
+
+.footer-nav h4,
+.footer-social h4 {
+  font-size: 13px;
   font-weight: 600;
-  min-width: 280px;
+  margin: 0 0 var(--spacing-sm) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
 }
 
-/* Inherit primary button styles for large */
-.btn-large.btn-primary {
-  background: #FFD400;
-  color: #000000;
-  border-color: #FFD400;
+.footer-nav a,
+.footer-social a {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  transition: color var(--transition-fast);
+  text-decoration: none;
 }
 
-.btn-large.btn-primary:hover {
-  background: #FFBF00;
-  border-color: #000000;
+.footer-nav a:hover,
+.footer-social a:hover {
+  color: var(--text-primary);
 }
 
 /* ===================================================================
-   BUTTON GROUPS
+   FOOTER BOTTOM
 =================================================================== */
 
-.cta-group {
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
-  justify-content: center;
+.footer-bottom {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+  text-align: center;
 }
 
-.cta-group--left {
-  justify-content: flex-start;
+.footer-bottom .container {
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 /* ===================================================================
-   MOBILE
+   TABLET (1024px and below) — 3 COLUMNS
+=================================================================== */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  /* Brand takes full first row */
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================
+   SMALL TABLET (768px and below) — 2 COLUMNS
+=================================================================== */
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===================================================================
+   MOBILE (520px and below) — SINGLE COLUMN
 =================================================================== */
 
 @media (max-width: 520px) {
-  .cta-group {
-    flex-direction: column;
-    align-items: stretch;
+  .footer {
+    padding: var(--spacing-xl) 0 var(--spacing-md);
   }
 
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: left;
+  }
+
+  .footer-brand {
+    grid-column: 1;
+  }
+
+  .footer-tagline {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    text-align: left;
   }
 }
