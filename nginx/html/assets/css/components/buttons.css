@@ -1,154 +1,152 @@
 /* ===================================================================
-   FOOTER — Fixed for all screen sizes
+   BUTTONS — Working yellow buttons + hero button customization
 =================================================================== */
 
-.footer {
-  margin-top: var(--spacing-2xl);
-  padding: var(--spacing-3xl) 0 var(--spacing-xl);
-  border-top: 1px solid var(--border-light);
-  background: var(--bg-card);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: var(--spacing-2xl);
-  align-items: start;
-}
-
-/* ===================================================================
-   FOOTER BRAND
-=================================================================== */
-
-.footer-brand {
-  /* No special styling needed */
-}
-
-.footer-logo {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: var(--spacing-sm);
-  color: var(--text-primary);
-}
-
-.footer-tagline {
-  font-size: 14px;
-  color: var(--text-secondary);
-  max-width: 280px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ===================================================================
-   FOOTER NAVIGATION & SOCIAL
-=================================================================== */
-
-.footer-nav,
-.footer-social {
-  /* No special container styling */
-}
-
-.footer-nav h4,
-.footer-social h4 {
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0 0 var(--spacing-sm) 0;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-primary);
-}
-
-.footer-nav a,
-.footer-social a {
-  display: block;
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
-  transition: color var(--transition-fast);
-  text-decoration: none;
-}
-
-.footer-nav a:hover,
-.footer-social a:hover {
-  color: var(--text-primary);
-}
-
-/* ===================================================================
-   FOOTER BOTTOM
-=================================================================== */
-
-.footer-bottom {
-  margin-top: var(--spacing-2xl);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--border-light);
+/* BASE STYLES FOR ALL BUTTONS */
+.btn-primary,
+.btn-secondary,
+.btn-large {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-}
 
-.footer-bottom .container {
-  font-size: 13px;
-  color: var(--text-muted);
+  /* Typography */
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Spacing */
+  padding: 12px 24px;
+  
+  /* Visual */
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition: 
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast),
+    color var(--transition-base);
 }
 
 /* ===================================================================
-   TABLET (1024px and below) — 3 COLUMNS
+   PRIMARY BUTTON — BRIGHT YELLOW (ALL buttons by default)
 =================================================================== */
 
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-  }
+.btn-primary {
+  background: #FFD400;
+  color: #000000;
+  border-color: #FFD400;
+}
 
-  /* Brand takes full first row */
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
+.btn-primary:hover {
+  background: #FFBF00;
+  border-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #000000;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 /* ===================================================================
-   SMALL TABLET (768px and below) — 2 COLUMNS
+   SECONDARY BUTTON — White with yellow hover (default)
 =================================================================== */
 
-@media (max-width: 768px) {
-  .footer {
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
-  }
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
 
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-  }
+.btn-secondary:hover {
+  background: #FFD400;
+  color: #000000;
+  border-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 /* ===================================================================
-   MOBILE (520px and below) — SINGLE COLUMN
+   HERO SECTION SPECIFIC — Custom colors for top 2 buttons
+=================================================================== */
+
+/* Left button in hero: "Request an Audit" - Normal yellow */
+.hero .btn-primary {
+  background: #FFD400;
+  color: #000000;
+  border-color: #FFD400;
+}
+
+.hero .btn-primary:hover {
+  background: #FFBF00;
+  border-color: #000000;
+}
+
+/* Right button in hero: "Ready Solutions" - Inverse (darker → brighter) */
+.hero .btn-secondary {
+  background: #FFBF00;
+  color: #000000;
+  border-color: #FFBF00;
+}
+
+.hero .btn-secondary:hover {
+  background: #FFD400;
+  border-color: #000000;
+}
+
+/* ===================================================================
+   LARGE BUTTON
+=================================================================== */
+
+.btn-large {
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 280px;
+}
+
+/* ===================================================================
+   BUTTON GROUPS
+=================================================================== */
+
+.cta-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-group--left {
+  justify-content: flex-start;
+}
+
+/* ===================================================================
+   MOBILE
 =================================================================== */
 
 @media (max-width: 520px) {
-  .footer {
-    padding: var(--spacing-xl) 0 var(--spacing-md);
+  .cta-group {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    text-align: left;
-  }
-
-  .footer-brand {
-    grid-column: 1;
-  }
-
-  .footer-tagline {
-    max-width: 100%;
-  }
-
-  .footer-bottom {
-    text-align: left;
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
   }
 }
