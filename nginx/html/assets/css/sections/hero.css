@@ -4,6 +4,28 @@
 
 .hero {
   padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.025;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-grid {
@@ -168,3 +190,4 @@
     transform: translateY(-15px);
   }
 }
+
