@@ -1,59 +1,157 @@
 /* ===================================================================
-   TRUST — SECTION WITH LOGO
+   TRUST — Infinite scrolling carousel
 =================================================================== */
 
 .trust {
   padding: var(--spacing-2xl) 0;
   border-top: 1px solid var(--border-light);
+  overflow: hidden; /* Hide overflow for carousel */
 }
 
-.logos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-lg);
-  align-items: center;
-  justify-items: center;
+/* ===================================================================
+   CAROUSEL CONTAINER
+=================================================================== */
+
+.logos-carousel {
   margin-top: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-lg) 0;
 }
+
+/* Gradient fade on edges */
+.logos-carousel::before,
+.logos-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logos-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-page), transparent);
+}
+
+.logos-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-page), transparent);
+}
+
+/* ===================================================================
+   CAROUSEL TRACK
+=================================================================== */
+
+.logos-track {
+  display: flex;
+  gap: var(--spacing-xl);
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover */
+.logos-carousel:hover .logos-track {
+  animation-play-state: paused;
+}
+
+/* ===================================================================
+   LOGO ITEMS
+=================================================================== */
 
 .logo-item {
-  width: 100%;
-  min-height: 110px;
+  flex: 0 0 auto;
+  width: 200px;
+  height: 120px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
+  
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-xl);
+  
+  transition: 
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .logo-item img {
-  max-height: 64px;
-  max-width: 220px;
+  max-height: 50px;
+  max-width: 160px;
   width: auto;
   height: auto;
+  object-fit: contain;
 }
+
+/* Hover effect */
+.logo-item:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================================================================
+   ANIMATION
+=================================================================== */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move half width (duplicated content) */
+  }
+}
+
+/* ===================================================================
+   TABLET
+=================================================================== */
 
 @media (max-width: 900px) {
-  .logos-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .logo-item {
+    width: 180px;
+    height: 110px;
   }
-
+  
   .logo-item img {
-    max-height: 56px;
+    max-height: 45px;
+    max-width: 140px;
+  }
+  
+  .logos-track {
+    gap: var(--spacing-lg);
+    animation-duration: 35s; /* Slightly faster on tablet */
   }
 }
 
+/* ===================================================================
+   MOBILE
+=================================================================== */
+
 @media (max-width: 520px) {
-  .logos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .logo-item {
-    min-height: 90px;
+    width: 160px;
+    height: 100px;
   }
-
+  
   .logo-item img {
-    max-height: 44px;
+    max-height: 40px;
+    max-width: 120px;
+  }
+  
+  .logos-track {
+    gap: var(--spacing-md);
+    animation-duration: 30s; /* Faster on mobile */
+  }
+  
+  /* Smaller edge gradients on mobile */
+  .logos-carousel::before,
+  .logos-carousel::after {
+    width: 60px;
   }
 }
