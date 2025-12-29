@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(245, 245, 240, 0.85);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--border-light);
 }
@@ -157,3 +157,4 @@
     font-size: 13px;
   }
 }
+
