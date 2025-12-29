@@ -1,5 +1,5 @@
 /* ===================================================================
-   FOOTER — Fixed for all screen sizes
+   FOOTER — Desktop grid, centered mobile columns
 =================================================================== */
 
 .footer {
@@ -21,7 +21,7 @@
 =================================================================== */
 
 .footer-brand {
-  /* No special styling needed */
+  /* Desktop: normal alignment */
 }
 
 .footer-logo {
@@ -46,7 +46,7 @@
 
 .footer-nav,
 .footer-social {
-  /* No special container styling */
+  /* Desktop: normal alignment */
 }
 
 .footer-nav h4,
@@ -107,7 +107,7 @@
 }
 
 /* ===================================================================
-   SMALL TABLET (768px and below) — 2 COLUMNS
+   SMALL TABLET (768px and below) — 2 COLUMNS, START CENTERING
 =================================================================== */
 
 @media (max-width: 768px) {
@@ -118,15 +118,21 @@
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
+    text-align: center;
   }
 
   .footer-brand {
     grid-column: 1 / -1;
   }
+
+  .footer-tagline {
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
 
 /* ===================================================================
-   MOBILE (520px and below) — SINGLE COLUMN
+   MOBILE (520px and below) — SINGLE COLUMN, FULLY CENTERED
 =================================================================== */
 
 @media (max-width: 520px) {
@@ -137,18 +143,35 @@
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
-    text-align: left;
+    text-align: center;        /* CENTERED */
   }
 
   .footer-brand {
     grid-column: 1;
   }
 
+  .footer-logo {
+    text-align: center;        /* CENTERED TITLE */
+  }
+
   .footer-tagline {
     max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* CENTER ALL COLUMNS */
+  .footer-nav,
+  .footer-social {
+    text-align: center;
+  }
+
+  .footer-nav h4,
+  .footer-social h4 {
+    text-align: center;
   }
 
   .footer-bottom {
-    text-align: left;
+    text-align: center;
   }
 }
