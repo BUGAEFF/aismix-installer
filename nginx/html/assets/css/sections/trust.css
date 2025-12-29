@@ -217,7 +217,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.4;
+  opacity: 0.5;
   background-image: radial-gradient(circle, var(--border-medium) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
   pointer-events: none;
@@ -228,5 +228,6 @@
   position: relative;
   z-index: 1;
 }
+
 
 
