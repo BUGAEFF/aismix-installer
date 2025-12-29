@@ -1,22 +1,32 @@
 /* ===================================================================
-   TRUST — Infinite scrolling carousel
+   TRUST — Double infinite carousel (opposite directions)
 =================================================================== */
 
 .trust {
   padding: var(--spacing-2xl) 0;
   border-top: 1px solid var(--border-light);
-  overflow: hidden; /* Hide overflow for carousel */
+  overflow: hidden;
 }
 
 /* ===================================================================
-   CAROUSEL CONTAINER
+   CAROUSEL WRAPPER
+=================================================================== */
+
+.logos-carousel-wrapper {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ===================================================================
+   SINGLE CAROUSEL CONTAINER
 =================================================================== */
 
 .logos-carousel {
-  margin-top: var(--spacing-xl);
   position: relative;
   overflow: hidden;
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
 }
 
 /* Gradient fade on edges */
@@ -26,7 +36,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100px;
+  width: 120px;
   z-index: 2;
   pointer-events: none;
 }
@@ -42,17 +52,26 @@
 }
 
 /* ===================================================================
-   CAROUSEL TRACK
+   CAROUSEL TRACKS
 =================================================================== */
 
 .logos-track {
   display: flex;
   gap: var(--spacing-xl);
-  animation: scroll 40s linear infinite;
   will-change: transform;
 }
 
-/* Pause on hover */
+/* TOP ROW — Scroll LEFT (default) */
+.logos-track--top {
+  animation: scroll-left 45s linear infinite;
+}
+
+/* BOTTOM ROW — Scroll RIGHT (reverse) */
+.logos-track--bottom {
+  animation: scroll-right 50s linear infinite;
+}
+
+/* Pause both on hover */
 .logos-carousel:hover .logos-track {
   animation-play-state: paused;
 }
@@ -64,7 +83,7 @@
 .logo-item {
   flex: 0 0 auto;
   width: 200px;
-  height: 120px;
+  height: 110px;
   
   display: flex;
   align-items: center;
@@ -81,7 +100,7 @@
 }
 
 .logo-item img {
-  max-height: 50px;
+  max-height: 48px;
   max-width: 160px;
   width: auto;
   height: auto;
@@ -90,21 +109,31 @@
 
 /* Hover effect */
 .logo-item:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-4px) scale(1.08);
   border-color: var(--border-medium);
   box-shadow: var(--shadow-md);
+  z-index: 3;
 }
 
 /* ===================================================================
-   ANIMATION
+   ANIMATIONS
 =================================================================== */
 
-@keyframes scroll {
+@keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* Move half width (duplicated content) */
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -114,18 +143,26 @@
 
 @media (max-width: 900px) {
   .logo-item {
-    width: 180px;
-    height: 110px;
+    width: 170px;
+    height: 100px;
   }
   
   .logo-item img {
-    max-height: 45px;
-    max-width: 140px;
+    max-height: 42px;
+    max-width: 135px;
   }
   
-  .logos-track {
-    gap: var(--spacing-lg);
-    animation-duration: 35s; /* Slightly faster on tablet */
+  .logos-track--top {
+    animation-duration: 40s;
+  }
+  
+  .logos-track--bottom {
+    animation-duration: 45s;
+  }
+  
+  .logos-carousel::before,
+  .logos-carousel::after {
+    width: 80px;
   }
 }
 
@@ -134,24 +171,34 @@
 =================================================================== */
 
 @media (max-width: 520px) {
+  .logos-carousel-wrapper {
+    gap: var(--spacing-md);
+  }
+  
   .logo-item {
-    width: 160px;
-    height: 100px;
+    width: 150px;
+    height: 90px;
   }
   
   .logo-item img {
-    max-height: 40px;
-    max-width: 120px;
+    max-height: 38px;
+    max-width: 115px;
   }
   
   .logos-track {
     gap: var(--spacing-md);
-    animation-duration: 30s; /* Faster on mobile */
   }
   
-  /* Smaller edge gradients on mobile */
+  .logos-track--top {
+    animation-duration: 35s;
+  }
+  
+  .logos-track--bottom {
+    animation-duration: 38s;
+  }
+  
   .logos-carousel::before,
   .logos-carousel::after {
-    width: 60px;
+    width: 50px;
   }
 }
