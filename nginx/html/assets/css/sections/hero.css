@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.7;
+  opacity: 0.5;
   background-image: 
     repeating-linear-gradient(0deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px),
     repeating-linear-gradient(90deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px);
@@ -190,5 +190,6 @@
     transform: translateY(-15px);
   }
 }
+
 
 
