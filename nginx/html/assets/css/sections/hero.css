@@ -152,3 +152,19 @@
     height: 200px;
   }
 }
+/* ===================================================================
+   FLOATING ANIMATION for hero visual
+=================================================================== */
+
+.hero-visual {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
