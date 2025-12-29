@@ -5,7 +5,7 @@
 .motivation {
   padding: var(--spacing-2xl) 0;
   text-align: center;
-  background: var(--bg-card);
+  background: var(--bg-page);
 }
 
 .motivation h2 {
@@ -31,4 +31,5 @@
   .motivation p {
     font-size: 18px;
   }
+
 }
