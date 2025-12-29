@@ -16,7 +16,7 @@
 
 }
 /* ===================================================================
-   LARGE GRID PATTERN for Contact
+   DOTS PATTERN for Trust
 =================================================================== */
 
 .contact {
@@ -30,11 +30,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.4;
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, var(--border-light) 2px, var(--border-light) 3px);
-  background-size: 60px 60px;
+  opacity: 0.5;
+  background-image: radial-gradient(circle, var(--border-medium) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
   pointer-events: none;
   z-index: 0;
 }
