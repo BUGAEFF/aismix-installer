@@ -196,7 +196,7 @@
 =================================================================== */
 
 .hero-tagline-1 {
-  font-size: 64px;
+  font-size: 72px;
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -206,7 +206,7 @@
 }
 
 .hero-tagline-2 {
-  font-size: 60px;
+  font-size: 70px;
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 40px;
@@ -216,13 +216,14 @@
 /* Mobile */
 @media (max-width: 768px) {
   .hero-tagline-1 {
-    font-size: 42px;
+    font-size: 54px;
   }
   
   .hero-tagline-2 {
-    font-size: 38px;
+    font-size: 52px;
   }
 }
+
 
 
 
