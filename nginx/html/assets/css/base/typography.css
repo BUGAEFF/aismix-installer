@@ -112,13 +112,13 @@ small {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Solution cards animate without transform (to allow hover) */
+/* Solution cards animate with movement BUT clear transform after */
 .solution-card {
   opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
+  animation: fadeInUpClear 0.8s ease forwards;
 }
 
-/* Fade in with movement */
+/* Fade in with movement (keeps transform) */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -130,13 +130,19 @@ small {
   }
 }
 
-/* Fade in without movement */
-@keyframes fadeIn {
-  from {
+/* Fade in with movement (clears transform at end) */
+@keyframes fadeInUpClear {
+  0% {
     opacity: 0;
+    transform: translateY(30px);
   }
-  to {
+  99% {
     opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }
 
