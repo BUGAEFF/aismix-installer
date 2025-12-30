@@ -28,8 +28,8 @@
    PAGE-SPECIFIC STYLES
 =================================================================== */
 
-@import url('./pages/thank-you.css');
-@import url('./pages/404.css');
-@import url('./pages/about.css');
-@import url('./pages/contact-page.css');
-@import url('./pages/legal.css');
+@import url("./pages/thank-you.css");
+@import url("./pages/404.css");
+@import url("./pages/about.css");
+@import url("./pages/contact-page.css");
+@import url("./pages/legal.css");
