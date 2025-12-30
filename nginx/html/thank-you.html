@@ -1,119 +1,129 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>Thank You — AISMIX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- SEO -->
-  <meta name="description" content="Thank you for contacting AISMIX. We’ve received your request and will be in touch shortly." />
-
-  <!-- CSS -->
+  <meta name="description" content="Thank you for contacting AISMIX. We've received your request and will be in touch shortly.">
+  
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" href="/assets/img/aismix-logo.png">
 </head>
 
 <body>
 
 <!-- ================================================== -->
-<!-- HEADER -->
+<!-- HEADER                                             -->
 <!-- ================================================== -->
 <header class="header">
   <div class="container header-inner">
-    <div class="logo">AISMIX</div>
+    <a href="/" class="logo">
+      <img src="/assets/img/aismix-logo.png" alt="AISMIX" class="logo-img">
+      <span class="logo-text">AISMIX</span>
+    </a>
+    
     <nav class="nav">
       <a href="/">Home</a>
-      <a href="/solutions.html">Solutions</a>
+      <a href="/solutions/">Solutions</a>
       <a href="/audit.html">Audit</a>
-      <a href="/#contact">Contact</a>
+      <a href="/contact.html">Contact</a>
     </nav>
+    
+    <button class="mobile-menu-toggle" aria-label="Menu">☰</button>
   </div>
 </header>
 
 <!-- ================================================== -->
-<!-- THANK YOU SECTION -->
+<!-- THANK YOU SECTION                                  -->
 <!-- ================================================== -->
-<section class="section thank-you">
-  <div class="container thank-you-grid">
-
-    <!-- VISUAL / PLACEHOLDER -->
-    <div class="thank-you-visual">
-      <!--
-      Optional:
-      <img src="/assets/img/thank-you.gif" alt="Thank you" />
-      -->
-    </div>
-
-    <!-- TEXT -->
-    <div class="thank-you-content">
-      <h1>Thank you 👋</h1>
-
-      <p class="lead">
-        We’ve received your request successfully.
-      </p>
-
-      <p>
-        Our team will review the details and get back to you shortly.
-        If your request relates to an automation audit or payment,
-        you’ll receive the next steps by email.
-      </p>
-
-      <div class="thank-you-actions">
-        <a href="/" class="btn-secondary">Back to Home</a>
-        <a href="/solutions.html" class="btn-primary">Explore Solutions</a>
+<main>
+  <section class="section thank-you">
+    <div class="container thank-you-grid">
+      
+      <!-- Visual (optional) -->
+      <div class="thank-you-visual">
+        <!-- <img src="/assets/img/thank-you.gif" alt="Thank you"> -->
       </div>
+      
+      <!-- Content -->
+      <div class="thank-you-content">
+        <h1>Thank you 👋</h1>
+        
+        <p class="lead">
+          We've received your request successfully.
+        </p>
+        
+        <p>
+          Our team will review the details and get back to you shortly.
+          If your request relates to an automation audit or payment,
+          you'll receive the next steps by email.
+        </p>
+        
+        <div class="thank-you-actions">
+          <a href="/" class="btn-secondary">Back to Home</a>
+          <a href="/solutions/" class="btn-primary">Explore Solutions</a>
+        </div>
+      </div>
+      
     </div>
-
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- ================================================== -->
-<!-- FOOTER -->
+<!-- FOOTER                                             -->
 <!-- ================================================== -->
 <footer class="footer">
   <div class="container footer-grid">
-
+    
     <div class="footer-brand">
       <strong>AISMIX</strong>
       <p>Practical AI automation for real business operations.</p>
     </div>
-
-    <div class="footer-links">
-      <div>
-        <h4>Navigation</h4>
-        <a href="/">Home</a>
-        <a href="/solutions.html">Solutions</a>
-        <a href="/audit.html">Audit</a>
-        <a href="/#contact">Contact</a>
-      </div>
-
-      <div>
-        <h4>Legal</h4>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="/privacy.html">Privacy Policy</a>
-      </div>
-
-      <div>
-        <h4>Payments</h4>
-        <a href="/pay/stripe.html">Pay with Stripe</a>
-        <a href="/pay/paypal.html">Pay with PayPal</a>
-      </div>
-
-      <div>
-        <h4>Social</h4>
-        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        <a href="https://x.com/" target="_blank">X / Twitter</a>
-        <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-      </div>
+    
+    <div class="footer-column">
+      <h4>Navigation</h4>
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">About</a>
     </div>
-
+    
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <a href="/legal/">Legal Documents</a>
+      <a href="/legal/terms.html">Terms of Service</a>
+      <a href="/legal/privacy.html">Privacy Policy</a>
+      <a href="/legal/disclaimer.html">Disclaimer</a>
+      <a href="/legal/cookies.html">Cookie Policy</a>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Payments</h4>
+      <a href="/pay/">Payment Options</a>
+      <a href="/pay/stripe.html">Pay with Stripe</a>
+      <a href="/pay/paypal.html">Pay with PayPal</a>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Social</h4>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    
   </div>
-
+  
   <div class="footer-bottom">
-    <small>© AISMIX — AI Automation & Integration</small>
+    <div class="container">
+      <small>© 2025 AISMIX — AI Automation & Integration</small>
+    </div>
   </div>
 </footer>
 
+<script src="/assets/js/main.js"></script>
+
 </body>
 </html>
-
