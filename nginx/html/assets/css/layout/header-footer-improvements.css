@@ -1,0 +1,251 @@
+/* ============================================== */
+/* HEADER IMPROVEMENTS                            */
+/* ============================================== */
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 16px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo with Image + Text */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 24px;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo-img {
+  height: 36px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav a:hover {
+  color: #1a1a1a;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #FFD700;
+  transition: width 0.2s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #1a1a1a;
+  padding: 0;
+}
+
+/* ============================================== */
+/* FOOTER IMPROVEMENTS                            */
+/* ============================================== */
+
+.footer {
+  background: #f9f9f9;
+  padding: 64px 0 24px;
+  margin-top: 80px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+
+.footer-brand strong {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.footer-brand p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-column a {
+  display: block;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-column a:hover {
+  color: #1a1a1a;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.footer-bottom small {
+  color: #999;
+  font-size: 13px;
+}
+
+/* ============================================== */
+/* TERMS CHECKBOXES (for payment pages)          */
+/* ============================================== */
+
+.terms-acceptance {
+  background: #f9f9f9;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #4a4a4a;
+  cursor: pointer;
+}
+
+.terms-checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-top: 3px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.terms-checkbox a {
+  color: #1a1a1a;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.terms-checkbox a:hover {
+  color: #FFD700;
+}
+
+/* ============================================== */
+/* RESPONSIVE (Mobile)                            */
+/* ============================================== */
+
+@media (max-width: 768px) {
+  
+  /* Header Mobile */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav {
+    display: none; /* TODO: Add mobile menu functionality */
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .logo-img {
+    height: 28px;
+  }
+  
+  /* Footer Mobile */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .footer {
+    padding: 48px 0 24px;
+    margin-top: 48px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  
+  .header {
+    padding: 12px 0;
+  }
+  
+  .logo-text {
+    font-size: 18px;
+  }
+  
+  .logo-img {
+    height: 24px;
+  }
+  
+}
