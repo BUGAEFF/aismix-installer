@@ -2,22 +2,21 @@
    AISMIX — CSS ENTRY POINT
 =================================================================== */
 
-/* Base — Фундамент */
+/* Base — Fundamental */
 @import url("./base/reset.css");
 @import url("./base/variables.css");
 @import url("./base/typography.css");
 
-/* Layout — Структура страницы 
+/* Layout — Page Structure */
 @import url("./layout/header.css");
-@import url("./layout/footer.css"); */
-@import url("./layout/header-footer.css");
+@import url("./layout/footer.css");
 
-/* Components — Переиспользуемые элементы */
+/* Components — Reusing Elements */
 @import url("./components/buttons.css");
 @import url("./components/cards.css");
 @import url("./components/forms.css");
 
-/* Sections — Секции страницы */
+/* Sections — Pages Sections */
 @import url("./sections/hero.css");
 @import url("./sections/motto.css");
 @import url("./sections/solutions.css");
