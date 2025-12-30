@@ -60,13 +60,13 @@
 }
 
 /* ===================================================================
-   SECONDARY BUTTON — White with yellow hover (default)
+   SECONDARY BUTTON — Yellow (like in Hero)
 =================================================================== */
 
 .btn-secondary {
-  background: #FFFFFF;
-  color: var(--text-primary);
-  border-color: var(--border-light);
+  background: #FFBF00;
+  color: #000000;
+  border-color: #FFBF00;
 }
 
 .btn-secondary:hover {
@@ -167,3 +167,4 @@
     box-shadow: 0 0 0 12px rgba(255, 212, 0, 0);
   }
 }
+
