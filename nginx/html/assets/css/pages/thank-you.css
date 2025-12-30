@@ -4,7 +4,7 @@
 
 .thank-you {
   padding: 80px 0;
-  text-align: center; /* Центрируем весь контент */
+  text-align: center; /* Centred */
 }
 
 .thank-you-grid {
@@ -58,11 +58,11 @@
   gap: 16px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Переносятся если не помещаются */
+  flex-wrap: wrap; /* Adjust */
 }
 
 /* ===================================================================
-   TABLET (до 768px)
+   TABLET (up 768px)
 =================================================================== */
 
 @media (max-width: 768px) {
@@ -86,7 +86,7 @@
 }
 
 /* ===================================================================
-   MOBILE (до 520px)
+   MOBILE (up 520px)
 =================================================================== */
 
 @media (max-width: 520px) {
