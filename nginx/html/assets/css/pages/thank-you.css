@@ -1,0 +1,124 @@
+/* ===================================================================
+   THANK YOU PAGE — Responsive fixes
+=================================================================== */
+
+.thank-you {
+  padding: 80px 0;
+  text-align: center; /* Центрируем весь контент */
+}
+
+.thank-you-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thank-you-visual {
+  width: 100%;
+  max-width: 400px;
+}
+
+.thank-you-visual img {
+  width: 100%;
+  height: auto;
+}
+
+.thank-you-content {
+  width: 100%;
+  text-align: center;
+}
+
+.thank-you-content h1 {
+  font-size: 48px;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.thank-you-content .lead {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.thank-you-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+/* Thank You Actions (кнопки) */
+.thank-you-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Переносятся если не помещаются */
+}
+
+/* ===================================================================
+   TABLET (до 768px)
+=================================================================== */
+
+@media (max-width: 768px) {
+  
+  .thank-you {
+    padding: 60px 0;
+  }
+  
+  .thank-you-content h1 {
+    font-size: 36px;
+  }
+  
+  .thank-you-content .lead {
+    font-size: 18px;
+  }
+  
+  .thank-you-content p {
+    font-size: 15px;
+  }
+  
+}
+
+/* ===================================================================
+   MOBILE (до 520px)
+=================================================================== */
+
+@media (max-width: 520px) {
+  
+  .thank-you {
+    padding: 40px 0;
+  }
+  
+  .thank-you-content h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .thank-you-content .lead {
+    font-size: 16px;
+  }
+  
+  .thank-you-content p {
+    font-size: 14px;
+  }
+  
+  /* Кнопки на мобильном в столбик */
+  .thank-you-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .thank-you-actions .btn-primary,
+  .thank-you-actions .btn-secondary {
+    width: 100%;
+    min-width: 100%;
+  }
+  
+}
