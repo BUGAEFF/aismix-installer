@@ -2,89 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>404 — Page Not Found | AISMIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="robots" content="noindex, nofollow">
-
-  <!-- CSS -->
+  
+  <title>404 — Page Not Found | AISMIX</title>
+  <meta name="description" content="Page not found. Return to AISMIX homepage or contact us.">
+  
   <link rel="stylesheet" href="/assets/css/main.css">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/img/aismix-logo.png">
 </head>
 
 <body>
 
-<!-- ========================= -->
-<!-- 404 PAGE                 -->
-<!-- ========================= -->
-<section class="hero" style="min-height:100dvh">
-
-  <!-- VISUAL PLACEHOLDER -->
-  <div class="hero-visual">
-    <!--
-    <img src="/assets/img/404/404-automation.gif"
-         alt="Automation not found"
-         loading="lazy"
-         decoding="async">
-    -->
+<!-- ================================================== -->
+<!-- HEADER                                             -->
+<!-- ================================================== -->
+<header class="header">
+  <div class="container header-inner">
+    
+    <!-- Logo with Image (ПРАВИЛЬНЫЙ КЛАСС!) -->
+    <a href="/" class="logo">
+      <img src="/assets/img/logo.png" alt="AISMIX Logo" class="logo-image">
+      <span class="logo-text">AISMIX.COM</span>
+    </a>
+    
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    
   </div>
+</header>
 
-  <div class="container">
-    <h1>404 — Page Not Found</h1>
-    <p>
-      The page you are looking for doesn’t exist or has been moved.
-      But automation opportunities are still here.
-    </p>
-
-    <div class="cta-group">
-      <button class="btn-secondary" onclick="history.back()">Go Back</button>
-      <a href="/" class="btn-primary">Home</a>
-      <a href="#contact" class="btn-secondary">Contact Us</a>
+<!-- ================================================== -->
+<!-- 404 CONTENT                                        -->
+<!-- ================================================== -->
+<main>
+  <section class="hero" style="min-height:70vh; display:flex; align-items:center;">
+    <div class="container" style="text-align:center;">
+      
+      <!-- Visual placeholder -->
+      <div class="hero-visual" style="margin-bottom:32px;">
+        <!-- <img src="/assets/img/404-automation.gif" alt="404"> -->
+      </div>
+      
+      <h1 style="font-size:48px; margin-bottom:16px;">404 — Page Not Found</h1>
+      
+      <p style="font-size:18px; color:#666; margin-bottom:32px;">
+        The page you are looking for doesn't exist or has been moved.<br>
+        But automation opportunities are still here.
+      </p>
+      
+      <div class="cta-group" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn-secondary" onclick="history.back()">Go Back</button>
+        <a href="/" class="btn-primary">Home</a>
+        <a href="/contact.html" class="btn-secondary">Contact Us</a>
+      </div>
+      
     </div>
-  </div>
+  </section>
+  
+  <!-- ================================ -->
+  <!-- CONTACT FORM (OPTIONAL)          -->
+  <!-- ================================ -->
+  <section id="contact" class="section">
+    <div class="container" style="max-width:600px;">
+      
+      <h2 style="text-align:center; margin-bottom:24px;">Contact Us</h2>
+      
+      <form action="/thank-you.html" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea 
+          name="message"
+          placeholder="Briefly describe what you were looking for"
+          rows="5"
+          required
+        ></textarea>
+        
+        <button type="submit" class="btn-primary" style="width:100%;">
+          Send Message
+        </button>
+      </form>
+      
+      <p style="text-align:center; margin-top:16px; font-size:14px; color:#666;">
+        Or email directly:
+        <a href="mailto:hello@aismix.com">hello@aismix.com</a>
+      </p>
+      
+    </div>
+  </section>
+</main>
 
-</section>
-
-<!-- ========================= -->
-<!-- CONTACT FORM             -->
-<!-- ========================= -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Contact Us</h2>
-
-    <form action="mailto:hello@aismix.com"
-          method="POST"
-          enctype="text/plain">
-
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message"
-        placeholder="Briefly describe what you were looking for"
-        required></textarea>
-
-      <button type="submit" class="btn-primary">
-        Send Message
-      </button>
-    </form>
-
-    <p class="form-note">
-      Or email directly:
-      <a href="mailto:hello@aismix.com">hello@aismix.com</a>
-    </p>
-  </div>
-</section>
-
-<!-- ========================= -->
-<!-- FOOTER                   -->
-<!-- ========================= -->
+<!-- ================================================== -->
+<!-- FOOTER                                             -->
+<!-- ================================================== -->
 <footer class="footer">
   <div class="container footer-grid">
-    <small>© AISMIX</small>
+    
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="footer-logo">AISMIX</div>
+      <p class="footer-tagline">Practical AI automation for real business operations.</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer-nav">
+      <h4>Navigation</h4>
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">About</a>
+    </div>
+
+    <!-- Legal -->
+    <div class="footer-nav">
+      <h4>Legal</h4>
+      <a href="/legal/">Legal Documents</a>
+      <a href="/legal/terms.html">Terms of Service</a>
+      <a href="/legal/privacy.html">Privacy Policy</a>
+      <a href="/legal/disclaimer.html">Disclaimer</a>
+      <a href="/legal/cookies.html">Cookie Policy</a>
+    </div>
+
+    <!-- Payments -->
+    <div class="footer-nav">
+      <h4>Payments</h4>
+      <a href="/pay/">Payment Options</a>
+      <a href="/pay/stripe.html">Pay with Stripe</a>
+      <a href="/pay/paypal.html">Pay with PayPal</a>
+    </div>
+
+    <!-- Social -->
+    <div class="footer-social">
+      <h4>Social</h4>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      © 2025 AISMIX — AI Automation & Integration
+    </div>
   </div>
 </footer>
 
 </body>
 </html>
-
