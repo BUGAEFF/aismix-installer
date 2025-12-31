@@ -1,0 +1,217 @@
+/* ===================================================================
+   ABOUT PAGE STYLES
+=================================================================== */
+
+/* About page wrapper */
+.about-wrapper {
+  padding: 80px 0;
+  position: relative;
+}
+
+.about-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Hero intro section */
+.about-hero-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.about-hero-title {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.about-hero-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #666;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* White card blocks */
+.about-card {
+  background: #fff;
+  padding: 60px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.about-card-title {
+  font-size: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.about-card-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-card-text:last-child {
+  margin-bottom: 0;
+}
+
+/* What We Do section */
+.about-services-grid {
+  display: grid;
+  gap: 32px;
+}
+
+.about-service-item {
+  padding: 24px;
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+}
+
+.about-service-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #667eea;
+  text-align: center;
+}
+
+.about-service-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+}
+
+/* How We Work section */
+.about-process-intro {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.about-process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  text-align: center;
+}
+
+.about-process-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 12px;
+}
+
+.about-process-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.about-process-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Why Choose section */
+.about-benefits-list {
+  font-size: 16px;
+  line-height: 2;
+  color: #4a4a4a;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-benefits-list li {
+  margin-bottom: 16px;
+}
+
+.about-benefits-list li:last-child {
+  margin-bottom: 0;
+}
+
+.about-benefit-check {
+  color: #667eea;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* CTA block */
+.about-cta {
+  text-align: center;
+  padding: 60px 50px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about-cta-title {
+  font-size: 36px;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.about-cta-text {
+  font-size: 18px;
+  margin-bottom: 32px;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero-title {
+    font-size: 36px;
+  }
+  
+  .about-hero-subtitle {
+    font-size: 18px;
+  }
+  
+  .about-card {
+    padding: 40px 30px;
+  }
+  
+  .about-card-title,
+  .about-cta-title {
+    font-size: 28px;
+  }
+  
+  .about-process-number {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  .about-wrapper {
+    padding: 40px 0;
+  }
+  
+  .about-hero-intro {
+    margin-bottom: 40px;
+  }
+  
+  .about-hero-title {
+    font-size: 32px;
+  }
+  
+  .about-card {
+    padding: 30px 20px;
+  }
+  
+  .about-service-item {
+    padding: 20px;
+  }
+}
