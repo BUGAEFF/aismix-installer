@@ -82,6 +82,20 @@
 }
 
 /* ===================================================================
+   SECONDARY BUTTON — SOLUTIONS (SOLUTION-INDEX PAGE)
+=================================================================== */
+
+.btn-secondary-solutions {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* ===================================================================
    HERO SECTION SPECIFIC — Custom colors for top 2 buttons
 =================================================================== */
 
@@ -167,4 +181,5 @@
     box-shadow: 0 0 0 12px rgba(255, 212, 0, 0);
   }
 }
+
 
