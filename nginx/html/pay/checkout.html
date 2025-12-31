@@ -1,1 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — AISMIX</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
 
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/assets/img/logo.png" alt="AISMIX Logo" class="logo-image">
+      <span class="logo-text">AISMIX.COM</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main style="padding:80px 0; background:#f8f9fa;">
+  <div class="container" style="max-width:700px;">
+    
+    <!-- ORDER SUMMARY -->
+    <div style="background:#fff; padding:40px; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+      <h1 style="font-size:32px; margin-bottom:24px; text-align:center;">Complete Your Order</h1>
+      
+      <div style="border-bottom:2px solid #eee; padding-bottom:20px; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+          <span style="font-size:18px; font-weight:500;">Office Automation</span>
+          <span style="font-size:18px; font-weight:600; color:#667eea;">$2,499</span>
+        </div>
+        <div style="font-size:14px; color:#666;">
+          Complete automation setup + 3 months support
+        </div>
+      </div>
+      
+      <div style="display:flex; justify-content:space-between; font-size:24px; font-weight:700;">
+        <span>Total:</span>
+        <span style="color:#667eea;">$2,499</span>
+      </div>
+    </div>
+    
+    <!-- PAYMENT METHOD SELECTION -->
+    <div style="background:#fff; padding:40px; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+      <h2 style="font-size:24px; margin-bottom:24px; text-align:center;">Select Payment Method</h2>
+      
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        
+        <!-- STRIPE OPTION -->
+        <label style="display:flex; align-items:center; padding:20px; border:2px solid #ddd; border-radius:12px; cursor:pointer; transition:all 0.3s;">
+          <input type="radio" name="payment" value="stripe" checked style="margin-right:16px; width:20px; height:20px; cursor:pointer;">
+          <div style="flex:1;">
+            <div style="font-size:18px; font-weight:600; margin-bottom:4px;">Credit/Debit Card</div>
+            <div style="font-size:14px; color:#666;">Pay securely with Stripe</div>
+          </div>
+          <img src="/assets/img/logos/stripe.png" alt="Stripe" style="height:24px;">
+        </label>
+        
+        <!-- PAYPAL OPTION -->
+        <label style="display:flex; align-items:center; padding:20px; border:2px solid #ddd; border-radius:12px; cursor:pointer; transition:all 0.3s;">
+          <input type="radio" name="payment" value="paypal" style="margin-right:16px; width:20px; height:20px; cursor:pointer;">
+          <div style="flex:1;">
+            <div style="font-size:18px; font-weight:600; margin-bottom:4px;">PayPal</div>
+            <div style="font-size:14px; color:#666;">Pay with your PayPal account</div>
+          </div>
+          <img src="/assets/img/logos/paypal.png" alt="PayPal" style="height:24px;">
+        </label>
+        
+      </div>
+    </div>
+    
+    <!-- LEGAL CHECKBOXES -->
+    <div style="background:#fff; padding:40px; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+      <h2 style="font-size:24px; margin-bottom:24px; text-align:center;">Legal Agreement</h2>
+      
+      <label style="display:flex; align-items:start; margin-bottom:16px; cursor:pointer;">
+        <input type="checkbox" id="terms" required style="margin-right:12px; margin-top:4px; width:18px; height:18px; cursor:pointer;">
+        <span style="font-size:15px; line-height:1.6;">
+          I agree to the <a href="/legal/terms.html" target="_blank" style="color:#667eea; text-decoration:underline;">Terms of Service</a>
+        </span>
+      </label>
+      
+      <label style="display:flex; align-items:start; cursor:pointer;">
+        <input type="checkbox" id="disclaimer" required style="margin-right:12px; margin-top:4px; width:18px; height:18px; cursor:pointer;">
+        <span style="font-size:15px; line-height:1.6;">
+          I have read and understood the <a href="/legal/disclaimer.html" target="_blank" style="color:#667eea; text-decoration:underline;">Disclaimer</a>
+        </span>
+      </label>
+    </div>
+    
+    <!-- PROCEED BUTTON -->
+    <button 
+      id="proceedBtn" 
+      disabled
+      style="width:100%; padding:18px; font-size:18px; font-weight:600; background:#ccc; color:#fff; border:none; border-radius:12px; cursor:not-allowed; transition:all 0.3s;">
+      Proceed to Payment
+    </button>
+    
+  </div>
+</main>
+
+<footer class="footer">
+  <!-- ... footer code ... -->
+</footer>
+
+<script>
+// Get URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const solution = urlParams.get('solution') || 'office';
+const price = urlParams.get('price') || '2499';
+
+// Enable/disable button based on checkboxes
+const termsCheckbox = document.getElementById('terms');
+const disclaimerCheckbox = document.getElementById('disclaimer');
+const proceedBtn = document.getElementById('proceedBtn');
+
+function checkFormValid() {
+  if (termsCheckbox.checked && disclaimerCheckbox.checked) {
+    proceedBtn.disabled = false;
+    proceedBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    proceedBtn.style.cursor = 'pointer';
+  } else {
+    proceedBtn.disabled = true;
+    proceedBtn.style.background = '#ccc';
+    proceedBtn.style.cursor = 'not-allowed';
+  }
+}
+
+termsCheckbox.addEventListener('change', checkFormValid);
+disclaimerCheckbox.addEventListener('change', checkFormValid);
+
+// Handle payment method selection and proceed
+proceedBtn.addEventListener('click', () => {
+  const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+  
+  if (selectedPayment === 'stripe') {
+    window.location.href = `/pay/stripe.html?solution=${solution}&price=${price}`;
+  } else {
+    window.location.href = `/pay/paypal.html?solution=${solution}&price=${price}`;
+  }
+});
+
+// Radio button visual feedback
+document.querySelectorAll('input[name="payment"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    document.querySelectorAll('label').forEach(label => {
+      label.style.borderColor = '#ddd';
+      label.style.background = '#fff';
+    });
+    e.target.closest('label').style.borderColor = '#667eea';
+    e.target.closest('label').style.background = '#f8f9ff';
+  });
+});
+</script>
+
+</body>
+</html>
