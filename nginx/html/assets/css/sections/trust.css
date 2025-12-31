@@ -158,8 +158,8 @@
   }
   
   .logo-item img {
-    max-height: 42px;
-    max-width: 135px;
+    max-height: 90px;
+    max-width: 155px;
   }
   
   .logos-track--top {
@@ -191,8 +191,8 @@
   }
   
   .logo-item img {
-    max-height: 38px;
-    max-width: 115px;
+    max-height: 80px;
+    max-width: 140px;
   }
   
   .logos-track {
@@ -238,6 +238,7 @@
   position: relative;
   z-index: 1;
 }
+
 
 
 
