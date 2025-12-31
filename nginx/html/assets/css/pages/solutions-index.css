@@ -53,8 +53,8 @@
       padding: 0 0 80px;
     }
     
-    /* Solution card */
-    .solution-card {
+    /* ------------------------Solution card -----------------------*/
+    .solution-indexcard {
       position: relative;
       display: block;
       border-radius: 16px;
@@ -65,12 +65,12 @@
       text-decoration: none;
     }
     
-    .solution-card:hover {
+    .solution-indexcard:hover {
       transform: translateY(-8px);
       box-shadow: 0 16px 48px rgba(0,0,0,0.2);
     }
     
-    .solution-card img {
+    .solution-indexcard img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -78,7 +78,7 @@
     }
     
     /* Text overlay on hover */
-    .card-overlay {
+    .indexcard-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -90,17 +90,17 @@
       color: #fff;
     }
     
-    .solution-card:hover .card-overlay {
+    .solution-indexcard:hover .indexcard-overlay {
       opacity: 1;
     }
     
-    .card-overlay h3 {
+    .indexcard-overlay h3 {
       font-size: 22px;
       margin: 0 0 8px 0;
       color: #FFBF00;
     }
     
-    .card-overlay p {
+    .indexcard-overlay p {
       font-size: 14px;
       margin: 0;
       color: #e0e0e0;
@@ -108,17 +108,17 @@
     }
     
     /* Custom card - muted appearance */
-    .custom-card {
+    .custom-indexcard {
       opacity: 0.9;
       border: 2px dashed #ccc;
     }
     
-    .custom-card:hover {
+    .custom-indexcard:hover {
       opacity: 1;
       border-color: #FFBF00;
     }
     
-    /* Intro section */
+    /* --------------Intro section-------------- */
     .intro-section {
       text-align: center;
       max-width: 800px;
