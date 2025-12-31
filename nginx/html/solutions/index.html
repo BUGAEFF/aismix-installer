@@ -1,1 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Automation Solutions — AISMIX</title>
+  <meta name="description" content="Battle-tested automation workflows ready to deploy in your business. Fast setup, proven results.">
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <style>
+    /* Filter menu sticky positioning */
+    .filter-menu {
+      position: sticky;
+      top: 70px;
+      background: #fff;
+      z-index: 100;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 12px 24px;
+      background: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .filter-btn:hover {
+      background: #e8e8e8;
+      border-color: #FFBF00;
+    }
+    
+    .filter-btn.active {
+      background: #1a1a1a;
+      color: #FFBF00;
+      border-color: #1a1a1a;
+    }
+    
+    /* Solutions grid */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 0 0 80px;
+    }
+    
+    /* Solution card */
+    .solution-card {
+      position: relative;
+      display: block;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 16 / 9;
+      text-decoration: none;
+    }
+    
+    .solution-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    }
+    
+    .solution-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Text overlay on hover */
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.85);
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #fff;
+    }
+    
+    .solution-card:hover .card-overlay {
+      opacity: 1;
+    }
+    
+    .card-overlay h3 {
+      font-size: 22px;
+      margin: 0 0 8px 0;
+      color: #FFBF00;
+    }
+    
+    .card-overlay p {
+      font-size: 14px;
+      margin: 0;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+    
+    /* Custom card - muted appearance */
+    .custom-card {
+      opacity: 0.9;
+      border: 2px dashed #ccc;
+    }
+    
+    .custom-card:hover {
+      opacity: 1;
+      border-color: #FFBF00;
+    }
+    
+    /* Intro section */
+    .intro-section {
+      text-align: center;
+      max-width: 800px;
+      margin: 60px auto 60px;
+      padding: 0 20px;
+    }
+    
+    .intro-section h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+    
+    .intro-section p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #4a4a4a;
+      margin-bottom: 12px;
+    }
+    
+    .intro-section p:last-child {
+      font-size: 16px;
+      color: #666;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-menu {
+        top: 60px;
+        padding: 15px 0;
+      }
+      
+      .filter-buttons {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      .filter-buttons::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .filter-btn {
+        flex-shrink: 0;
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .intro-section h1 {
+        font-size: 36px;
+      }
+      
+      .intro-section p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================================================== -->
+<!-- HEADER                                             -->
+<!-- ================================================== -->
+<header class="header">
+  <div class="container header-inner">
+    
+    <a href="/" class="logo">
+      <img src="/assets/img/logo.png" alt="AISMIX Logo" class="logo-image">
+      <span class="logo-text">AISMIX.COM</span>
+    </a>
+    
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    
+  </div>
+</header>
+
+<!-- ================================================== -->
+<!-- MAIN CONTENT                                       -->
+<!-- ================================================== -->
+<main class="hero" style="padding:40px 0 0; position:relative; min-height:auto;">
+  
+  <div class="container" style="position:relative; z-index:1;">
+    
+    <!-- ===================================================
+         INTRO SECTION
+         =================================================== -->
+    <div class="intro-section">
+      <h1>SOLUTIONS</h1>
+      <p>
+        Battle-tested automation workflows<br>
+        ready to deploy in your business.
+      </p>
+      <p>
+        Most clients start here and see results within days.<br>
+        Custom solutions available for unique cases.
+      </p>
+    </div>
+    
+  </div>
+  
+  <!-- ===================================================
+       FILTER MENU (sticky)
+       =================================================== -->
+  <div class="filter-menu">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">ALL</button>
+        <button class="filter-btn" data-category="social">SOCIAL</button>
+        <button class="filter-btn" data-category="video">VIDEO</button>
+        <button class="filter-btn" data-category="email">EMAIL</button>
+        <button class="filter-btn" data-category="sales">SALES</button>
+        <button class="filter-btn" data-category="leads">LEADS</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ===================================================
+       SOLUTIONS GRID
+       =================================================== -->
+  <div class="container" style="position:relative; z-index:1;">
+    <div class="solutions-grid">
+      
+      <!-- SOCIAL MEDIA AUTOMATION -->
+      <a href="/solutions/social.html" class="solution-card" data-category="social">
+        <img src="/assets/img/solutions/social.gif" alt="Social Media Automation" loading="lazy">
+        <div class="card-overlay">
+          <h3>Social Media Automation</h3>
+          <p>Automate posting, scheduling, and engagement across all platforms</p>
+        </div>
+      </a>
+      
+      <!-- VIDEO CONTENT AUTOMATION -->
+      <a href="/solutions/video.html" class="solution-card" data-category="video">
+        <img src="/assets/img/solutions/video.gif" alt="Video Content Automation" loading="lazy">
+        <div class="card-overlay">
+          <h3>Video Content Automation</h3>
+          <p>Automate video editing, publishing, and distribution for YouTube, TikTok, Reels</p>
+        </div>
+      </a>
+      
+      <!-- EMAIL & WORKFLOW AUTOMATION -->
+      <a href="/solutions/email.html" class="solution-card" data-category="email">
+        <img src="/assets/img/solutions/email.gif" alt="Email & Workflow Automation" loading="lazy">
+        <div class="card-overlay">
+          <h3>Email & Workflow Automation</h3>
+          <p>Automate email campaigns, internal workflows, and approval processes</p>
+        </div>
+      </a>
+      
+      <!-- SALES AUTOMATION -->
+      <a href="/solutions/sales.html" class="solution-card" data-category="sales">
+        <img src="/assets/img/solutions/sales.gif" alt="Sales Automation" loading="lazy">
+        <div class="card-overlay">
+          <h3>Sales Automation</h3>
+          <p>Automate CRM, sales pipelines, and customer follow-ups</p>
+        </div>
+      </a>
+      
+      <!-- LEAD GENERATION AUTOMATION -->
+      <a href="/solutions/leads.html" class="solution-card" data-category="leads">
+        <img src="/assets/img/solutions/leads.gif" alt="Lead Generation Automation" loading="lazy">
+        <div class="card-overlay">
+          <h3>Lead Generation</h3>
+          <p>Automate lead scraping, enrichment, and outreach campaigns</p>
+        </div>
+      </a>
+      
+      <!-- CUSTOM SOLUTIONS (always visible, muted appearance) -->
+      <a href="/solutions/custom.html" class="solution-card custom-card" data-category="custom">
+        <img src="/assets/img/solutions/custom.gif" alt="Custom Solutions" loading="lazy">
+        <div class="card-overlay">
+          <h3>Custom Solutions</h3>
+          <p>For unique workflows that don't fit standard solutions</p>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+  
+</main>
+
+<!-- ================================================== -->
+<!-- FOOTER                                             -->
+<!-- ================================================== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    
+    <div class="footer-brand">
+      <div class="footer-logo">AISMIX</div>
+      <p class="footer-tagline">Practical AI automation for real business operations.</p>
+    </div>
+
+    <div class="footer-nav">
+      <h4>Navigation</h4>
+      <a href="/">Home</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/audit.html">Audit</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">About</a>
+    </div>
+
+    <div class="footer-nav">
+      <h4>Legal</h4>
+      <a href="/legal/">Legal Documents</a>
+      <a href="/legal/terms.html">Terms of Service</a>
+      <a href="/legal/privacy.html">Privacy Policy</a>
+      <a href="/legal/disclaimer.html">Disclaimer</a>
+      <a href="/legal/cookies.html">Cookie Policy</a>
+    </div>
+
+    <div class="footer-nav">
+      <h4>Payments</h4>
+      <a href="/pay/">Payment Options</a>
+      <a href="/pay/stripe.html">Pay with Stripe</a>
+      <a href="/pay/paypal.html">Pay with PayPal</a>
+    </div>
+
+    <div class="footer-social">
+      <h4>Social</h4>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      © 2025 AISMIX — AI Automation & Integration
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================== -->
+<!-- JAVASCRIPT                                         -->
+<!-- ================================================== -->
+<script src="/assets/js/solutions.js"></script>
+
+</body>
+</html>
 
