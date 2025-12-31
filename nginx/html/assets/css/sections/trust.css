@@ -100,12 +100,22 @@
 }
 
 .logo-item img {
+  max-height: 100px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* LOGO ITEMS 
+.logo-item img {
   max-height: 48px;
   max-width: 160px;
   width: auto;
   height: auto;
   object-fit: contain;
 }
+*/
 
 /* Hover effect */
 .logo-item:hover {
@@ -228,6 +238,7 @@
   position: relative;
   z-index: 1;
 }
+
 
 
 
