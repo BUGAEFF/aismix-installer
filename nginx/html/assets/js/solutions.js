@@ -1,22 +1,43 @@
-// Filter functionality
-const filterButtons = document.querySelectorAll('.filter-btn');
-const cards = document.querySelectorAll('.solution-card');
+// ===================================================
+// SOLUTIONS FILTER FUNCTIONALITY
+// Used on: /solutions/index.html
+// ===================================================
 
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.dataset.category;
-    
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    cards.forEach(card => {
-      if (card.classList.contains('custom-card')) {
-        card.style.display = 'block';
-      } else if (category === 'all' || card.dataset.category === category) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Get all filter buttons and solution cards
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.solution-card');
+  
+  // Add click event to each filter button
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category;
+      
+      // Update active button state
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filter cards based on selected category
+      cards.forEach(card => {
+        // Custom card is always visible
+        if (card.classList.contains('custom-card')) {
+          card.style.display = 'block';
+        } 
+        // Show all cards when "ALL" is selected
+        else if (category === 'all') {
+          card.style.display = 'block';
+        } 
+        // Show only cards matching the selected category
+        else if (card.dataset.category === category) {
+          card.style.display = 'block';
+        } 
+        // Hide cards that don't match
+        else {
+          card.style.display = 'none';
+        }
+      });
     });
   });
+  
 });
