@@ -114,6 +114,26 @@ const urlParams = new URLSearchParams(window.location.search);
 const solution = urlParams.get('solution') || 'office';
 const price = urlParams.get('price') || '2499';
 
+  // Solution names for display
+const solutionNames = {
+  'office': 'Office Automation',
+  'video': 'Video Making Automation',
+  'leads': 'Leads Generation',
+  'social': 'Social Media Automation',
+  'sales': 'Sales Automation',
+  'email': 'Email & Documents Automation',
+  'custom': 'Custom Integration'
+};
+
+// Insert solution name into page
+const solutionName = solutionNames[solution] || 'Custom Solution';
+document.querySelector('.solution-name').textContent = solutionName;
+
+// Insert price into page (both locations: item price and total)
+document.querySelectorAll('.price-value').forEach(el => {
+  el.textContent = '$' + price.toLocaleString();
+});
+
 // Enable/disable button based on checkboxes
 const termsCheckbox = document.getElementById('terms');
 const disclaimerCheckbox = document.getElementById('disclaimer');
