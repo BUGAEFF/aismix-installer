@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Get all filter buttons and solution cards
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.solution-card');
+  const cards = document.querySelectorAll('.solution-indexcard');
   
   // Add click event to each filter button
   filterButtons.forEach(btn => {
