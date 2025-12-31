@@ -1,1 +1,179 @@
-
+    .filter-menu {
+      position: sticky;
+      top: 70px;
+      background: #fff;
+      z-index: 100;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 12px 24px;
+      background: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .filter-btn:hover {
+      background: #e8e8e8;
+      border-color: #FFBF00;
+    }
+    
+    .filter-btn.active {
+      background: #FFBF00;
+      color: #000000;
+      border-color: #FFBF00;
+    }
+    
+    /* Solutions grid */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 0 0 80px;
+    }
+    
+    /* Solution card */
+    .solution-card {
+      position: relative;
+      display: block;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      aspect-ratio: 16 / 9;
+      text-decoration: none;
+    }
+    
+    .solution-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    }
+    
+    .solution-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Text overlay on hover */
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.85);
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #fff;
+    }
+    
+    .solution-card:hover .card-overlay {
+      opacity: 1;
+    }
+    
+    .card-overlay h3 {
+      font-size: 22px;
+      margin: 0 0 8px 0;
+      color: #FFBF00;
+    }
+    
+    .card-overlay p {
+      font-size: 14px;
+      margin: 0;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+    
+    /* Custom card - muted appearance */
+    .custom-card {
+      opacity: 0.9;
+      border: 2px dashed #ccc;
+    }
+    
+    .custom-card:hover {
+      opacity: 1;
+      border-color: #FFBF00;
+    }
+    
+    /* Intro section */
+    .intro-section {
+      text-align: center;
+      max-width: 800px;
+      margin: 30px auto 30px;
+      padding: 0 20px;
+    }
+    
+    .intro-section h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    
+    .intro-section p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-menu {
+        top: 60px;
+        padding: 15px 0;
+      }
+      
+      .filter-buttons {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      .filter-buttons::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .filter-btn {
+        flex-shrink: 0;
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .intro-section h1 {
+        font-size: 36px;
+      }
+      
+      .intro-section p {
+        font-size: 16px;
+      }
+    }
+  </style>
