@@ -24,10 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (card.classList.contains('custom-card')) {
           card.style.display = 'block';
         } 
-        // Show all cards when "ALL" is selected
-        else if (category === 'all') {
-          card.style.display = 'block';
-        } 
         // Show only cards matching the selected category
         else if (card.dataset.category === category) {
           card.style.display = 'block';
@@ -39,5 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+  
+  // Initialize: show only first category (SOCIAL) cards on page load
+  const firstButton = filterButtons[0];
+  if (firstButton) {
+    firstButton.click();
+  }
   
 });
