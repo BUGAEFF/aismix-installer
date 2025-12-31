@@ -36,10 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Initialize: show only first category (SOCIAL) cards on page load
-  const firstButton = filterButtons[0];
-  if (firstButton) {
-    firstButton.click();
-  }
+  // Don't auto-filter on load - show all cards initially
+  // User clicks a button to filter
   
 });
