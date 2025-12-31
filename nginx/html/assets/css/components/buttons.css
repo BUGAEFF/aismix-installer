@@ -94,6 +94,17 @@
   transition: all 0.3s ease;
   white-space: nowrap;
 }
+.btn-secondary-solutions:hover {
+  background: #FFD400;
+  color: #000000;
+  border-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary-solutions:active {
+  transform: translateY(0);
+}
 
 /* ===================================================================
    HERO SECTION SPECIFIC — Custom colors for top 2 buttons
@@ -181,5 +192,6 @@
     box-shadow: 0 0 0 12px rgba(255, 212, 0, 0);
   }
 }
+
 
 
