@@ -45,7 +45,7 @@
       border-color: #000000;
     }
     
-    /* Solutions Index grid */
+    /* ----------------------------- Solutions Index grid ------------------------------ */
     .solutions-indexgrid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -77,7 +77,7 @@
       display: block;
     }
     
-    /* Text overlay on hover */
+    /* ---------------- Text overlay on hover --------------------------*/
     .indexcard-overlay {
       position: absolute;
       bottom: 0;
@@ -118,7 +118,7 @@
       border-color: #FFBF00;
     }
     
-    /* --------------Intro section-------------- */
+    /* -------------- Intro section -------------- */
     .intro-section {
       text-align: center;
       max-width: 800px;
@@ -139,7 +139,7 @@
       margin: 0;
     }
     
-    /* Responsive */
+    /* --------------------------------- Responsive --------------------------- */
     @media (max-width: 1024px) {
       .solutions-indexgrid {
         grid-template-columns: repeat(2, 1fr);
@@ -182,4 +182,3 @@
         font-size: 16px;
       }
     }
-  </style>
