@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   // Get all filter buttons and solution cards
-  const filterButtons = document.querySelectorAll('.filter-btn');
+  const filterButtons = document.querySelectorAll('.btn-secondary-solutions');
   const cards = document.querySelectorAll('.solution-card');
   
   // Add click event to each filter button
