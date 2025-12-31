@@ -63,12 +63,12 @@
 
 /* TOP ROW — Scroll LEFT (default) */
 .logos-track--top {
-  animation: scroll-left 45s linear infinite;
+  animation: scroll-left 30s linear infinite;
 }
 
 /* BOTTOM ROW — Scroll RIGHT (reverse) */
 .logos-track--bottom {
-  animation: scroll-right 50s linear infinite;
+  animation: scroll-right 35s linear infinite;
 }
 
 /* Pause both on hover */
@@ -238,6 +238,7 @@
   position: relative;
   z-index: 1;
 }
+
 
 
 
