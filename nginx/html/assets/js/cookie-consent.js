@@ -1,5 +1,28 @@
 // Cookie Consent Banner Logic
 (function() {
+  // Create banner HTML
+  const bannerHTML = `
+    <div id="cookieBanner" class="cookie-banner">
+      <div class="cookie-banner-content">
+        <div class="cookie-banner-text">
+          <p>
+            <strong>🍪 We use cookies</strong> to improve your experience on our website. 
+            By continuing to browse, you agree to our use of cookies. 
+            <a href="/legal/cookies.html">Learn more</a>
+          </p>
+        </div>
+        <div class="cookie-banner-buttons">
+          <button id="acceptCookies" class="cookie-accept-btn">Accept All</button>
+          <button id="declineCookies" class="cookie-decline-btn">Decline</button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Insert banner into page
+  document.body.insertAdjacentHTML('beforeend', bannerHTML);
+  
+  // Get elements
   const banner = document.getElementById('cookieBanner');
   const acceptBtn = document.getElementById('acceptCookies');
   const declineBtn = document.getElementById('declineCookies');
