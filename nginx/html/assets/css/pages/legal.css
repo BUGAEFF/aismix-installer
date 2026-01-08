@@ -1,0 +1,167 @@
+/* ===================================================================
+   LEGAL PAGES STYLES (Terms, Privacy, Disclaimer, Cookies)
+=================================================================== */
+
+/* Legal page wrapper */
+.legal-wrapper {
+  padding: 80px 0;
+  position: relative;
+}
+
+.legal-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Legal page header */
+.legal-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.legal-title {
+  font-size: 42px;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.legal-updated {
+  font-size: 14px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Legal content card */
+.legal-content {
+  background: #fff;
+  padding: 60px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Legal sections */
+.legal-section {
+  margin-bottom: 40px;
+}
+
+.legal-section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.legal-section-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin-bottom: 16px;
+}
+
+.legal-section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Legal lists */
+.legal-list {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+.legal-list li {
+  margin-bottom: 12px;
+}
+
+.legal-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Legal contact info */
+.legal-contact {
+  margin-top: 40px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.legal-contact-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.legal-contact-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+}
+
+.legal-contact-text:last-child {
+  margin-bottom: 0;
+}
+
+.legal-contact-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal-contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Back to home link */
+.legal-back {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-title {
+    font-size: 32px;
+  }
+  
+  .legal-content {
+    padding: 40px 30px;
+  }
+  
+  .legal-section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .legal-wrapper {
+    padding: 40px 0;
+  }
+  
+  .legal-title {
+    font-size: 28px;
+  }
+  
+  .legal-content {
+    padding: 30px 20px;
+  }
+  
+  .legal-section-title {
+    font-size: 18px;
+  }
+  
+  .legal-section-text,
+  .legal-list {
+    font-size: 15px;
+  }
+}
