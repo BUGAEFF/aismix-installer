@@ -120,7 +120,7 @@ services:
       - "traefik.enable=true"
       
       # Admin interface - WITH Traefik Basic Auth (Level 1)
-      - "traefik.http.routers.appix1-admin.rule=Host(`appix1.${DOMAIN}`) && !PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix1-admin.rule=Host(`appix1.${DOMAIN}`) && !PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix1-admin.entrypoints=websecure"
       - "traefik.http.routers.appix1-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-admin.middlewares=aismix-auth"
@@ -128,7 +128,7 @@ services:
       - "traefik.http.routers.appix1-admin.service=appix1-service"
       
       # Webhooks - WITHOUT Traefik auth (protected by API key in n8n)
-      - "traefik.http.routers.appix1-webhook.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix1-webhook.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix1-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix1-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-webhook.priority=2"
@@ -192,13 +192,13 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.appix2-admin.rule=Host(`appix2.${DOMAIN}`) && !PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix2-admin.rule=Host(`appix2.${DOMAIN}`) && !PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix2-admin.entrypoints=websecure"
       - "traefik.http.routers.appix2-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix2-admin.middlewares=aismix-auth"
       - "traefik.http.routers.appix2-admin.priority=1"
       - "traefik.http.routers.appix2-admin.service=appix2-service"
-      - "traefik.http.routers.appix2-webhook.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix2-webhook.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix2-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix2-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix2-webhook.priority=2"
@@ -258,13 +258,13 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.appix3-admin.rule=Host(`appix3.${DOMAIN}`) && !PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix3-admin.rule=Host(`appix3.${DOMAIN}`) && !PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix3-admin.entrypoints=websecure"
       - "traefik.http.routers.appix3-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix3-admin.middlewares=aismix-auth"
       - "traefik.http.routers.appix3-admin.priority=1"
       - "traefik.http.routers.appix3-admin.service=appix3-service"
-      - "traefik.http.routers.appix3-webhook.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix3-webhook.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix3-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix3-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix3-webhook.priority=2"
@@ -324,13 +324,13 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.appix4-admin.rule=Host(`appix4.${DOMAIN}`) && !PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix4-admin.rule=Host(`appix4.${DOMAIN}`) && !PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix4-admin.entrypoints=websecure"
       - "traefik.http.routers.appix4-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix4-admin.middlewares=aismix-auth"
       - "traefik.http.routers.appix4-admin.priority=1"
       - "traefik.http.routers.appix4-admin.service=appix4-service"
-      - "traefik.http.routers.appix4-webhook.rule=Host(`appix4.${DOMAIN}`) && PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix4-webhook.rule=Host(`appix4.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix4-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix4-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix4-webhook.priority=2"
@@ -390,13 +390,13 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.appix5-admin.rule=Host(`appix5.${DOMAIN}`) && !PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix5-admin.rule=Host(`appix5.${DOMAIN}`) && !PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix5-admin.entrypoints=websecure"
       - "traefik.http.routers.appix5-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix5-admin.middlewares=aismix-auth"
       - "traefik.http.routers.appix5-admin.priority=1"
       - "traefik.http.routers.appix5-admin.service=appix5-service"
-      - "traefik.http.routers.appix5-webhook.rule=Host(`appix5.${DOMAIN}`) && PathPrefix(`/webhook`, `/webhook-test`)"
+      - "traefik.http.routers.appix5-webhook.rule=Host(`appix5.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix5-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix5-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix5-webhook.priority=2"
