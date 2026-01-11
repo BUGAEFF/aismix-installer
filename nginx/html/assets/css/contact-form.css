@@ -1,8 +1,8 @@
 /* ================================================== */
-/* CONTACT FORM STYLES */
+/* CONTACT FORM PROTECTION & STYLING */
 /* ================================================== */
 
-/* Honeypot - скрытое поле для ботов */
+/* Honeypot - hidden anti-bot field */
 .honeypot {
   position: absolute !important;
   left: -9999px !important;
