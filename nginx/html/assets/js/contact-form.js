@@ -1,7 +1,7 @@
 /**
  * AISMIX Contact Form Handler
  * Protected contact form with n8n integration
- * Anti-spam: Honeypot + Time-based + Email validation + Rate limiting
+ * Multi-layer spam protection: Honeypot + Time-based + Email validation + Rate limiting
  */
 
 (function() {
@@ -11,20 +11,20 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    // Твой n8n webhook URL (замени на свой!)
-    webhookURL: 'https://n8n.yourdomain.com/webhook/contact-form',
+    // n8n webhook URL (replace with your actual webhook URL)
+    webhookURL: 'https://appix1.aismix.com/webhook/contact-form',
     
-    // Минимальное время заполнения формы (в секундах)
+    // API Key for webhook protection (CHANGE THIS!)
+    apiKey: 'aismix_contact_form_secret_key_2025',
+    
+    // Minimum form fill time in seconds (anti-bot)
     minFillTime: 3,
     
-    // Rate limiting (кол-во попыток за период)
+    // Rate limiting
     rateLimit: {
       maxAttempts: 3,
       periodMinutes: 60
-    },
-    
-    // Google reCAPTCHA v3 site key (получи на google.com/recaptcha)
-    recaptchaSiteKey: 'YOUR_RECAPTCHA_SITE_KEY'
+    }
   };
 
   // ============================================
@@ -48,13 +48,13 @@
       return;
     }
 
-    // Установить timestamp при загрузке
+    // Set timestamp on load
     timestampInput.value = Date.now();
 
-    // Обработчик отправки формы
+    // Form submit handler
     form.addEventListener('submit', handleSubmit);
 
-    // Валидация в реальном времени
+    // Real-time email validation
     emailInput.addEventListener('blur', validateEmailField);
     
     console.log('✅ Contact form initialized');
@@ -66,21 +66,21 @@
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Очистить предыдущие сообщения
+    // Clear previous messages
     clearStatus();
 
-    // Валидация всех защит
+    // Validate all protections
     const validationResult = validateForm();
     if (!validationResult.valid) {
       showStatus(validationResult.message, 'error');
       return;
     }
 
-    // Показать загрузку
+    // Show loading state
     setLoading(true);
 
     try {
-      // Собрать данные формы
+      // Collect form data
       const formData = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
@@ -91,11 +91,12 @@
         language: navigator.language
       };
 
-      // Отправить в n8n webhook
+      // Send to n8n webhook
       const response = await fetch(CONFIG.webhookURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-API-Key': CONFIG.apiKey
         },
         body: JSON.stringify(formData)
       });
@@ -106,12 +107,12 @@
 
       const result = await response.json();
 
-      // Успешная отправка
+      // Success
       showStatus('✅ Message sent successfully! We\'ll respond within 24 hours.', 'success');
       form.reset();
-      timestampInput.value = Date.now(); // Сбросить timestamp
+      timestampInput.value = Date.now();
 
-      // Сохранить попытку отправки для rate limiting
+      // Save submit attempt for rate limiting
       saveSubmitAttempt();
 
     } catch (error) {
@@ -126,16 +127,16 @@
   // VALIDATION
   // ============================================
   function validateForm() {
-    // 1. Проверка honeypot (должно быть пустым)
+    // 1. Check honeypot (must be empty)
     if (honeypot.value !== '') {
       console.warn('🤖 Bot detected: honeypot filled');
       return { valid: false, message: 'Spam detected' };
     }
 
-    // 2. Проверка времени заполнения (защита от автоматических ботов)
+    // 2. Check fill time (anti-bot)
     const formTimestamp = parseInt(timestampInput.value);
     const currentTime = Date.now();
-    const fillTime = (currentTime - formTimestamp) / 1000; // в секундах
+    const fillTime = (currentTime - formTimestamp) / 1000; // in seconds
 
     if (fillTime < CONFIG.minFillTime) {
       console.warn(`⚡ Form filled too quickly: ${fillTime}s`);
@@ -145,7 +146,7 @@
       };
     }
 
-    // 3. Проверка rate limiting
+    // 3. Check rate limiting
     if (isRateLimited()) {
       return { 
         valid: false, 
@@ -153,19 +154,19 @@
       };
     }
 
-    // 4. Валидация имени
+    // 4. Validate name
     const name = nameInput.value.trim();
     if (name.length < 2) {
       return { valid: false, message: 'Please enter your name' };
     }
 
-    // 5. Валидация email
+    // 5. Validate email
     const email = emailInput.value.trim();
     if (!isValidEmail(email)) {
       return { valid: false, message: 'Please enter a valid email address' };
     }
 
-    // 6. Валидация сообщения
+    // 6. Validate message
     const message = messageInput.value.trim();
     if (message.length < 10) {
       return { 
@@ -181,28 +182,28 @@
   // EMAIL VALIDATION
   // ============================================
   function isValidEmail(email) {
-    // RFC 5322 compliant regex (упрощенная версия)
+    // RFC 5322 compliant regex (simplified)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    // Базовая проверка
+    // Basic check
     if (!emailRegex.test(email)) {
       return false;
     }
 
-    // Дополнительные проверки
+    // Additional checks
     const [localPart, domain] = email.split('@');
     
-    // Проверка локальной части
+    // Check local part length
     if (localPart.length > 64) return false;
     
-    // Проверка домена
+    // Check domain length
     if (domain.length > 255) return false;
     
-    // Проверка на подозрительные паттерны
+    // Check for suspicious patterns
     const suspiciousPatterns = [
-      /\.{2,}/, // Две точки подряд
-      /^\./, // Начинается с точки
-      /\.$/, // Заканчивается точкой
+      /\.{2,}/, // Two dots in a row
+      /^\./, // Starts with dot
+      /\.$/, // Ends with dot
     ];
     
     if (suspiciousPatterns.some(pattern => pattern.test(email))) {
@@ -230,12 +231,12 @@
     const now = Date.now();
     const periodMs = CONFIG.rateLimit.periodMinutes * 60 * 1000;
 
-    // Фильтровать попытки за последний период
+    // Filter attempts within period
     const recentAttempts = attempts.filter(timestamp => {
       return now - timestamp < periodMs;
     });
 
-    // Обновить список попыток
+    // Update attempts list
     saveSubmitAttempts(recentAttempts);
 
     return recentAttempts.length >= CONFIG.rateLimit.maxAttempts;
@@ -272,7 +273,7 @@
     statusDiv.className = `form-status form-status--${type}`;
     statusDiv.style.display = 'block';
 
-    // Автоматически скрыть через 10 секунд
+    // Auto-hide after 10 seconds
     setTimeout(() => {
       if (type === 'success') {
         clearStatus();
@@ -300,7 +301,7 @@
   // ============================================
   // START
   // ============================================
-  // Инициализация при загрузке DOM
+  // Initialize on DOM load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
