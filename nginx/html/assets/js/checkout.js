@@ -21,10 +21,10 @@ const solutionNames = {
 // value: discount amount (10 = 10% or $10)
 const promoCodes = {
   'WELCOME10': { type: 'percentage', value: 10, description: '10% off' },
-  'SAVE20': { type: 'percentage', value: 20, description: '20% off' },
-  'FIRST500': { type: 'fixed', value: 500, description: '$500 off' },
-  'EARLY2025': { type: 'percentage', value: 15, description: '15% off' },
-  'VIP1000': { type: 'fixed', value: 1000, description: '$1000 off' }
+//  'SAVE20': { type: 'percentage', value: 20, description: '20% off' },
+// 'FIRST500': { type: 'fixed', value: 500, description: '$500 off' },
+//  'EARLY2025': { type: 'percentage', value: 15, description: '15% off' },
+//  'VIP1000': { type: 'fixed', value: 1000, description: '$1000 off' }
 };
 
 // ============================================
