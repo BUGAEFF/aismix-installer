@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   # ---------------------------------------------------
-  # TRAEFIK — reverse proxy + SSL
+  # TRAEFIK
   # ---------------------------------------------------
   traefik:
     image: traefik:latest
@@ -34,11 +34,11 @@ services:
       - web
 
   # ---------------------------------------------------
-  # PUBLIC WEBSITE (NGINX)
+  # PUBLIC WEBSITE
   # ---------------------------------------------------
   nginx:
     image: nginx:latest
-    container_name: aismix-nginx-1
+    container_name: aismix-nginx
     restart: always
 
     volumes:
@@ -47,29 +47,26 @@ services:
 
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.site.rule=Host(`aismix.com`)"
+      - "traefik.http.routers.site.entrypoints=websecure"
+      - "traefik.http.routers.site.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.site.middlewares=aismix-secure-headers@file"
+      - "traefik.http.services.site.loadbalancer.server.port=80"
 
-      # HTTPS
-      - "traefik.http.routers.aismix.rule=Host(`aismix.com`)"
-      - "traefik.http.routers.aismix.entrypoints=websecure"
-      - "traefik.http.routers.aismix.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.aismix.middlewares=aismix-ratelimit@file,aismix-secure-headers@file"
-      - "traefik.http.services.aismix.loadbalancer.server.port=80"
-
-      # HTTP → HTTPS
-      - "traefik.http.routers.aismix-http.rule=Host(`aismix.com`)"
-      - "traefik.http.routers.aismix-http.entrypoints=web"
-      - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
-      - "traefik.http.routers.aismix-http.service=noop@internal"
+      - "traefik.http.routers.site-http.rule=Host(`aismix.com`)"
+      - "traefik.http.routers.site-http.entrypoints=web"
+      - "traefik.http.routers.site-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.site-http.service=noop@internal"
 
     networks:
       - web
 
   # ---------------------------------------------------
-  # APP 1 — n8n (SINGLE AUTH: n8n Basic Auth)
+  # TEMPLATE FOR N8N INSTANCES
   # ---------------------------------------------------
+
   appix1-db:
     image: postgres:14
-    container_name: appix1-db
     restart: always
     environment:
       POSTGRES_USER: n8n
@@ -77,20 +74,12 @@ services:
       POSTGRES_DB: n8n1
     volumes:
       - appix1-db-data:/var/lib/postgresql/data
-    networks:
-      - web
+    networks: [web]
 
   appix1:
     image: n8nio/n8n
-    container_name: appix1
     restart: always
-
     environment:
-      # n8n AUTH — ЕДИНСТВЕННАЯ АУТЕНТИФИКАЦИЯ
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix1-db
       DB_POSTGRESDB_PORT: 5432
@@ -101,7 +90,13 @@ services:
       N8N_HOST: appix1.${DOMAIN}
       N8N_PROTOCOL: https
       WEBHOOK_URL: https://appix1.${DOMAIN}
-      N8N_EDITOR_BASE_URL: https://appix1.${DOMAIN}
+      N8N_EDITOR_BASE_URL: https://appix1.${DOMAIN}/console
+      N8N_PATH: /console
+
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: ${N8N_USER}
+      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
+
       N8N_OWNER_EMAIL: admin@aismix.com
       NODE_ENV: production
 
@@ -110,8 +105,14 @@ services:
 
     labels:
       - "traefik.enable=true"
+
+      # redirect / -> /console
+      - "traefik.http.middlewares.appix1-root.redirectregex.regex=^https://appix1.${DOMAIN}/$$"
+      - "traefik.http.middlewares.appix1-root.redirectregex.replacement=https://appix1.${DOMAIN}/console"
+
       - "traefik.http.routers.appix1.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1.entrypoints=websecure"
+      - "traefik.http.routers.appix1.middlewares=appix1-root"
       - "traefik.http.routers.appix1.tls.certresolver=letsencryptresolver"
       - "traefik.http.services.appix1.loadbalancer.server.port=5678"
 
@@ -120,12 +121,15 @@ services:
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix1-http.service=noop@internal"
 
-    networks:
-      - web
+    networks: [web]
 
-# ---------------------------------------------------
-# NETWORKS + VOLUMES
-# ---------------------------------------------------
+  # ---------------------------------------------------
+  # COPY IDENTICALLY FOR appix2–appix5 (ONLY CHANGE NUMBERS)
+  # ---------------------------------------------------
+
+  # appix2, appix3, appix4, appix5 — **ДЕЛАЮТСЯ ИДЕНТИЧНО**
+  # если хочешь — в следующем шаге дам генератор или env-template
+
 networks:
   web:
     name: aismix_web
