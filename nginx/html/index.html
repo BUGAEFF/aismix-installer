@@ -324,16 +324,62 @@
 <section id="contact" class="section contact">
   <div class="container">
     <div class="section-header">
-      <h2>Get in Touch 💬 </h2>
+      <h2>Get in Touch 💬</h2>
+      <p>We typically respond within 24 hours</p>
     </div>
 
-    <!-- Centered form with wide button -->
-    <form class="form-center" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="text" name="name" placeholder="⭐ Name or Nickname " required>
-      <input type="email" name="email" placeholder="⚡ Email, Telegram, etc." required>
-      <textarea name="message" placeholder="💡 Just share your idea " required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
+    <!-- Contact form with protection -->
+    <form id="contactForm" class="form-center" novalidate>
+      
+      <!-- Real fields -->
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        placeholder="⭐ Name or Nickname" 
+        required
+        autocomplete="name"
+      >
+      
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        placeholder="⚡ Email, Telegram, etc." 
+        required
+        autocomplete="email"
+      >
+      
+      <textarea 
+        id="message" 
+        name="message" 
+        placeholder="💡 Just share your idea" 
+        required
+        rows="5"
+      ></textarea>
+
+      <!-- Honeypot (hidden anti-bot field) -->
+      <input 
+        type="text" 
+        name="website" 
+        id="website" 
+        class="honeypot" 
+        tabindex="-1" 
+        autocomplete="off"
+      >
+
+      <!-- Hidden timestamp -->
+      <input type="hidden" id="formTimestamp" name="timestamp" value="">
+
+      <!-- Submit button -->
+      <button type="submit" class="btn-primary" id="submitBtn">
+        Send Message
+      </button>
+
+      <!-- Status messages -->
+      <div id="formStatus" class="form-status"></div>
     </form>
+
   </div>
 </section>
 
@@ -394,6 +440,7 @@
   
 </body>
 </html>
+
 
 
 
