@@ -17,5 +17,6 @@ http:
         permissionsPolicy: "camera=(), microphone=(), geolocation=()"
     aismix-auth:
       basicAuth:
+        realm: "AISMIX Protected Area"
         users:
           - "aismix:$apr1$zyR3mwyK$FwXEESa3U18.ct0eMkGup1"
