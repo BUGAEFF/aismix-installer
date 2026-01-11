@@ -4,12 +4,10 @@ http:
       redirectScheme:
         scheme: https
         permanent: true
-
     aismix-ratelimit:
       rateLimit:
         average: 100
         burst: 50
-
     aismix-secure-headers:
       headers:
         frameDeny: true
@@ -17,3 +15,7 @@ http:
         browserXssFilter: true
         referrerPolicy: "strict-origin-when-cross-origin"
         permissionsPolicy: "camera=(), microphone=(), geolocation=()"
+    aismix-auth:
+      basicAuth:
+        users:
+          - "aismix:$apr1$zyR3mwyK$FwXEESa3U18.ct0eMkGup1"
