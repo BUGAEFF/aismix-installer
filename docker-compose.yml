@@ -13,7 +13,6 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
-      - "--providers.file.filename=/middlewares.yml"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.letsencryptresolver.acme.email=${EMAIL}"
@@ -28,7 +27,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/acme.json:/acme.json
-      - ./traefik/middlewares.yml:/middlewares.yml
 
     networks:
       - web
@@ -51,12 +49,11 @@ services:
       - "traefik.http.routers.site.rule=Host(`aismix.com`)"
       - "traefik.http.routers.site.entrypoints=websecure"
       - "traefik.http.routers.site.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.site.middlewares=aismix-secure-headers@file"
       - "traefik.http.services.site.loadbalancer.server.port=80"
 
       - "traefik.http.routers.site-http.rule=Host(`aismix.com`)"
       - "traefik.http.routers.site-http.entrypoints=web"
-      - "traefik.http.routers.site-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.site-http.middlewares=redirect-to-https@docker"
       - "traefik.http.routers.site-http.service=noop@internal"
 
     networks:
@@ -81,7 +78,6 @@ services:
   appix1:
     image: n8nio/n8n
     restart: always
-
     environment:
       N8N_BASIC_AUTH_ACTIVE: "true"
       N8N_BASIC_AUTH_USER: ${N8N_USER}
@@ -97,7 +93,6 @@ services:
       N8N_HOST: appix1.${DOMAIN}
       N8N_PROTOCOL: https
       WEBHOOK_URL: https://appix1.${DOMAIN}
-      N8N_EDITOR_BASE_URL: https://appix1.${DOMAIN}/__ctrl
       NODE_ENV: production
 
     volumes:
@@ -105,31 +100,19 @@ services:
 
     labels:
       - "traefik.enable=true"
-
-      # ROOT -> 404
-      - "traefik.http.routers.appix1-root.rule=Host(`appix1.${DOMAIN}`) && Path(`/`)"
-      - "traefik.http.routers.appix1-root.entrypoints=websecure"
-      - "traefik.http.routers.appix1-root.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix1-root.service=noop@internal"
-
-      # /__ctrl -> n8n
-      - "traefik.http.routers.appix1-ctrl.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
-      - "traefik.http.routers.appix1-ctrl.entrypoints=websecure"
-      - "traefik.http.routers.appix1-ctrl.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix1-ctrl.middlewares=strip-ctrl@file"
+      - "traefik.http.routers.appix1.rule=Host(`appix1.${DOMAIN}`)"
+      - "traefik.http.routers.appix1.entrypoints=websecure"
+      - "traefik.http.routers.appix1.tls.certresolver=letsencryptresolver"
       - "traefik.http.services.appix1.loadbalancer.server.port=5678"
 
-      # HTTP -> HTTPS
       - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1-http.entrypoints=web"
-      - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@docker"
       - "traefik.http.routers.appix1-http.service=noop@internal"
 
     networks: [web]
 
-  # -------------------- APP 2–5 ----------------------
-  # ⚠️ ПОЛНАЯ КОПИЯ appix1, меняются только номера
-
+  # -------------------- APP 2 ------------------------
   appix2-db:
     image: postgres:14
     restart: always
@@ -137,7 +120,8 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: ${POSTGRES_PASS2}
       POSTGRES_DB: n8n2
-    volumes: [appix2-db-data:/var/lib/postgresql/data]
+    volumes:
+      - appix2-db-data:/var/lib/postgresql/data
     networks: [web]
 
   appix2:
@@ -147,13 +131,82 @@ services:
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS2}
       N8N_HOST: appix2.${DOMAIN}
       WEBHOOK_URL: https://appix2.${DOMAIN}
-      N8N_EDITOR_BASE_URL: https://appix2.${DOMAIN}/__ctrl
     labels:
-      - "traefik.http.routers.appix2-root.rule=Host(`appix2.${DOMAIN}`) && Path(`/`)"
-      - "traefik.http.routers.appix2-ctrl.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
+      - "traefik.http.routers.appix2.rule=Host(`appix2.${DOMAIN}`)"
+      - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
 
-  # (appix3–5 — аналогично, если нужно — добавим следующим шагом)
+  # -------------------- APP 3 ------------------------
+  appix3-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASS3}
+      POSTGRES_DB: n8n3
+    volumes:
+      - appix3-db-data:/var/lib/postgresql/data
+    networks: [web]
 
+  appix3:
+    extends: appix1
+    environment:
+      DB_POSTGRESDB_DATABASE: n8n3
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS3}
+      N8N_HOST: appix3.${DOMAIN}
+      WEBHOOK_URL: https://appix3.${DOMAIN}
+    labels:
+      - "traefik.http.routers.appix3.rule=Host(`appix3.${DOMAIN}`)"
+      - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
+
+  # -------------------- APP 4 ------------------------
+  appix4-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASS4}
+      POSTGRES_DB: n8n4
+    volumes:
+      - appix4-db-data:/var/lib/postgresql/data
+    networks: [web]
+
+  appix4:
+    extends: appix1
+    environment:
+      DB_POSTGRESDB_DATABASE: n8n4
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS4}
+      N8N_HOST: appix4.${DOMAIN}
+      WEBHOOK_URL: https://appix4.${DOMAIN}
+    labels:
+      - "traefik.http.routers.appix4.rule=Host(`appix4.${DOMAIN}`)"
+      - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
+
+  # -------------------- APP 5 ------------------------
+  appix5-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASS5}
+      POSTGRES_DB: n8n5
+    volumes:
+      - appix5-db-data:/var/lib/postgresql/data
+    networks: [web]
+
+  appix5:
+    extends: appix1
+    environment:
+      DB_POSTGRESDB_DATABASE: n8n5
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS5}
+      N8N_HOST: appix5.${DOMAIN}
+      WEBHOOK_URL: https://appix5.${DOMAIN}
+    labels:
+      - "traefik.http.routers.appix5.rule=Host(`appix5.${DOMAIN}`)"
+      - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
+
+# ---------------------------------------------------
+# NETWORKS + VOLUMES
+# ---------------------------------------------------
 networks:
   web:
     name: aismix_web
@@ -162,3 +215,10 @@ volumes:
   appix1-db-data:
   appix1-data:
   appix2-db-data:
+  appix2-data:
+  appix3-db-data:
+  appix3-data:
+  appix4-db-data:
+  appix4-data:
+  appix5-db-data:
+  appix5-data:
