@@ -11,11 +11,8 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    // n8n webhook URL (replace with your actual webhook URL)
-    webhookURL: 'https://appix1.aismix.com/webhook/contact-form',
-    
-    // API Key for webhook protection (CHANGE THIS!)
-    apiKey: 'aismix_contact_form_secret_key_2025',
+    // n8n webhook URL
+    webhookURL: 'https://appix1.aismix.com/webhook/f188ac2f-19fb-44ba-bf6e-060f4f6e857c',
     
     // Minimum form fill time in seconds (anti-bot)
     minFillTime: 3,
@@ -95,8 +92,7 @@
       const response = await fetch(CONFIG.webhookURL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'X-API-Key': CONFIG.apiKey
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
