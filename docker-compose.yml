@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   # ---------------------------------------------------
-  # TRAEFIK
+  # TRAEFIK — reverse proxy
   # ---------------------------------------------------
   traefik:
     image: traefik:latest
@@ -34,7 +34,7 @@ services:
       - web
 
   # ---------------------------------------------------
-  # PUBLIC WEBSITE
+  # PUBLIC WEBSITE (aismix.com)
   # ---------------------------------------------------
   nginx:
     image: nginx:latest
@@ -51,6 +51,7 @@ services:
       - "traefik.http.routers.site.rule=Host(`aismix.com`)"
       - "traefik.http.routers.site.entrypoints=websecure"
       - "traefik.http.routers.site.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.site.middlewares=aismix-secure-headers@file"
       - "traefik.http.services.site.loadbalancer.server.port=80"
 
       - "traefik.http.routers.site-http.rule=Host(`aismix.com`)"
@@ -61,10 +62,11 @@ services:
     networks:
       - web
 
-  # ---------------------------------------------------
-  # TEMPLATE FOR N8N APPS
-  # ---------------------------------------------------
+  # ===================================================
+  # =============== N8N STACK (x5) ====================
+  # ===================================================
 
+  # -------------------- APP 1 ------------------------
   appix1-db:
     image: postgres:14
     restart: always
@@ -87,15 +89,15 @@ services:
 
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: appix1-db
+      DB_POSTGRESDB_PORT: 5432
       DB_POSTGRESDB_DATABASE: n8n1
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS1}
 
       N8N_HOST: appix1.${DOMAIN}
       N8N_PROTOCOL: https
-      N8N_PATH: /__ctrl
-      N8N_EDITOR_BASE_URL: https://appix1.${DOMAIN}/__ctrl
       WEBHOOK_URL: https://appix1.${DOMAIN}
+      N8N_EDITOR_BASE_URL: https://appix1.${DOMAIN}/__ctrl
       NODE_ENV: production
 
     volumes:
@@ -104,19 +106,20 @@ services:
     labels:
       - "traefik.enable=true"
 
-      # ❌ ROOT — 404
+      # ROOT -> 404
       - "traefik.http.routers.appix1-root.rule=Host(`appix1.${DOMAIN}`) && Path(`/`)"
       - "traefik.http.routers.appix1-root.entrypoints=websecure"
       - "traefik.http.routers.appix1-root.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-root.service=noop@internal"
 
-      # ✅ CONTROL PANEL
+      # /__ctrl -> n8n
       - "traefik.http.routers.appix1-ctrl.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
       - "traefik.http.routers.appix1-ctrl.entrypoints=websecure"
       - "traefik.http.routers.appix1-ctrl.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix1-ctrl.middlewares=strip-ctrl@file"
       - "traefik.http.services.appix1.loadbalancer.server.port=5678"
 
-      # HTTP → HTTPS
+      # HTTP -> HTTPS
       - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
@@ -124,9 +127,8 @@ services:
 
     networks: [web]
 
-  # ---------------------------------------------------
-  # APP 2–5 (ИДЕНТИЧНО, КОПИЯ)
-  # ---------------------------------------------------
+  # -------------------- APP 2–5 ----------------------
+  # ⚠️ ПОЛНАЯ КОПИЯ appix1, меняются только номера
 
   appix2-db:
     image: postgres:14
@@ -135,43 +137,22 @@ services:
       POSTGRES_USER: n8n
       POSTGRES_PASSWORD: ${POSTGRES_PASS2}
       POSTGRES_DB: n8n2
-    volumes:
-      - appix2-db-data:/var/lib/postgresql/data
+    volumes: [appix2-db-data:/var/lib/postgresql/data]
     networks: [web]
 
   appix2:
-    image: n8nio/n8n
-    restart: always
+    extends: appix1
     environment:
-      N8N_BASIC_AUTH_ACTIVE: "true"
-      N8N_BASIC_AUTH_USER: ${N8N_USER}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_PASS}
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: appix2-db
       DB_POSTGRESDB_DATABASE: n8n2
-      DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS2}
       N8N_HOST: appix2.${DOMAIN}
-      N8N_PROTOCOL: https
-      N8N_PATH: /__ctrl
-      N8N_EDITOR_BASE_URL: https://appix2.${DOMAIN}/__ctrl
       WEBHOOK_URL: https://appix2.${DOMAIN}
-      NODE_ENV: production
-    volumes:
-      - appix2-data:/home/node/.n8n
+      N8N_EDITOR_BASE_URL: https://appix2.${DOMAIN}/__ctrl
     labels:
-      - "traefik.enable=true"
       - "traefik.http.routers.appix2-root.rule=Host(`appix2.${DOMAIN}`) && Path(`/`)"
-      - "traefik.http.routers.appix2-root.entrypoints=websecure"
-      - "traefik.http.routers.appix2-root.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix2-root.service=noop@internal"
       - "traefik.http.routers.appix2-ctrl.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
-      - "traefik.http.routers.appix2-ctrl.entrypoints=websecure"
-      - "traefik.http.routers.appix2-ctrl.tls.certresolver=letsencryptresolver"
-      - "traefik.http.services.appix2.loadbalancer.server.port=5678"
-    networks: [web]
 
-  # appix3 / appix4 / appix5 — делаются **ОДИН В ОДИН** как appix2
+  # (appix3–5 — аналогично, если нужно — добавим следующим шагом)
 
 networks:
   web:
@@ -181,4 +162,3 @@ volumes:
   appix1-db-data:
   appix1-data:
   appix2-db-data:
-  appix2-data:
