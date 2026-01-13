@@ -59,7 +59,6 @@ services:
       - "traefik.http.routers.aismix-http.entrypoints=web"
       - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.aismix-http.service=noop@internal"
-      
 
     networks:
       - web
@@ -68,6 +67,7 @@ services:
   # APP 1 - n8n with hidden admin path
   # Admin: https://appix1.aismix.com/__ctrl
   # Webhook: https://appix1.aismix.com/webhook/*
+  # OAuth: https://appix1.aismix.com/rest/oauth2-credential/callback
   # ---------------------------------------------------
   appix1-db:
     image: postgres:14
@@ -100,7 +100,8 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: https://appix1.aismix.com
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix1.${DOMAIN}/__ctrl"
 
     volumes:
       - appix1-data:/home/node/.n8n
@@ -125,6 +126,13 @@ services:
       - "traefik.http.routers.appix1-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix1-webhook.service=appix1-service"
       
+      # OAuth callback (no strip, highest priority)
+      - "traefik.http.routers.appix1-oauth.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix1-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix1-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix1-oauth.priority=30"
+      - "traefik.http.routers.appix1-oauth.service=appix1-service"
+      
       # Service
       - "traefik.http.services.appix1-service.loadbalancer.server.port=5678"
       
@@ -133,14 +141,6 @@ services:
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix1-http.service=noop@internal"
-
-      # OAuth callback (REQUIRED)
-      - "traefik.http.routers.appix1-oauth.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
-      - "traefik.http.routers.appix1-oauth.entrypoints=websecure"
-      - "traefik.http.routers.appix1-oauth.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix1-oauth.priority=30"
-      - "traefik.http.routers.appix1-oauth.service=appix1-service"
-      
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/__ctrl/healthz"]
@@ -184,8 +184,9 @@ services:
       WEBHOOK_URL: https://appix2.${DOMAIN}
       N8N_PROTOCOL: https
       NODE_ENV: production
-      N8N_OWNER_EMAIL: "admin@aismix.com"
+      N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix2.${DOMAIN}/__ctrl"
 
     volumes:
       - appix2-data:/home/node/.n8n
@@ -205,6 +206,11 @@ services:
       - "traefik.http.routers.appix2-webhook.priority=20"
       - "traefik.http.routers.appix2-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix2-webhook.service=appix2-service"
+      - "traefik.http.routers.appix2-oauth.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix2-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix2-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix2-oauth.priority=30"
+      - "traefik.http.routers.appix2-oauth.service=appix2-service"
       - "traefik.http.services.appix2-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
       - "traefik.http.routers.appix2-http.entrypoints=web"
@@ -253,8 +259,9 @@ services:
       WEBHOOK_URL: https://appix3.${DOMAIN}
       N8N_PROTOCOL: https
       NODE_ENV: production
-      N8N_OWNER_EMAIL: "admin@aismix.com"
+      N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
 
     volumes:
       - appix3-data:/home/node/.n8n
@@ -274,6 +281,11 @@ services:
       - "traefik.http.routers.appix3-webhook.priority=20"
       - "traefik.http.routers.appix3-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix3-webhook.service=appix3-service"
+      - "traefik.http.routers.appix3-oauth.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix3-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix3-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix3-oauth.priority=30"
+      - "traefik.http.routers.appix3-oauth.service=appix3-service"
       - "traefik.http.services.appix3-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
       - "traefik.http.routers.appix3-http.entrypoints=web"
@@ -322,8 +334,9 @@ services:
       WEBHOOK_URL: https://appix4.${DOMAIN}
       N8N_PROTOCOL: https
       NODE_ENV: production
-      N8N_OWNER_EMAIL: "admin@aismix.com"
+      N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix4.${DOMAIN}/__ctrl"
 
     volumes:
       - appix4-data:/home/node/.n8n
@@ -343,6 +356,11 @@ services:
       - "traefik.http.routers.appix4-webhook.priority=20"
       - "traefik.http.routers.appix4-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix4-webhook.service=appix4-service"
+      - "traefik.http.routers.appix4-oauth.rule=Host(`appix4.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix4-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix4-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix4-oauth.priority=30"
+      - "traefik.http.routers.appix4-oauth.service=appix4-service"
       - "traefik.http.services.appix4-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
       - "traefik.http.routers.appix4-http.entrypoints=web"
@@ -391,8 +409,9 @@ services:
       WEBHOOK_URL: https://appix5.${DOMAIN}
       N8N_PROTOCOL: https
       NODE_ENV: production
-      N8N_OWNER_EMAIL: "admin@aismix.com"
+      N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix5.${DOMAIN}/__ctrl"
 
     volumes:
       - appix5-data:/home/node/.n8n
@@ -412,6 +431,11 @@ services:
       - "traefik.http.routers.appix5-webhook.priority=20"
       - "traefik.http.routers.appix5-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix5-webhook.service=appix5-service"
+      - "traefik.http.routers.appix5-oauth.rule=Host(`appix5.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix5-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix5-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix5-oauth.priority=30"
+      - "traefik.http.routers.appix5-oauth.service=appix5-service"
       - "traefik.http.services.appix5-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
       - "traefik.http.routers.appix5-http.entrypoints=web"
