@@ -59,6 +59,7 @@ services:
       - "traefik.http.routers.aismix-http.entrypoints=web"
       - "traefik.http.routers.aismix-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.aismix-http.service=noop@internal"
+      
 
     networks:
       - web
@@ -132,6 +133,14 @@ services:
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix1-http.service=noop@internal"
+
+      # OAuth callback (REQUIRED)
+      - "traefik.http.routers.appix1-oauth.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+      - "traefik.http.routers.appix1-oauth.entrypoints=websecure"
+      - "traefik.http.routers.appix1-oauth.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix1-oauth.priority=30"
+      - "traefik.http.routers.appix1-oauth.service=appix1-service"
+      
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/__ctrl/healthz"]
