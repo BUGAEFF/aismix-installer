@@ -1,11 +1,9 @@
 http:
   middlewares:
-
     redirect-to-https:
       redirectScheme:
         scheme: https
         permanent: true
-
     aismix-secure-headers:
       headers:
         frameDeny: true
@@ -13,8 +11,18 @@ http:
         browserXssFilter: true
         referrerPolicy: "strict-origin-when-cross-origin"
         permissionsPolicy: "camera=(), microphone=(), geolocation=()"
-
     strip-ctrl:
       stripPrefix:
         prefixes:
           - "/__ctrl"
+    webhook-cors:
+      headers:
+        accessControlAllowOriginList:
+          - "https://aismix.com"
+        accessControlAllowMethods:
+          - "GET"
+          - "POST"
+          - "OPTIONS"
+        accessControlAllowHeaders:
+          - "Content-Type"
+        accessControlMaxAge: 86400
