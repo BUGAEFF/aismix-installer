@@ -12,7 +12,7 @@
   // ============================================
   const CONFIG = {
     // n8n webhook URL
-    webhookURL: 'https://appix1.aismix.com/webhook/f188ac2f-19fb-44ba-bf6e-060f4f6e857c',
+    webhookURL: 'https://appix1.aismix.com/webhook/d3c109fb-52f5-421c-bbac-d6abe60098e0',
     
     // Minimum form fill time in seconds (anti-bot)
     minFillTime: 3,
