@@ -116,11 +116,12 @@ services:
       - "traefik.http.routers.appix1-admin.service=appix1-service"
       - "traefik.http.middlewares.appix1-strip.stripprefix.prefixes=/__ctrl"
       
-      # Webhooks on /webhook (public, no strip)
+      # Webhooks on /webhook (public with CORS)
       - "traefik.http.routers.appix1-webhook.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix1-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix1-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-webhook.priority=20"
+      - "traefik.http.routers.appix1-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix1-webhook.service=appix1-service"
       
       # Service
@@ -193,6 +194,7 @@ services:
       - "traefik.http.routers.appix2-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix2-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix2-webhook.priority=20"
+      - "traefik.http.routers.appix2-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix2-webhook.service=appix2-service"
       - "traefik.http.services.appix2-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix2-http.rule=Host(`appix2.${DOMAIN}`)"
@@ -261,6 +263,7 @@ services:
       - "traefik.http.routers.appix3-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix3-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix3-webhook.priority=20"
+      - "traefik.http.routers.appix3-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix3-webhook.service=appix3-service"
       - "traefik.http.services.appix3-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
@@ -329,6 +332,7 @@ services:
       - "traefik.http.routers.appix4-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix4-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix4-webhook.priority=20"
+      - "traefik.http.routers.appix4-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix4-webhook.service=appix4-service"
       - "traefik.http.services.appix4-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix4-http.rule=Host(`appix4.${DOMAIN}`)"
@@ -397,6 +401,7 @@ services:
       - "traefik.http.routers.appix5-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix5-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix5-webhook.priority=20"
+      - "traefik.http.routers.appix5-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix5-webhook.service=appix5-service"
       - "traefik.http.services.appix5-service.loadbalancer.server.port=5678"
       - "traefik.http.routers.appix5-http.rule=Host(`appix5.${DOMAIN}`)"
