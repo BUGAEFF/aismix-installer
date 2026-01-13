@@ -98,7 +98,8 @@ services:
       WEBHOOK_URL: https://appix1.${DOMAIN}
       N8N_PROTOCOL: https
       NODE_ENV: production
-      N8N_OWNER_EMAIL: "admin@aismix.com"
+      N8N_OWNER_EMAIL: "hello@aismix.com"
+      N8N_EDITOR_BASE_URL: https://appix1.aismix.com
       N8N_PATH: "/__ctrl/"
 
     volumes:
