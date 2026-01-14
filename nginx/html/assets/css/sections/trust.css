@@ -1,5 +1,6 @@
 /* ===================================================================
    TRUST — Double infinite carousel (opposite directions)
+   PIXEL-PERFECT VERSION - No jump on loop
 =================================================================== */
 
 .trust {
@@ -52,23 +53,28 @@
 }
 
 /* ===================================================================
-   CAROUSEL TRACKS
+   CAROUSEL TRACKS — WITH CSS VARIABLES FOR PRECISE CALCULATION
 =================================================================== */
 
 .logos-track {
   display: flex;
   gap: var(--spacing-xl);
   will-change: transform;
+  
+  /* CSS variables for pixel-perfect animation */
+  --logo-width: 200px;
+  --logo-gap: var(--spacing-xl);
+  --items-count: 8;
 }
 
 /* TOP ROW — Scroll LEFT (default) */
 .logos-track--top {
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left-precise 30s linear infinite;
 }
 
 /* BOTTOM ROW — Scroll RIGHT (reverse) */
 .logos-track--bottom {
-  animation: scroll-right 35s linear infinite;
+  animation: scroll-right-precise 35s linear infinite;
 }
 
 /* Pause both on hover */
@@ -107,16 +113,6 @@
   object-fit: contain;
 }
 
-/* LOGO ITEMS 
-.logo-item img {
-  max-height: 48px;
-  max-width: 160px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-*/
-
 /* Hover effect */
 .logo-item:hover {
   transform: translateY(-4px) scale(1.08);
@@ -126,21 +122,24 @@
 }
 
 /* ===================================================================
-   ANIMATIONS
+   ANIMATIONS — PIXEL-PERFECT WITH CSS VARIABLES
+   
+   Formula: -(items-count × logo-width + (items-count - 1) × gap)
+   Desktop: -(8 × 200px + 7 × 40px) = -1880px exactly!
 =================================================================== */
 
-@keyframes scroll-left {
+@keyframes scroll-left-precise {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--items-count) * var(--logo-width) - (var(--items-count) - 1) * var(--logo-gap)));
   }
 }
 
-@keyframes scroll-right {
+@keyframes scroll-right-precise {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--items-count) * var(--logo-width) - (var(--items-count) - 1) * var(--logo-gap)));
   }
   100% {
     transform: translateX(0);
@@ -152,6 +151,10 @@
 =================================================================== */
 
 @media (max-width: 900px) {
+  .logos-track {
+    --logo-width: 170px;
+  }
+  
   .logo-item {
     width: 170px;
     height: 100px;
@@ -181,6 +184,12 @@
 =================================================================== */
 
 @media (max-width: 520px) {
+  .logos-track {
+    --logo-width: 150px;
+    --logo-gap: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+  
   .logos-carousel-wrapper {
     gap: var(--spacing-md);
   }
@@ -193,10 +202,6 @@
   .logo-item img {
     max-height: 80px;
     max-width: 140px;
-  }
-  
-  .logos-track {
-    gap: var(--spacing-md);
   }
   
   .logos-track--top {
@@ -212,6 +217,7 @@
     width: 50px;
   }
 }
+
 /* ===================================================================
    DOTS PATTERN for Trust
 =================================================================== */
@@ -238,9 +244,3 @@
   position: relative;
   z-index: 1;
 }
-
-
-
-
-
-
