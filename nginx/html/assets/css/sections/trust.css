@@ -1,6 +1,6 @@
 /* ===================================================================
-   TRUST — Double infinite carousel (opposite directions)
-   PIXEL-PERFECT VERSION - No jump on loop
+   TRUST — Triple infinite carousel (opposite directions)
+   SEAMLESS LOOP - Starts from middle, animates in both directions
 =================================================================== */
 
 .trust {
@@ -53,7 +53,7 @@
 }
 
 /* ===================================================================
-   CAROUSEL TRACKS — WITH CSS VARIABLES FOR PRECISE CALCULATION
+   CAROUSEL TRACKS — CSS VARIABLES FOR PRECISE CALCULATION
 =================================================================== */
 
 .logos-track {
@@ -65,16 +65,27 @@
   --logo-width: 200px;
   --logo-gap: var(--spacing-xl);
   --items-count: 8;
+  
+  /* Calculate one set width precisely */
+  --one-set-width: calc(var(--items-count) * var(--logo-width) + (var(--items-count) - 1) * var(--logo-gap));
 }
 
-/* TOP ROW — Scroll LEFT (default) */
+/* TOP ROW — Scroll LEFT 
+   Strategy: Start from -oneSet, move to -twoSets, loop back to -oneSet
+*/
 .logos-track--top {
-  animation: scroll-left-precise 30s linear infinite;
+  animation: scroll-left-seamless 30s linear infinite;
+  /* Start from middle (one set in) */
+  transform: translateX(calc(-1 * var(--one-set-width)));
 }
 
-/* BOTTOM ROW — Scroll RIGHT (reverse) */
+/* BOTTOM ROW — Scroll RIGHT 
+   Strategy: Start from -oneSet, move to 0, loop back to -oneSet
+*/
 .logos-track--bottom {
-  animation: scroll-right-precise 35s linear infinite;
+  animation: scroll-right-seamless 35s linear infinite;
+  /* Start from middle (one set in) */
+  transform: translateX(calc(-1 * var(--one-set-width)));
 }
 
 /* Pause both on hover */
@@ -122,26 +133,33 @@
 }
 
 /* ===================================================================
-   ANIMATIONS — PIXEL-PERFECT WITH CSS VARIABLES
+   ANIMATIONS — SEAMLESS LOOP FOR 3 SETS
    
-   Formula: -(items-count × logo-width + (items-count - 1) × gap)
-   Desktop: -(8 × 200px + 7 × 40px) = -1880px exactly!
+   Key insight: Start from middle position, move one set,
+   then animation loops back to middle = seamless!
+   
+   [Set 1] [Set 2] [Set 3]
+           ↑ start here (middle)
+           move left one set
+   [Set 1] [Set 2] [Set 3]
+   ↑ end here
+   Loop back to middle = looks continuous!
 =================================================================== */
 
-@keyframes scroll-left-precise {
-  0% {
-    transform: translateX(0);
+@keyframes scroll-left-seamless {
+  from {
+    transform: translateX(calc(-1 * var(--one-set-width)));
   }
-  100% {
-    transform: translateX(calc(-1 * var(--items-count) * var(--logo-width) - (var(--items-count) - 1) * var(--logo-gap)));
+  to {
+    transform: translateX(calc(-2 * var(--one-set-width)));
   }
 }
 
-@keyframes scroll-right-precise {
-  0% {
-    transform: translateX(calc(-1 * var(--items-count) * var(--logo-width) - (var(--items-count) - 1) * var(--logo-gap)));
+@keyframes scroll-right-seamless {
+  from {
+    transform: translateX(calc(-1 * var(--one-set-width)));
   }
-  100% {
+  to {
     transform: translateX(0);
   }
 }
