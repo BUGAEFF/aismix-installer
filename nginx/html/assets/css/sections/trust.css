@@ -1,6 +1,6 @@
 /* ===================================================================
-   TRUST — Triple infinite carousel (opposite directions)
-   SEAMLESS LOOP - Starts from middle, animates in both directions
+   TRUST — JavaScript-powered infinite carousel
+   NO CSS ANIMATIONS - JS handles smooth scrolling
 =================================================================== */
 
 .trust {
@@ -53,44 +53,14 @@
 }
 
 /* ===================================================================
-   CAROUSEL TRACKS — CSS VARIABLES FOR PRECISE CALCULATION
+   CAROUSEL TRACKS
 =================================================================== */
 
 .logos-track {
   display: flex;
   gap: var(--spacing-xl);
   will-change: transform;
-  
-  /* CSS variables for pixel-perfect animation */
-  --logo-width: 200px;
-  --logo-gap: var(--spacing-xl);
-  --items-count: 8;
-  
-  /* Calculate one set width precisely */
-  --one-set-width: calc(var(--items-count) * var(--logo-width) + (var(--items-count) - 1) * var(--logo-gap));
-}
-
-/* TOP ROW — Scroll LEFT 
-   Strategy: Start from -oneSet, move to -twoSets, loop back to -oneSet
-*/
-.logos-track--top {
-  animation: scroll-left-seamless 30s linear infinite;
-  /* Start from middle (one set in) */
-  transform: translateX(calc(-1 * var(--one-set-width)));
-}
-
-/* BOTTOM ROW — Scroll RIGHT 
-   Strategy: Start from -oneSet, move to 0, loop back to -oneSet
-*/
-.logos-track--bottom {
-  animation: scroll-right-seamless 35s linear infinite;
-  /* Start from middle (one set in) */
-  transform: translateX(calc(-1 * var(--one-set-width)));
-}
-
-/* Pause both on hover */
-.logos-carousel:hover .logos-track {
-  animation-play-state: paused;
+  /* JavaScript will handle the transform */
 }
 
 /* ===================================================================
@@ -133,46 +103,10 @@
 }
 
 /* ===================================================================
-   ANIMATIONS — SEAMLESS LOOP FOR 3 SETS
-   
-   Key insight: Start from middle position, move one set,
-   then animation loops back to middle = seamless!
-   
-   [Set 1] [Set 2] [Set 3]
-           ↑ start here (middle)
-           move left one set
-   [Set 1] [Set 2] [Set 3]
-   ↑ end here
-   Loop back to middle = looks continuous!
-=================================================================== */
-
-@keyframes scroll-left-seamless {
-  from {
-    transform: translateX(calc(-1 * var(--one-set-width)));
-  }
-  to {
-    transform: translateX(calc(-2 * var(--one-set-width)));
-  }
-}
-
-@keyframes scroll-right-seamless {
-  from {
-    transform: translateX(calc(-1 * var(--one-set-width)));
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* ===================================================================
    TABLET
 =================================================================== */
 
 @media (max-width: 900px) {
-  .logos-track {
-    --logo-width: 170px;
-  }
-  
   .logo-item {
     width: 170px;
     height: 100px;
@@ -181,14 +115,6 @@
   .logo-item img {
     max-height: 90px;
     max-width: 155px;
-  }
-  
-  .logos-track--top {
-    animation-duration: 40s;
-  }
-  
-  .logos-track--bottom {
-    animation-duration: 45s;
   }
   
   .logos-carousel::before,
@@ -202,12 +128,6 @@
 =================================================================== */
 
 @media (max-width: 520px) {
-  .logos-track {
-    --logo-width: 150px;
-    --logo-gap: var(--spacing-md);
-    gap: var(--spacing-md);
-  }
-  
   .logos-carousel-wrapper {
     gap: var(--spacing-md);
   }
@@ -222,12 +142,8 @@
     max-width: 140px;
   }
   
-  .logos-track--top {
-    animation-duration: 35s;
-  }
-  
-  .logos-track--bottom {
-    animation-duration: 38s;
+  .logos-track {
+    gap: var(--spacing-md);
   }
   
   .logos-carousel::before,
