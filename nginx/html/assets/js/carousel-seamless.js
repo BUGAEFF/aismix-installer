@@ -19,31 +19,44 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function initSeamlessScroll(track, direction = 'left', speed = 50) {
     
-    // Calculate width of ONE complete set (8 items)
     const allItems = Array.from(track.children);
     const totalItems = allItems.length; // Should be 24 (3 sets of 8)
     const itemsPerSet = totalItems / 3; // Should be 8
     
-    // Calculate width of one set including gaps
     let oneSetWidth = 0;
-    for (let i = 0; i < itemsPerSet; i++) {
-      oneSetWidth += allItems[i].offsetWidth;
-    }
-    
-    // Add gap widths between items in one set
-    const computedStyle = window.getComputedStyle(track);
-    const gap = parseFloat(computedStyle.gap) || 0;
-    oneSetWidth += gap * (itemsPerSet - 1);
-    
-    // Add one final gap after the last item of the set
-    oneSetWidth += gap;
-    
-    console.log(`Track ${direction}: One set width = ${oneSetWidth}px, Total items = ${totalItems}`);
-    
-    // Start position: middle of the track (one set in)
-    let position = direction === 'left' ? -oneSetWidth : -oneSetWidth;
+    let position = 0;
     let isPaused = false;
     let animationId = null;
+    
+    // Function to calculate current set width
+    function calculateSetWidth() {
+      let width = 0;
+      
+      // Sum widths of first set items
+      for (let i = 0; i < itemsPerSet; i++) {
+        width += allItems[i].offsetWidth;
+      }
+      
+      // Add gap widths between items in one set
+      const computedStyle = window.getComputedStyle(track);
+      const gap = parseFloat(computedStyle.gap) || 0;
+      width += gap * (itemsPerSet - 1);
+      
+      // Add one final gap after the last item of the set
+      width += gap;
+      
+      return width;
+    }
+    
+    // Initialize
+    function initialize() {
+      oneSetWidth = calculateSetWidth();
+      position = -oneSetWidth; // Start from middle
+      track.style.transform = `translateX(${position}px)`;
+      console.log(`Track ${direction}: One set width = ${oneSetWidth}px, Total items = ${totalItems}`);
+    }
+    
+    initialize();
     
     // Pause on hover
     const container = track.closest('.logos-carousel');
@@ -54,6 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
     container.addEventListener('mouseleave', () => {
       isPaused = false;
     });
+    
+    // Recalculate on window resize with debounce
+    let resizeTimeout;
+    function handleResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        console.log('Window resized, recalculating carousel dimensions...');
+        initialize();
+      }, 250); // Debounce 250ms
+    }
+    
+    window.addEventListener('resize', handleResize);
     
     // Main animation loop
     function animate() {
@@ -83,9 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
       animationId = requestAnimationFrame(animate);
     }
     
-    // Initialize position
-    track.style.transform = `translateX(${position}px)`;
-    
     // Start animation
     animate();
     
@@ -94,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
+      window.removeEventListener('resize', handleResize);
     };
   }
   
