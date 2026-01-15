@@ -80,7 +80,7 @@ services:
       - web
 
   appix1:
-    image: appix1-custom:latest
+    image: n8nio/n8n:1.123.15-arm64
     container_name: appix1
     restart: always
     
@@ -230,7 +230,7 @@ services:
       - web
 
   appix3:
-    image: appix3-custom:latest
+    image: n8nio/n8n:1.123.15-arm64
     container_name: appix3
     restart: always
     
@@ -305,7 +305,7 @@ services:
       - web
 
   appix4:
-    image: appix4-custom:latest
+    image: n8nio/n8n:1.123.15-arm64
     container_name: appix4
     restart: always
     
@@ -380,7 +380,7 @@ services:
       - web
 
   appix5:
-    image: appix5-custom:latest
+    image: n8nio/n8n:1.123.15-arm64
     container_name: appix5
     restart: always
     
