@@ -155,7 +155,7 @@ services:
       - web
 
   appix2:
-    image: n8nio/n8n
+    image: appix2-custom:latest
     container_name: appix2
     restart: always
     
