@@ -65,9 +65,6 @@ services:
 
   # ---------------------------------------------------
   # APP 1 - n8n with hidden admin path
-  # Admin: https://appix1.aismix.com/__ctrl
-  # Webhook: https://appix1.aismix.com/webhook/*
-  # OAuth: https://appix1.aismix.com/rest/oauth2-credential/callback
   # ---------------------------------------------------
   appix1-db:
     image: postgres:14
@@ -108,8 +105,6 @@ services:
 
     labels:
       - "traefik.enable=true"
-      
-      # Admin interface on /__ctrl (hidden path with 2FA)
       - "traefik.http.routers.appix1-admin.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
       - "traefik.http.routers.appix1-admin.entrypoints=websecure"
       - "traefik.http.routers.appix1-admin.tls.certresolver=letsencryptresolver"
@@ -117,26 +112,18 @@ services:
       - "traefik.http.routers.appix1-admin.middlewares=appix1-strip"
       - "traefik.http.routers.appix1-admin.service=appix1-service"
       - "traefik.http.middlewares.appix1-strip.stripprefix.prefixes=/__ctrl"
-      
-      # Webhooks on /webhook (public with CORS)
       - "traefik.http.routers.appix1-webhook.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix1-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix1-webhook.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-webhook.priority=20"
       - "traefik.http.routers.appix1-webhook.middlewares=webhook-cors@file"
       - "traefik.http.routers.appix1-webhook.service=appix1-service"
-      
-      # OAuth callback (no strip, highest priority)
       - "traefik.http.routers.appix1-oauth.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
       - "traefik.http.routers.appix1-oauth.entrypoints=websecure"
       - "traefik.http.routers.appix1-oauth.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-oauth.priority=30"
       - "traefik.http.routers.appix1-oauth.service=appix1-service"
-      
-      # Service
       - "traefik.http.services.appix1-service.loadbalancer.server.port=5678"
-      
-      # HTTP redirect
       - "traefik.http.routers.appix1-http.rule=Host(`appix1.${DOMAIN}`)"
       - "traefik.http.routers.appix1-http.entrypoints=web"
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
@@ -152,7 +139,7 @@ services:
       - web
 
   # ---------------------------------------------------
-  # APP 2
+  # APP 2 - с FFmpeg
   # ---------------------------------------------------
   appix2-db:
     image: postgres:14
@@ -168,7 +155,9 @@ services:
       - web
 
   appix2:
-    image: n8nio/n8n
+    build:
+      context: ./appix2-image
+      dockerfile: Dockerfile
     container_name: appix2
     restart: always
     
