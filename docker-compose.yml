@@ -155,9 +155,7 @@ services:
       - web
 
   appix2:
-    build:
-      context: ./appix2-image
-      dockerfile: Dockerfile
+    image: n8nio/n8n
     container_name: appix2
     restart: always
     
@@ -179,6 +177,7 @@ services:
 
     volumes:
       - appix2-data:/home/node/.n8n
+      - /usr/bin/ffmpeg:/usr/bin/ffmpeg:ro
 
     labels:
       - "traefik.enable=true"
