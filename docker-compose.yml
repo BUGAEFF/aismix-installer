@@ -178,6 +178,7 @@ services:
     volumes:
       - appix2-data:/home/node/.n8n
       - /usr/bin/ffmpeg:/usr/bin/ffmpeg:ro
+      - /usr/lib:/usr/lib:ro
 
     labels:
       - "traefik.enable=true"
