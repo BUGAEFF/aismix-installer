@@ -18,11 +18,11 @@ def get_transcript(video_id: str):
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
         
-        # Новый API - используем list() и fetch()
-        transcript_list = YouTubeTranscriptApi.list(video_id)
+        # Правильный вызов
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
         
-        # Берем первый доступный transcript
-        transcript = transcript_list[0].fetch()
+        # Берем первый доступный transcript и fetch его
+        transcript = transcript_list.find_transcript(['en']).fetch()
         
         text = " ".join(item["text"] for item in transcript)
 
