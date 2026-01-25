@@ -1,9 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from youtube_transcript_api import (
-    YouTubeTranscriptApi,
-    TranscriptsDisabled,
-    NoTranscriptFound,
-)
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 
 app = FastAPI(title="Transcript Service")
 
@@ -22,12 +18,12 @@ def root():
 def get_transcript(video_id: str):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
-        text = " ".join([item["text"] for item in transcript])
+        text = " ".join(item["text"] for item in transcript)
 
         return {
             "video_id": video_id,
             "transcript": text,
-            "source": "youtube_transcript_api",
+            "source": "youtube_transcript_api"
         }
 
     except TranscriptsDisabled:
