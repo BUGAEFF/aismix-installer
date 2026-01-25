@@ -13,23 +13,43 @@ def root():
     return {"service": "script.aismix.com"}
 
 
+@app.get("/check-methods")
+def check_methods():
+    """Check available methods"""
+    from youtube_transcript_api import YouTubeTranscriptApi
+    import inspect
+    
+    methods = [method for method in dir(YouTubeTranscriptApi) 
+               if not method.startswith('_')]
+    
+    # Get method signatures
+    method_info = {}
+    for method in methods:
+        try:
+            attr = getattr(YouTubeTranscriptApi, method)
+            if callable(attr):
+                sig = str(inspect.signature(attr))
+                method_info[method] = sig
+        except:
+            method_info[method] = "Unable to get signature"
+    
+    return {
+        "methods": methods,
+        "signatures": method_info
+    }
+
+
 @app.get("/transcript/{video_id}")
 def get_transcript(video_id: str):
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
         
-        # Правильный вызов
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        # Try direct call
+        result = YouTubeTranscriptApi.fetch(video_id)
         
-        # Берем первый доступный transcript и fetch его
-        transcript = transcript_list.find_transcript(['en']).fetch()
-        
-        text = " ".join(item["text"] for item in transcript)
-
         return {
             "video_id": video_id,
-            "transcript": text,
-            "source": "youtube_transcript_api"
+            "result": result
         }
 
     except Exception as e:
