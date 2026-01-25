@@ -1,6 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 
 app = FastAPI(title="Transcript Service")
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.get("/")
 def root():
@@ -9,14 +14,27 @@ def root():
         "status": "running"
     }
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
-
 @app.get("/transcript/{video_id}")
 def get_transcript(video_id: str):
-    return {
-        "video_id": video_id,
-        "transcript": None,
-        "source": "not_implemented_yet"
-    }
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(
+            video_id,
+            languages=["en", "en-US", "en-GB"]
+        )
+
+        text = " ".join([item["text"] for item in transcript])
+
+        return {
+            "video_id": video_id,
+            "transcript": text,
+            "source": "youtube"
+        }
+
+    except TranscriptsDisabled:
+        raise HTTPException(status_code=404, detail="Transcripts are disabled for this video")
+
+    except NoTranscriptFound:
+        raise HTTPException(status_code=404, detail="No transcript found for this video")
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
