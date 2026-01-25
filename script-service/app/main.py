@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException
-import sys
 
 app = FastAPI(title="Transcript Service")
 
@@ -7,25 +6,6 @@ app = FastAPI(title="Transcript Service")
 @app.get("/health")
 def health():
     return {"status": "ok"}
-
-
-@app.get("/debug")
-def debug():
-    """Debug endpoint to check imports"""
-    try:
-        from youtube_transcript_api import YouTubeTranscriptApi
-        
-        return {
-            "youtube_transcript_api_imported": True,
-            "module_path": str(YouTubeTranscriptApi.__module__),
-            "attributes": dir(YouTubeTranscriptApi),
-            "python_version": sys.version
-        }
-    except Exception as e:
-        return {
-            "error": str(e),
-            "type": str(type(e))
-        }
 
 
 @app.get("/")
@@ -38,8 +18,13 @@ def get_transcript(video_id: str):
     try:
         from youtube_transcript_api import YouTubeTranscriptApi
         
-        transcript_list = YouTubeTranscriptApi.get_transcript(video_id)
-        text = " ".join(item["text"] for item in transcript_list)
+        # Новый API - используем list() и fetch()
+        transcript_list = YouTubeTranscriptApi.list(video_id)
+        
+        # Берем первый доступный transcript
+        transcript = transcript_list[0].fetch()
+        
+        text = " ".join(item["text"] for item in transcript)
 
         return {
             "video_id": video_id,
