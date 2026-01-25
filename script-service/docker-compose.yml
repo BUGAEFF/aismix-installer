@@ -1,1 +1,18 @@
+version: "3.9"
+
+services:
+  script-service:
+    image: traefik/whoami
+    container_name: script-service
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.script.rule=Host(`script.aismix.com`)"
+      - "traefik.http.routers.script.entrypoints=websecure"
+      - "traefik.http.routers.script.tls.certresolver=letsencryptresolver"
+
+networks:
+  traefik:
+    external: true
 
