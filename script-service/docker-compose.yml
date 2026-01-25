@@ -6,6 +6,7 @@ services:
       - aismix_web
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=aismix_web"
       - "traefik.http.routers.script.rule=Host(`script.aismix.com`)"
       - "traefik.http.routers.script.entrypoints=websecure"
       - "traefik.http.routers.script.tls.certresolver=letsencryptresolver"
