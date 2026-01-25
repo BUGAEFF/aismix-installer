@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 
 app = FastAPI(title="Transcript Service")
 
@@ -18,9 +17,15 @@ def root():
 @app.get("/transcript/{video_id}")
 def get_transcript(video_id: str):
     try:
-        # Правильный вызов
-        transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
-        text = " ".join(item["text"] for item in transcript_list)
+        transcripts = YouTubeTranscriptApi.list_transcripts(video_id)
+
+        # берем первый доступный транскрипт (ручной или авто)
+        transcript = transcripts.find_transcript(
+            list(transcripts._TranscriptList__transcripts.keys())
+        )
+
+        data = transcript.fetch()
+        text = " ".join(item["text"] for item in data)
 
         return {
             "video_id": video_id,
