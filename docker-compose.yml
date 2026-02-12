@@ -99,6 +99,7 @@ services:
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix1.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
 
     volumes:
       - appix1-data:/home/node/.n8n
@@ -174,6 +175,7 @@ services:
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix2.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
 
     volumes:
       - appix2-data:/home/node/.n8n
@@ -249,6 +251,7 @@ services:
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
 
     volumes:
       - appix3-data:/home/node/.n8n
@@ -324,6 +327,7 @@ services:
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix4.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
 
     volumes:
       - appix4-data:/home/node/.n8n
@@ -399,6 +403,7 @@ services:
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix5.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
 
     volumes:
       - appix5-data:/home/node/.n8n
