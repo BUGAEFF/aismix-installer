@@ -100,6 +100,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix1.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
+      N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
       - appix1-data:/home/node/.n8n
@@ -176,6 +177,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix2.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
+      N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
       - appix2-data:/home/node/.n8n
@@ -252,6 +254,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
+      N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
       - appix3-data:/home/node/.n8n
@@ -328,6 +331,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix4.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
+      N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
       - appix4-data:/home/node/.n8n
@@ -404,6 +408,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix5.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
+      N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
       - appix5-data:/home/node/.n8n
