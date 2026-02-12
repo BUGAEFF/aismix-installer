@@ -97,8 +97,9 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: "https://appix1.${DOMAIN}/__ctrl/"
-      N8N_PUSH_BACKEND: "sse"
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix1.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
@@ -110,7 +111,9 @@ services:
       - "traefik.http.routers.appix1-admin.entrypoints=websecure"
       - "traefik.http.routers.appix1-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix1-admin.priority=10"
+      - "traefik.http.routers.appix1-admin.middlewares=appix1-strip"
       - "traefik.http.routers.appix1-admin.service=appix1-service"
+      - "traefik.http.middlewares.appix1-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix1-webhook.rule=Host(`appix1.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix1-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix1-webhook.tls.certresolver=letsencryptresolver"
@@ -171,8 +174,9 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: "https://appix2.${DOMAIN}/__ctrl/"
-      N8N_PUSH_BACKEND: "sse"
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix2.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
@@ -184,7 +188,9 @@ services:
       - "traefik.http.routers.appix2-admin.entrypoints=websecure"
       - "traefik.http.routers.appix2-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix2-admin.priority=10"
+      - "traefik.http.routers.appix2-admin.middlewares=appix2-strip"
       - "traefik.http.routers.appix2-admin.service=appix2-service"
+      - "traefik.http.middlewares.appix2-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix2-webhook.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix2-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix2-webhook.tls.certresolver=letsencryptresolver"
@@ -245,8 +251,9 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl/"
-      N8N_PUSH_BACKEND: "sse"
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
@@ -258,7 +265,9 @@ services:
       - "traefik.http.routers.appix3-admin.entrypoints=websecure"
       - "traefik.http.routers.appix3-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix3-admin.priority=10"
+      - "traefik.http.routers.appix3-admin.middlewares=appix3-strip"
       - "traefik.http.routers.appix3-admin.service=appix3-service"
+      - "traefik.http.middlewares.appix3-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix3-webhook.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix3-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix3-webhook.tls.certresolver=letsencryptresolver"
@@ -319,8 +328,9 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: "https://appix4.${DOMAIN}/__ctrl/"
-      N8N_PUSH_BACKEND: "sse"
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix4.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
@@ -332,7 +342,9 @@ services:
       - "traefik.http.routers.appix4-admin.entrypoints=websecure"
       - "traefik.http.routers.appix4-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix4-admin.priority=10"
+      - "traefik.http.routers.appix4-admin.middlewares=appix4-strip"
       - "traefik.http.routers.appix4-admin.service=appix4-service"
+      - "traefik.http.middlewares.appix4-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix4-webhook.rule=Host(`appix4.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix4-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix4-webhook.tls.certresolver=letsencryptresolver"
@@ -393,8 +405,9 @@ services:
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
-      N8N_EDITOR_BASE_URL: "https://appix5.${DOMAIN}/__ctrl/"
-      N8N_PUSH_BACKEND: "sse"
+      N8N_PATH: "/__ctrl/"
+      N8N_EDITOR_BASE_URL: "https://appix5.${DOMAIN}/__ctrl"
+      N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
 
     volumes:
@@ -406,7 +419,9 @@ services:
       - "traefik.http.routers.appix5-admin.entrypoints=websecure"
       - "traefik.http.routers.appix5-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix5-admin.priority=10"
+      - "traefik.http.routers.appix5-admin.middlewares=appix5-strip"
       - "traefik.http.routers.appix5-admin.service=appix5-service"
+      - "traefik.http.middlewares.appix5-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix5-webhook.rule=Host(`appix5.${DOMAIN}`) && PathPrefix(`/webhook`)"
       - "traefik.http.routers.appix5-webhook.entrypoints=websecure"
       - "traefik.http.routers.appix5-webhook.tls.certresolver=letsencryptresolver"
