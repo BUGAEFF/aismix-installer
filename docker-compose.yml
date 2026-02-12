@@ -190,7 +190,7 @@ services:
       - "traefik.http.routers.appix2-admin.entrypoints=websecure"
       - "traefik.http.routers.appix2-admin.tls.certresolver=letsencryptresolver"
       - "traefik.http.routers.appix2-admin.priority=10"
-      - "traefik.http.routers.appix2-admin.middlewares=appix2-strip"
+      - "traefik.http.routers.appix2-admin.middlewares=appix2-strip,websocket-headers@file"
       - "traefik.http.routers.appix2-admin.service=appix2-service"
       - "traefik.http.middlewares.appix2-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix2-webhook.rule=Host(`appix2.${DOMAIN}`) && PathPrefix(`/webhook`)"
