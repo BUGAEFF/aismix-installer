@@ -237,7 +237,7 @@ services:
       - web
 
   appix3:
-    image: n8nio/n8n:2.7.6-arm64
+    image: n8nio/n8n:2.7.5-arm64
     container_name: appix3
     restart: always
     
