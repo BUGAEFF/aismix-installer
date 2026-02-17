@@ -1,4 +1,4 @@
-FROM n8nio/n8n:1.123.15-arm64
+FROM n8nio/n8n:2.6.4-arm64
 
 USER root
 
