@@ -317,7 +317,7 @@ services:
       - web
 
   appix4:
-    image: n8nio/n8n:1.123.15-arm64
+    image: n8nio/n8n:2.6.4-arm64
     container_name: appix4
     restart: always
     
@@ -339,6 +339,7 @@ services:
       N8N_PUSH_BACKEND: "websocket"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
       N8N_PROXY_HOPS: "1"
+      N8N_ENDPOINT_HEALTH: "healthz"
 
     volumes:
       - appix4-data:/home/node/.n8n
@@ -368,9 +369,10 @@ services:
       - "traefik.http.routers.appix4-http.entrypoints=web"
       - "traefik.http.routers.appix4-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix4-http.service=noop@internal"
+      - "traefik.http.services.appix3-service.loadbalancer.server.scheme=http"
 
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5678/__ctrl/healthz"]
+      test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
       interval: 30s
       timeout: 5s
       retries: 5
