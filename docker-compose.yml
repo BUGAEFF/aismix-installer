@@ -289,6 +289,7 @@ services:
       - "traefik.http.routers.appix3-http.entrypoints=web"
       - "traefik.http.routers.appix3-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix3-http.service=noop@internal"
+      - "traefik.http.services.appix3-service.loadbalancer.server.scheme=http"
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
