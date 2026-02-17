@@ -257,7 +257,7 @@ services:
       N8N_PATH: "/__ctrl/"
       N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
       N8N_PUSH_BACKEND: "websocket"
-      N8N_ENDPOINT_HEALTH: "health"
+      N8N_ENDPOINT_HEALTH: "healthz"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
       N8N_PROXY_HOPS: "1"
 
