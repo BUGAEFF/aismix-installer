@@ -186,6 +186,9 @@ services:
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
       N8N_PROXY_HOPS: "1"
       N8N_ENDPOINT_HEALTH: "healthz"
+      N8N_DEFAULT_BINARY_DATA_MODE: "filesystem"
+      N8N_PAYLOAD_SIZE_MAX: "500"
+      N8N_FORMDATA_FILE_SIZE_MAX: "500"
 
     volumes:
       - appix2-data:/home/node/.n8n
