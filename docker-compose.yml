@@ -327,7 +327,7 @@ services:
       - web
 
   appix4:
-    image: n8nio/n8n:2.6.4-arm64
+    image: n8nio/n8n:2.9.0-arm64
     container_name: appix4
     restart: always
     
