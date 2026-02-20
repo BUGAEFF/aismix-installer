@@ -265,7 +265,7 @@ services:
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
       N8N_PATH: "/__ctrl/"
-      N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl"
+      N8N_EDITOR_BASE_URL: "https://appix3.${DOMAIN}/__ctrl/"
       N8N_PUSH_BACKEND: "websocket"
       N8N_ENDPOINT_HEALTH: "healthz"
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
