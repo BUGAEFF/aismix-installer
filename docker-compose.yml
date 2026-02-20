@@ -279,7 +279,7 @@ services:
       - "traefik.http.routers.appix3-admin.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/__ctrl`)"
       - "traefik.http.routers.appix3-admin.entrypoints=websecure"
       - "traefik.http.routers.appix3-admin.tls.certresolver=letsencryptresolver"
-    # - "traefik.http.routers.appix3-admin.middlewares=appix3-strip"
+      - "traefik.http.routers.appix3-admin.middlewares=appix3-strip"
       - "traefik.http.middlewares.appix3-strip.stripprefix.prefixes=/__ctrl"
       - "traefik.http.routers.appix3-admin.priority=10"
       - "traefik.http.routers.appix3-admin.service=appix3-service"
