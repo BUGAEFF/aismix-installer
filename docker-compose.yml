@@ -260,7 +260,7 @@ services:
       DB_POSTGRESDB_USER: n8n
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASS3}
       N8N_HOST: appix3.${DOMAIN}
-      WEBHOOK_URL: https://appix3.${DOMAIN}
+      WEBHOOK_URL: "https://appix3.${DOMAIN}/"
       N8N_PROTOCOL: https
       NODE_ENV: production
       N8N_OWNER_EMAIL: "hello@aismix.com"
@@ -274,32 +274,49 @@ services:
     volumes:
       - appix3-data:/home/node/.n8n
 
+  # labels:
+    #  - "traefik.enable=true"
+    #  - "traefik.http.routers.appix3-admin.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/__ctrl/`)"
+    #  - "traefik.http.routers.appix3-admin.entrypoints=websecure"
+    #  - "traefik.http.routers.appix3-admin.tls.certresolver=letsencryptresolver"
+    #  - "traefik.http.routers.appix3-admin.middlewares=appix3-strip"
+    #  - "traefik.http.middlewares.appix3-strip.stripprefix.prefixes=/__ctrl/"
+    #  - "traefik.http.routers.appix3-admin.priority=100"
+    #  - "traefik.http.routers.appix3-admin.service=appix3-service"
+    #  - "traefik.http.routers.appix3-webhook.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/webhook`)"
+    #  - "traefik.http.routers.appix3-webhook.entrypoints=websecure"
+    #  - "traefik.http.routers.appix3-webhook.tls.certresolver=letsencryptresolver"
+    #  - "traefik.http.routers.appix3-webhook.priority=20"
+    #  - "traefik.http.routers.appix3-webhook.middlewares=webhook-cors@file"
+    #  - "traefik.http.routers.appix3-webhook.service=appix3-service"
+    #  - "traefik.http.routers.appix3-oauth.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
+    #  - "traefik.http.routers.appix3-oauth.entrypoints=websecure"
+    #  - "traefik.http.routers.appix3-oauth.tls.certresolver=letsencryptresolver"
+    #  - "traefik.http.routers.appix3-oauth.priority=30"
+    #  - "traefik.http.routers.appix3-oauth.service=appix3-service"
+    #  - "traefik.http.services.appix3-service.loadbalancer.server.port=5678"
+    #  - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
+    # - "traefik.http.routers.appix3-http.entrypoints=web"
+    #  - "traefik.http.routers.appix3-http.middlewares=redirect-to-https@file"
+    #  - "traefik.http.routers.appix3-http.service=noop@internal"
+    # - "traefik.http.services.appix3-service.loadbalancer.server.scheme=http"
+
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.appix3-admin.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/__ctrl/`)"
-      - "traefik.http.routers.appix3-admin.entrypoints=websecure"
-      - "traefik.http.routers.appix3-admin.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix3-admin.middlewares=appix3-strip"
-      - "traefik.http.middlewares.appix3-strip.stripprefix.prefixes=/__ctrl/"
-      - "traefik.http.routers.appix3-admin.priority=100"
-      - "traefik.http.routers.appix3-admin.service=appix3-service"
-      - "traefik.http.routers.appix3-webhook.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/webhook`)"
-      - "traefik.http.routers.appix3-webhook.entrypoints=websecure"
-      - "traefik.http.routers.appix3-webhook.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix3-webhook.priority=20"
-      - "traefik.http.routers.appix3-webhook.middlewares=webhook-cors@file"
-      - "traefik.http.routers.appix3-webhook.service=appix3-service"
-      - "traefik.http.routers.appix3-oauth.rule=Host(`appix3.${DOMAIN}`) && PathPrefix(`/rest/oauth2-credential`)"
-      - "traefik.http.routers.appix3-oauth.entrypoints=websecure"
-      - "traefik.http.routers.appix3-oauth.tls.certresolver=letsencryptresolver"
-      - "traefik.http.routers.appix3-oauth.priority=30"
-      - "traefik.http.routers.appix3-oauth.service=appix3-service"
+      # Один роутер для всего: админки, вебхуков и oauth
+      - "traefik.http.routers.appix3-main.rule=Host(`appix3.${DOMAIN}`) && (PathPrefix(`/__ctrl`) || PathPrefix(`/webhook`) || PathPrefix(`/rest`))"
+      - "traefik.http.routers.appix3-main.entrypoints=websecure"
+      - "traefik.http.routers.appix3-main.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.appix3-main.priority=100"
+      - "traefik.http.routers.appix3-main.service=appix3-service"
+      
+      # СЕРВИС (явно указываем порт)
       - "traefik.http.services.appix3-service.loadbalancer.server.port=5678"
+
+      # Редирект с HTTP на HTTPS (общий)
       - "traefik.http.routers.appix3-http.rule=Host(`appix3.${DOMAIN}`)"
       - "traefik.http.routers.appix3-http.entrypoints=web"
       - "traefik.http.routers.appix3-http.middlewares=redirect-to-https@file"
-      - "traefik.http.routers.appix3-http.service=noop@internal"
-      - "traefik.http.services.appix3-service.loadbalancer.server.scheme=http"
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
