@@ -138,6 +138,9 @@ services:
       - "traefik.http.routers.appix1-http.middlewares=redirect-to-https@file"
       - "traefik.http.routers.appix1-http.service=noop@internal"
       - "traefik.http.services.appix3-service.loadbalancer.server.scheme=http"
+      - "traefik.http.middlewares.n8n-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.n8n-headers.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.n8n-headers.headers.forceSTSHeader=true"
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:5678/healthz"]
