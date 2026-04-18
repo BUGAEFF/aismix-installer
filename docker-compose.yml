@@ -80,7 +80,7 @@ services:
       - web
 
   appix1:
-    image: n8nio/n8n:2.15.0-arm64
+    image: n8nio/n8n:2.14.0-arm64
     container_name: appix1
     restart: always
     
