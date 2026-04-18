@@ -106,6 +106,8 @@ services:
       N8N_SKIP_INSTANCE_TYPE_SETUP: "true"
       N8N_PROXY_HOPS: "1"
       N8N_ENDPOINT_HEALTH: "healthz"
+      N8N_SESSION_COOKIE_SAMESITE: "lax"
+      N8N_SECURE_COOKIE: "true"
 
     volumes:
       - appix1-data:/home/node/.n8n
